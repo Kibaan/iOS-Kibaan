@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		40241B3D21941EC9007EEB71 /* Kibaan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40241B3321941EC9007EEB71 /* Kibaan.framework */; };
-		40241B4221941EC9007EEB71 /* KibaanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241B4121941EC9007EEB71 /* KibaanTests.swift */; };
 		40241B4421941EC9007EEB71 /* Kibaan.h in Headers */ = {isa = PBXBuildFile; fileRef = 40241B3621941EC9007EEB71 /* Kibaan.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		40241B9C2194254F007EEB71 /* ScreenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241B4E2194254F007EEB71 /* ScreenService.swift */; };
 		40241B9D2194254F007EEB71 /* TaskSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241B502194254F007EEB71 /* TaskSet.swift */; };
@@ -79,6 +78,20 @@
 		40241BDE2194254F007EEB71 /* HTTPConnectorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241B992194254F007EEB71 /* HTTPConnectorImpl.swift */; };
 		40241BDF2194254F007EEB71 /* HTTPConnectorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241B9A2194254F007EEB71 /* HTTPConnectorMock.swift */; };
 		40241BE02194254F007EEB71 /* HTTPConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241B9B2194254F007EEB71 /* HTTPConnector.swift */; };
+		40241C63219432CB007EEB71 /* SmartButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C4B219432CB007EEB71 /* SmartButtonTests.swift */; };
+		40241C64219432CB007EEB71 /* BoolUtilsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C4D219432CB007EEB71 /* BoolUtilsTest.swift */; };
+		40241C65219432CB007EEB71 /* ArrayUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C4E219432CB007EEB71 /* ArrayUtilsTests.swift */; };
+		40241C66219432CB007EEB71 /* UIDeviceUtilsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C4F219432CB007EEB71 /* UIDeviceUtilsTest.swift */; };
+		40241C67219432CB007EEB71 /* StringUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C50219432CB007EEB71 /* StringUtilsTests.swift */; };
+		40241C68219432CB007EEB71 /* DataUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C51219432CB007EEB71 /* DataUtilsTests.swift */; };
+		40241C69219432CB007EEB71 /* UIColorUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C52219432CB007EEB71 /* UIColorUtilsTests.swift */; };
+		40241C6A219432CB007EEB71 /* NSDecimalNumberUtilsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C53219432CB007EEB71 /* NSDecimalNumberUtilsTest.swift */; };
+		40241C6B219432CB007EEB71 /* CollectionUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C54219432CB007EEB71 /* CollectionUtilsTests.swift */; };
+		40241C6C219432CB007EEB71 /* IntUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C55219432CB007EEB71 /* IntUtilsTests.swift */; };
+		40241C6D219432CB007EEB71 /* DateUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C56219432CB007EEB71 /* DateUtilsTests.swift */; };
+		40241C6E219432CB007EEB71 /* HTTPConnectorMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C58219432CB007EEB71 /* HTTPConnectorMockTests.swift */; };
+		40241C6F219432CB007EEB71 /* LocalSettingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C5A219432CB007EEB71 /* LocalSettingTest.swift */; };
+		40241C70219432CB007EEB71 /* SecureStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C5B219432CB007EEB71 /* SecureStorageTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,7 +109,6 @@
 		40241B3621941EC9007EEB71 /* Kibaan.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Kibaan.h; sourceTree = "<group>"; };
 		40241B3721941EC9007EEB71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		40241B3C21941EC9007EEB71 /* KibaanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KibaanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		40241B4121941EC9007EEB71 /* KibaanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KibaanTests.swift; sourceTree = "<group>"; };
 		40241B4321941EC9007EEB71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		40241B4E2194254F007EEB71 /* ScreenService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenService.swift; sourceTree = "<group>"; };
 		40241B502194254F007EEB71 /* TaskSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskSet.swift; sourceTree = "<group>"; };
@@ -167,6 +179,20 @@
 		40241B992194254F007EEB71 /* HTTPConnectorImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPConnectorImpl.swift; sourceTree = "<group>"; };
 		40241B9A2194254F007EEB71 /* HTTPConnectorMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPConnectorMock.swift; sourceTree = "<group>"; };
 		40241B9B2194254F007EEB71 /* HTTPConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPConnector.swift; sourceTree = "<group>"; };
+		40241C4B219432CB007EEB71 /* SmartButtonTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartButtonTests.swift; sourceTree = "<group>"; };
+		40241C4D219432CB007EEB71 /* BoolUtilsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoolUtilsTest.swift; sourceTree = "<group>"; };
+		40241C4E219432CB007EEB71 /* ArrayUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayUtilsTests.swift; sourceTree = "<group>"; };
+		40241C4F219432CB007EEB71 /* UIDeviceUtilsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceUtilsTest.swift; sourceTree = "<group>"; };
+		40241C50219432CB007EEB71 /* StringUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringUtilsTests.swift; sourceTree = "<group>"; };
+		40241C51219432CB007EEB71 /* DataUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataUtilsTests.swift; sourceTree = "<group>"; };
+		40241C52219432CB007EEB71 /* UIColorUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorUtilsTests.swift; sourceTree = "<group>"; };
+		40241C53219432CB007EEB71 /* NSDecimalNumberUtilsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDecimalNumberUtilsTest.swift; sourceTree = "<group>"; };
+		40241C54219432CB007EEB71 /* CollectionUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionUtilsTests.swift; sourceTree = "<group>"; };
+		40241C55219432CB007EEB71 /* IntUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntUtilsTests.swift; sourceTree = "<group>"; };
+		40241C56219432CB007EEB71 /* DateUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtilsTests.swift; sourceTree = "<group>"; };
+		40241C58219432CB007EEB71 /* HTTPConnectorMockTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPConnectorMockTests.swift; sourceTree = "<group>"; };
+		40241C5A219432CB007EEB71 /* LocalSettingTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalSettingTest.swift; sourceTree = "<group>"; };
+		40241C5B219432CB007EEB71 /* SecureStorageTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureStorageTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,7 +254,10 @@
 		40241B4021941EC9007EEB71 /* KibaanTests */ = {
 			isa = PBXGroup;
 			children = (
-				40241B4121941EC9007EEB71 /* KibaanTests.swift */,
+				40241C4C219432CB007EEB71 /* Extension */,
+				40241C57219432CB007EEB71 /* HTTP */,
+				40241C59219432CB007EEB71 /* Storage */,
+				40241C4A219432CB007EEB71 /* UI */,
 				40241B4321941EC9007EEB71 /* Info.plist */,
 			);
 			path = KibaanTests;
@@ -371,6 +400,48 @@
 				40241B9B2194254F007EEB71 /* HTTPConnector.swift */,
 			);
 			path = HTTP;
+			sourceTree = "<group>";
+		};
+		40241C4A219432CB007EEB71 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				40241C4B219432CB007EEB71 /* SmartButtonTests.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		40241C4C219432CB007EEB71 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				40241C4D219432CB007EEB71 /* BoolUtilsTest.swift */,
+				40241C4E219432CB007EEB71 /* ArrayUtilsTests.swift */,
+				40241C4F219432CB007EEB71 /* UIDeviceUtilsTest.swift */,
+				40241C50219432CB007EEB71 /* StringUtilsTests.swift */,
+				40241C51219432CB007EEB71 /* DataUtilsTests.swift */,
+				40241C52219432CB007EEB71 /* UIColorUtilsTests.swift */,
+				40241C53219432CB007EEB71 /* NSDecimalNumberUtilsTest.swift */,
+				40241C54219432CB007EEB71 /* CollectionUtilsTests.swift */,
+				40241C55219432CB007EEB71 /* IntUtilsTests.swift */,
+				40241C56219432CB007EEB71 /* DateUtilsTests.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		40241C57219432CB007EEB71 /* HTTP */ = {
+			isa = PBXGroup;
+			children = (
+				40241C58219432CB007EEB71 /* HTTPConnectorMockTests.swift */,
+			);
+			path = HTTP;
+			sourceTree = "<group>";
+		};
+		40241C59219432CB007EEB71 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				40241C5A219432CB007EEB71 /* LocalSettingTest.swift */,
+				40241C5B219432CB007EEB71 /* SecureStorageTests.swift */,
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -557,7 +628,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40241B4221941EC9007EEB71 /* KibaanTests.swift in Sources */,
+				40241C63219432CB007EEB71 /* SmartButtonTests.swift in Sources */,
+				40241C68219432CB007EEB71 /* DataUtilsTests.swift in Sources */,
+				40241C6A219432CB007EEB71 /* NSDecimalNumberUtilsTest.swift in Sources */,
+				40241C69219432CB007EEB71 /* UIColorUtilsTests.swift in Sources */,
+				40241C6D219432CB007EEB71 /* DateUtilsTests.swift in Sources */,
+				40241C6E219432CB007EEB71 /* HTTPConnectorMockTests.swift in Sources */,
+				40241C67219432CB007EEB71 /* StringUtilsTests.swift in Sources */,
+				40241C70219432CB007EEB71 /* SecureStorageTests.swift in Sources */,
+				40241C64219432CB007EEB71 /* BoolUtilsTest.swift in Sources */,
+				40241C65219432CB007EEB71 /* ArrayUtilsTests.swift in Sources */,
+				40241C6F219432CB007EEB71 /* LocalSettingTest.swift in Sources */,
+				40241C66219432CB007EEB71 /* UIDeviceUtilsTest.swift in Sources */,
+				40241C6B219432CB007EEB71 /* CollectionUtilsTests.swift in Sources */,
+				40241C6C219432CB007EEB71 /* IntUtilsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
