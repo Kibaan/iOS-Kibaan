@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FooterTabViewController" customModule="KibaanSample" customModuleProvider="target">
+            <connections>
+                <outlet property="chartButton" destination="xhg-An-M3G" id="zhk-mV-a1Y"/>
+                <outlet property="contentsView" destination="9bX-Ai-ek7" id="KjT-HB-roQ"/>
+                <outlet property="menuButton" destination="Hde-8B-0LT" id="e4a-6s-N3B"/>
+                <outlet property="newsButton" destination="bt4-M7-hGo" id="oNh-vn-lKj"/>
+                <outlet property="topButton" destination="ugj-oE-GW6" id="v9K-Bq-pS2"/>
+                <outlet property="tradeButton" destination="MBb-6z-H2L" id="j92-O9-Ntf"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lMA-Fl-qEV" userLabel="HeaderMargin">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <color key="backgroundColor" red="0.95686274509803915" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9bX-Ai-ek7" userLabel="ContentsView">
+                    <rect key="frame" x="0.0" y="44" width="375" height="682"/>
+                    <color key="backgroundColor" red="0.89084201389999995" green="0.73527018229999996" blue="0.97051323779999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IRa-Z0-pKW" userLabel="Footer">
+                    <rect key="frame" x="0.0" y="726" width="375" height="52"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="g0o-NW-Stm">
+                            <rect key="frame" x="0.0" y="0.66666666666662877" width="375" height="51.333333333333336"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ugj-oE-GW6" customClass="SmartButton" customModule="Kibaan">
+                                    <rect key="frame" x="0.0" y="0.0" width="74.333333333333329" height="51.333333333333336"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                                    <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-3"/>
+                                    <state key="normal" title="トップ">
+                                        <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <state key="selected">
+                                        <color key="titleColor" red="0.30588235294117649" green="0.78823529411764703" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="tab_icon_home"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="iconScale" value="h:0.55"/>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="iconBottomInset">
+                                            <real key="value" value="0.12"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="image" keyPath="selectedIconImage" value="tab_icon_home_selected"/>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="actionFotterButton:" destination="-1" eventType="touchUpInside" id="21m-8P-tyh"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xhg-An-M3G" customClass="SmartButton" customModule="Kibaan">
+                                    <rect key="frame" x="75.333333333333329" y="0.0" width="73.999999999999986" height="51.333333333333336"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                                    <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-3"/>
+                                    <state key="normal" title="チャート">
+                                        <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <state key="selected">
+                                        <color key="titleColor" red="0.30588235294117649" green="0.78823529411764703" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="tab_icon_chart"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="iconScale" value="h:0.55"/>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="iconBottomInset">
+                                            <real key="value" value="0.12"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="image" keyPath="selectedIconImage" value="tab_icon_chart_selected"/>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="actionFotterButton:" destination="-1" eventType="touchUpInside" id="rfF-k1-xaL"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bt4-M7-hGo" customClass="SmartButton" customModule="Kibaan">
+                                    <rect key="frame" x="150.33333333333334" y="0.0" width="74.333333333333343" height="51.333333333333336"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                                    <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-3"/>
+                                    <state key="normal" title="ニュース">
+                                        <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <state key="selected">
+                                        <color key="titleColor" red="0.30588235294117649" green="0.78823529411764703" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="tab_icon_news"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="iconScale" value="h:0.55"/>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="iconBottomInset">
+                                            <real key="value" value="0.12"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="image" keyPath="selectedIconImage" value="tab_icon_news_selected"/>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="actionFotterButton:" destination="-1" eventType="touchUpInside" id="8KQ-Tx-qX5"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MBb-6z-H2L" customClass="SmartButton" customModule="Kibaan">
+                                    <rect key="frame" x="225.66666666666663" y="0.0" width="74" height="51.333333333333336"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                                    <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-3"/>
+                                    <state key="normal" title="取引">
+                                        <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <state key="selected">
+                                        <color key="titleColor" red="0.30588235294117649" green="0.78823529411764703" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="tab_icon_trade"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="iconScale" value="h:0.55"/>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="iconBottomInset">
+                                            <real key="value" value="0.12"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="image" keyPath="selectedIconImage" value="tab_icon_trade_selected"/>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="actionFotterButton:" destination="-1" eventType="touchUpInside" id="Inf-dd-bgo"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hde-8B-0LT" customClass="SmartButton" customModule="Kibaan">
+                                    <rect key="frame" x="300.66666666666669" y="0.0" width="74.333333333333314" height="51.333333333333336"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                                    <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-3"/>
+                                    <state key="normal" title="メニュー">
+                                        <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <state key="selected">
+                                        <color key="titleColor" red="0.30588235294117649" green="0.78823529411764703" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="tab_icon_menu"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="iconScale" value="h:0.55"/>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="iconBottomInset">
+                                            <real key="value" value="0.12"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="image" keyPath="selectedIconImage" value="tab_icon_menu_selected"/>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="actionFotterButton:" destination="-1" eventType="touchUpInside" id="eCU-k0-Py9"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xf0-wK-okb" userLabel="Separator">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="0.66666666666666663"/>
+                            <color key="backgroundColor" red="0.8666666666666667" green="0.8666666666666667" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="0.5" id="c3p-bK-7Tw"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="0.95686274509803915" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="xf0-wK-okb" firstAttribute="leading" secondItem="IRa-Z0-pKW" secondAttribute="leading" id="4SQ-7U-QC9"/>
+                        <constraint firstItem="xf0-wK-okb" firstAttribute="top" secondItem="IRa-Z0-pKW" secondAttribute="top" id="9OX-zB-Xnq"/>
+                        <constraint firstAttribute="height" constant="52" id="FAS-XP-aMP"/>
+                        <constraint firstAttribute="trailing" secondItem="g0o-NW-Stm" secondAttribute="trailing" id="O8i-G9-3va"/>
+                        <constraint firstAttribute="bottom" secondItem="g0o-NW-Stm" secondAttribute="bottom" id="XZM-ab-xZh"/>
+                        <constraint firstAttribute="trailing" secondItem="xf0-wK-okb" secondAttribute="trailing" id="Zuk-jA-jav"/>
+                        <constraint firstItem="g0o-NW-Stm" firstAttribute="leading" secondItem="IRa-Z0-pKW" secondAttribute="leading" id="kba-M9-0hu"/>
+                        <constraint firstItem="g0o-NW-Stm" firstAttribute="top" secondItem="xf0-wK-okb" secondAttribute="bottom" id="zXM-u7-QSc"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ARR-30-JZf" userLabel="FooterMargin">
+                    <rect key="frame" x="0.0" y="778" width="375" height="34"/>
+                    <color key="backgroundColor" red="0.95686274509803915" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" id="ty6-1F-Xdh"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="ty6-1F-Xdh"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=compact">
+                        <mask key="constraints">
+                            <include reference="ty6-1F-Xdh"/>
+                        </mask>
+                    </variation>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.85098039219999999" green="0.78039215689999997" blue="0.6705882353" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="ARR-30-JZf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="0Cp-MP-NNW"/>
+                <constraint firstItem="IRa-Z0-pKW" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="54I-Vs-CLi"/>
+                <constraint firstItem="ARR-30-JZf" firstAttribute="top" secondItem="IRa-Z0-pKW" secondAttribute="bottom" id="5Sb-KK-nmp"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="9bX-Ai-ek7" secondAttribute="bottom" id="6U7-oB-aiY"/>
+                <constraint firstItem="IRa-Z0-pKW" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="8du-QY-Ff1"/>
+                <constraint firstItem="lMA-Fl-qEV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="N5U-Nv-EDi"/>
+                <constraint firstItem="lMA-Fl-qEV" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Yat-Jw-TPI"/>
+                <constraint firstItem="9bX-Ai-ek7" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" priority="751" id="Z9z-Cv-TKC"/>
+                <constraint firstAttribute="trailing" secondItem="lMA-Fl-qEV" secondAttribute="trailing" id="aRp-98-7ev"/>
+                <constraint firstAttribute="bottom" secondItem="ARR-30-JZf" secondAttribute="bottom" id="asF-8s-DTk"/>
+                <constraint firstItem="IRa-Z0-pKW" firstAttribute="top" secondItem="9bX-Ai-ek7" secondAttribute="bottom" id="bau-eb-3EW"/>
+                <constraint firstItem="9bX-Ai-ek7" firstAttribute="top" relation="greaterThanOrEqual" secondItem="i5M-Pr-FkT" secondAttribute="top" priority="999" constant="20" id="c95-TH-dHT"/>
+                <constraint firstItem="9bX-Ai-ek7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="dkn-nM-NkA"/>
+                <constraint firstItem="9bX-Ai-ek7" firstAttribute="top" secondItem="lMA-Fl-qEV" secondAttribute="bottom" id="gkZ-B0-MpI"/>
+                <constraint firstItem="9bX-Ai-ek7" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="lRj-o1-gRV"/>
+                <constraint firstItem="IRa-Z0-pKW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="mZL-XU-pY4"/>
+                <constraint firstAttribute="trailing" secondItem="ARR-30-JZf" secondAttribute="trailing" id="tlC-CZ-2Io"/>
+                <constraint firstItem="IRa-Z0-pKW" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="v3Z-Nt-hv9"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="6U7-oB-aiY"/>
+                    <exclude reference="54I-Vs-CLi"/>
+                    <exclude reference="bau-eb-3EW"/>
+                    <exclude reference="mZL-XU-pY4"/>
+                    <exclude reference="asF-8s-DTk"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=compact">
+                <mask key="constraints">
+                    <include reference="6U7-oB-aiY"/>
+                    <include reference="mZL-XU-pY4"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular">
+                <mask key="constraints">
+                    <include reference="54I-Vs-CLi"/>
+                    <include reference="bau-eb-3EW"/>
+                    <include reference="asF-8s-DTk"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="33.5" y="53"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="tab_icon_chart" width="26.331428527832031" height="26.331428527832031"/>
+        <image name="tab_icon_chart_selected" width="128" height="128"/>
+        <image name="tab_icon_home" width="128" height="128"/>
+        <image name="tab_icon_home_selected" width="128" height="128"/>
+        <image name="tab_icon_menu" width="128" height="128"/>
+        <image name="tab_icon_menu_selected" width="128" height="128"/>
+        <image name="tab_icon_news" width="128" height="128"/>
+        <image name="tab_icon_news_selected" width="128" height="128"/>
+        <image name="tab_icon_trade" width="128" height="128"/>
+        <image name="tab_icon_trade_selected" width="128" height="128"/>
+    </resources>
+</document>

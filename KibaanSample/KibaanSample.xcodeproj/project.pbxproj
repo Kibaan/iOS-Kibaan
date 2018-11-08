@@ -8,12 +8,29 @@
 
 /* Begin PBXBuildFile section */
 		40241BEE219426AC007EEB71 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241BED219426AC007EEB71 /* AppDelegate.swift */; };
-		40241BF0219426AC007EEB71 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241BEF219426AC007EEB71 /* ViewController.swift */; };
-		40241BF3219426AC007EEB71 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40241BF1219426AC007EEB71 /* Main.storyboard */; };
 		40241BF5219426AC007EEB71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40241BF4219426AC007EEB71 /* Assets.xcassets */; };
 		40241BF8219426AC007EEB71 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40241BF6219426AC007EEB71 /* LaunchScreen.storyboard */; };
 		40241C03219426AC007EEB71 /* KibaanSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C02219426AC007EEB71 /* KibaanSampleTests.swift */; };
 		40241C0E219426AC007EEB71 /* KibaanSampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C0D219426AC007EEB71 /* KibaanSampleUITests.swift */; };
+		40241C1C21942B7E007EEB71 /* Kibaan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40241C1B21942B7E007EEB71 /* Kibaan.framework */; };
+		40241C1D21942B7E007EEB71 /* Kibaan.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 40241C1B21942B7E007EEB71 /* Kibaan.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		40241C2521942D82007EEB71 /* LauncherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C2121942D82007EEB71 /* LauncherViewController.swift */; };
+		40241C2621942D82007EEB71 /* LauncherViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40241C2221942D82007EEB71 /* LauncherViewController.xib */; };
+		40241C2721942D82007EEB71 /* FooterTabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40241C2321942D82007EEB71 /* FooterTabViewController.xib */; };
+		40241C2821942D82007EEB71 /* FooterTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C2421942D82007EEB71 /* FooterTabViewController.swift */; };
+		40241C2B21942DBB007EEB71 /* LauncherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C2A21942DBB007EEB71 /* LauncherService.swift */; };
+		40241C2F21942F12007EEB71 /* AppSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C2D21942F12007EEB71 /* AppSetting.swift */; };
+		40241C3021942F12007EEB71 /* SharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C2E21942F12007EEB71 /* SharedData.swift */; };
+		40241C3821942FF8007EEB71 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C3621942FF8007EEB71 /* TopViewController.swift */; };
+		40241C3921942FF8007EEB71 /* TopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40241C3721942FF8007EEB71 /* TopViewController.xib */; };
+		40241C3C21943013007EEB71 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C3A21943013007EEB71 /* ChartViewController.swift */; };
+		40241C3D21943013007EEB71 /* ChartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40241C3B21943013007EEB71 /* ChartViewController.xib */; };
+		40241C4021943085007EEB71 /* TradeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C3E21943085007EEB71 /* TradeViewController.swift */; };
+		40241C4121943085007EEB71 /* TradeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40241C3F21943085007EEB71 /* TradeViewController.xib */; };
+		40241C4421943097007EEB71 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C4221943097007EEB71 /* NewsViewController.swift */; };
+		40241C4521943097007EEB71 /* NewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40241C4321943097007EEB71 /* NewsViewController.xib */; };
+		40241C48219430A9007EEB71 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C46219430A9007EEB71 /* MenuViewController.swift */; };
+		40241C49219430A9007EEB71 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40241C47219430A9007EEB71 /* MenuViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,11 +50,23 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		40241C1E21942B7E007EEB71 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				40241C1D21942B7E007EEB71 /* Kibaan.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		40241BEA219426AC007EEB71 /* KibaanSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KibaanSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40241BED219426AC007EEB71 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		40241BEF219426AC007EEB71 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		40241BF2219426AC007EEB71 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		40241BF4219426AC007EEB71 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		40241BF7219426AC007EEB71 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		40241BF9219426AC007EEB71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +76,24 @@
 		40241C09219426AC007EEB71 /* KibaanSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KibaanSampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		40241C0D219426AC007EEB71 /* KibaanSampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KibaanSampleUITests.swift; sourceTree = "<group>"; };
 		40241C0F219426AC007EEB71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40241C1B21942B7E007EEB71 /* Kibaan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Kibaan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		40241C2121942D82007EEB71 /* LauncherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LauncherViewController.swift; sourceTree = "<group>"; };
+		40241C2221942D82007EEB71 /* LauncherViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LauncherViewController.xib; sourceTree = "<group>"; };
+		40241C2321942D82007EEB71 /* FooterTabViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FooterTabViewController.xib; sourceTree = "<group>"; };
+		40241C2421942D82007EEB71 /* FooterTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FooterTabViewController.swift; sourceTree = "<group>"; };
+		40241C2A21942DBB007EEB71 /* LauncherService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LauncherService.swift; sourceTree = "<group>"; };
+		40241C2D21942F12007EEB71 /* AppSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSetting.swift; sourceTree = "<group>"; };
+		40241C2E21942F12007EEB71 /* SharedData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedData.swift; sourceTree = "<group>"; };
+		40241C3621942FF8007EEB71 /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
+		40241C3721942FF8007EEB71 /* TopViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopViewController.xib; sourceTree = "<group>"; };
+		40241C3A21943013007EEB71 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
+		40241C3B21943013007EEB71 /* ChartViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChartViewController.xib; sourceTree = "<group>"; };
+		40241C3E21943085007EEB71 /* TradeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeViewController.swift; sourceTree = "<group>"; };
+		40241C3F21943085007EEB71 /* TradeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradeViewController.xib; sourceTree = "<group>"; };
+		40241C4221943097007EEB71 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		40241C4321943097007EEB71 /* NewsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsViewController.xib; sourceTree = "<group>"; };
+		40241C46219430A9007EEB71 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		40241C47219430A9007EEB71 /* MenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40241C1C21942B7E007EEB71 /* Kibaan.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +125,7 @@
 		40241BE1219426AC007EEB71 = {
 			isa = PBXGroup;
 			children = (
+				40241C1B21942B7E007EEB71 /* Kibaan.framework */,
 				40241BEC219426AC007EEB71 /* KibaanSample */,
 				40241C01219426AC007EEB71 /* KibaanSampleTests */,
 				40241C0C219426AC007EEB71 /* KibaanSampleUITests */,
@@ -97,9 +146,10 @@
 		40241BEC219426AC007EEB71 /* KibaanSample */ = {
 			isa = PBXGroup;
 			children = (
+				40241C2C21942F12007EEB71 /* Model */,
+				40241C2921942DBB007EEB71 /* Service */,
+				40241C1F21942D23007EEB71 /* Screen */,
 				40241BED219426AC007EEB71 /* AppDelegate.swift */,
-				40241BEF219426AC007EEB71 /* ViewController.swift */,
-				40241BF1219426AC007EEB71 /* Main.storyboard */,
 				40241BF4219426AC007EEB71 /* Assets.xcassets */,
 				40241BF6219426AC007EEB71 /* LaunchScreen.storyboard */,
 				40241BF9219426AC007EEB71 /* Info.plist */,
@@ -125,6 +175,92 @@
 			path = KibaanSampleUITests;
 			sourceTree = "<group>";
 		};
+		40241C1F21942D23007EEB71 /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				40241C3121942FB8007EEB71 /* Top */,
+				40241C3221942FC0007EEB71 /* Chart */,
+				40241C3421942FCE007EEB71 /* Trade */,
+				40241C3321942FC6007EEB71 /* News */,
+				40241C3521942FD3007EEB71 /* Menu */,
+				40241C2421942D82007EEB71 /* FooterTabViewController.swift */,
+				40241C2321942D82007EEB71 /* FooterTabViewController.xib */,
+				40241C2021942D82007EEB71 /* Launcher */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		40241C2021942D82007EEB71 /* Launcher */ = {
+			isa = PBXGroup;
+			children = (
+				40241C2121942D82007EEB71 /* LauncherViewController.swift */,
+				40241C2221942D82007EEB71 /* LauncherViewController.xib */,
+			);
+			path = Launcher;
+			sourceTree = "<group>";
+		};
+		40241C2921942DBB007EEB71 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				40241C2A21942DBB007EEB71 /* LauncherService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		40241C2C21942F12007EEB71 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				40241C2D21942F12007EEB71 /* AppSetting.swift */,
+				40241C2E21942F12007EEB71 /* SharedData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		40241C3121942FB8007EEB71 /* Top */ = {
+			isa = PBXGroup;
+			children = (
+				40241C3621942FF8007EEB71 /* TopViewController.swift */,
+				40241C3721942FF8007EEB71 /* TopViewController.xib */,
+			);
+			path = Top;
+			sourceTree = "<group>";
+		};
+		40241C3221942FC0007EEB71 /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				40241C3A21943013007EEB71 /* ChartViewController.swift */,
+				40241C3B21943013007EEB71 /* ChartViewController.xib */,
+			);
+			path = Chart;
+			sourceTree = "<group>";
+		};
+		40241C3321942FC6007EEB71 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				40241C4221943097007EEB71 /* NewsViewController.swift */,
+				40241C4321943097007EEB71 /* NewsViewController.xib */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
+		40241C3421942FCE007EEB71 /* Trade */ = {
+			isa = PBXGroup;
+			children = (
+				40241C3E21943085007EEB71 /* TradeViewController.swift */,
+				40241C3F21943085007EEB71 /* TradeViewController.xib */,
+			);
+			path = Trade;
+			sourceTree = "<group>";
+		};
+		40241C3521942FD3007EEB71 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				40241C46219430A9007EEB71 /* MenuViewController.swift */,
+				40241C47219430A9007EEB71 /* MenuViewController.xib */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,6 +271,7 @@
 				40241BE6219426AC007EEB71 /* Sources */,
 				40241BE7219426AC007EEB71 /* Frameworks */,
 				40241BE8219426AC007EEB71 /* Resources */,
+				40241C1E21942B7E007EEB71 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -230,8 +367,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				40241BF8219426AC007EEB71 /* LaunchScreen.storyboard in Resources */,
+				40241C4121943085007EEB71 /* TradeViewController.xib in Resources */,
+				40241C3D21943013007EEB71 /* ChartViewController.xib in Resources */,
+				40241C4521943097007EEB71 /* NewsViewController.xib in Resources */,
+				40241C49219430A9007EEB71 /* MenuViewController.xib in Resources */,
+				40241C2721942D82007EEB71 /* FooterTabViewController.xib in Resources */,
 				40241BF5219426AC007EEB71 /* Assets.xcassets in Resources */,
-				40241BF3219426AC007EEB71 /* Main.storyboard in Resources */,
+				40241C3921942FF8007EEB71 /* TopViewController.xib in Resources */,
+				40241C2621942D82007EEB71 /* LauncherViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,8 +399,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40241BF0219426AC007EEB71 /* ViewController.swift in Sources */,
+				40241C4021943085007EEB71 /* TradeViewController.swift in Sources */,
+				40241C3021942F12007EEB71 /* SharedData.swift in Sources */,
+				40241C2F21942F12007EEB71 /* AppSetting.swift in Sources */,
+				40241C4421943097007EEB71 /* NewsViewController.swift in Sources */,
+				40241C48219430A9007EEB71 /* MenuViewController.swift in Sources */,
+				40241C2521942D82007EEB71 /* LauncherViewController.swift in Sources */,
+				40241C2821942D82007EEB71 /* FooterTabViewController.swift in Sources */,
 				40241BEE219426AC007EEB71 /* AppDelegate.swift in Sources */,
+				40241C3C21943013007EEB71 /* ChartViewController.swift in Sources */,
+				40241C2B21942DBB007EEB71 /* LauncherService.swift in Sources */,
+				40241C3821942FF8007EEB71 /* TopViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,14 +445,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		40241BF1219426AC007EEB71 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				40241BF2219426AC007EEB71 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		40241BF6219426AC007EEB71 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
