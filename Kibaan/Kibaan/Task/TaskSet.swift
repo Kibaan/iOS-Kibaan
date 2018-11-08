@@ -20,6 +20,9 @@ public class TaskSet: TaskObserver {
     
     private var hasError = false
     
+    public init() {
+    }
+    
     public func add(_ task: Task) {
         tasks.append(task)
         task.observers.append(self)
