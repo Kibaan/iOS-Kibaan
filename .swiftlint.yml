@@ -1,0 +1,373 @@
+# ------------------------------------------------------------------------------
+# SwiftLintのルール
+# OptInRules方式
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+# Lint対象から外すファイル指定
+# ------------------------------------------------------------------------------
+
+excluded:
+
+- Pods
+- iOSTemplateTests
+
+# ------------------------------------------------------------------------------
+# レポートファイル出力形式
+# ------------------------------------------------------------------------------
+
+#reporter: "checkstyle"
+
+# ------------------------------------------------------------------------------
+# 無効にするルール
+# ------------------------------------------------------------------------------
+disabled_rules:
+- array_init # sequenceからArrayへの変換をする際に、seq.map { $0 }ではなくArray(seq)を使用することを強制
+- custom_rules # .swiftlint.ymlに記述されたcustome_rulesを実行
+- discouraged_object_literal # Object Literalよりもinitializersを使っての初期化することを強制
+- discouraged_optional_boolean # OptionalのBool?を使用するよりも、通常のBoolを使用する方が望ましい
+- discouraged_optional_collection # オプションのコレクションよりも空のコレクションを使用することを強制
+- explicit_acl # 全ての宣言にAccess Control Levelのキーワード（public/privateなど）を記述することを強制
+- explicit_enum_raw_value # 暗黙的なraw値
+- explicit_init # 不要な.init()は禁止
+- explicit_top_level_acl # 明示的な.init()メソッドの呼び出しは禁止
+- extension_access_modifier # 拡張アクセス修飾子を使用することを強制
+- fallthrough # フォールスルー禁止
+- fatal_error_message # メッセージが必要・不要
+- file_header # ヘッダの決まり
+- first_where # .filter { }.firstよりも.first(where:)を用いることを強制
+- generic_type_name # genericの型名は大文字のアルファベットから初めて、英数字のみを含み、かつ1〜20文字の長さにすることを強制
+- identifier_name # 変数・定数の命名規則(英数字のみ、小文字のみまたは大文字のみ)
+- implicit_getter # read-onlyな計算プロパティはgetキーワードを書くことを禁止
+- implicit_return # closureでは暗黙のreturnを活用すべき
+- implicitly_unwrapped_optional # 暗黙的なアンラップは避けるべき
+- joined_default_parameter # bar.joined(↓separator: "")のようなデフォルトの区切り文字明示は避けてbar.joined(separator: ",")などのようにすべき
+- large_tuple # タプルのメンバは少なめにすることを強制
+- let_var_whitespace # let/varと他の式の間には空行を設けることを強制
+- nimble_operator # Nimble演算子のオーバーフローは、フリーマッチャー関数より優先することを強制
+- no_extension_access_modifier # 拡張アクセス修飾子を使用しないことを強制。
+- no_grouping_extension # グルーピングにextensionを利用することを禁止
+- notification_center_detachment # NSNotificationCenterに登録したobserverはクラスのdeinit内で除去することを強制
+- number_separator # 大きな数値を書く際はセパレータ(1_000_000 みたいな)を書くことを禁止
+- object_literal # イニシャライザを直接呼び出すよりは#imageLiteralや#colorLiteralを用いる
+- overridden_super_call # オーバーライドされたメソッドは常にsuperを呼び出すことを強制
+- override_in_extension # 拡張機能は宣言を上書きすることを禁止
+- pattern_matching_keywords # タプルからキーワードを移動することにより、複数のパターンマッチングバインディングを組み合わせることを強制
+- prefixed_toplevel_constant # トップレベルの定数の前に「k」を付けることを強制
+- private_action # IBActionはプライベート宣言であることを強制
+- private_outlet # @IBOutlet変数はprivate修飾することを強制
+- prohibited_super_call # 一部のメソッドはsuperを呼び出すことを禁止
+- quick_discouraged_call # describeとcontextブロック内でのメソッド呼び出しとオブジェクト初期化が有害である可能性があるため、警告が出る
+- quick_discouraged_focused_test # (fdescribe, fcontext, fitを使用した)フォーカステストを使用することを禁止
+- quick_discouraged_pending_test # 保留中のテストに対して警告を発する
+- redundant_discardable_let # 関数の戻り値を参照しない場合、letはわざわざ書くことを禁止
+- redundant_nil_coalescing # nil結合演算子の書き方
+- redundant_optional_initialization # オプショナル変数宣言時のnil初期化は冗長なため、書くことを禁止
+- redundant_string_enum_value # String型のenumの各caseの値をcase名と同じにする際は，その処理は省略できるので書くことを禁止
+- single_test_class # テストファイルには、QuickSpecまたはXCTestCaseクラスが１つだけ含まれている必要がある
+- sorted_first_last # sorted().firstまたはsorted().lastを使用するより、min()またはmax()を使用する方が望ましい
+- strict_fileprivate # fileprivateを利用することを禁止。
+- syntactic_sugar # 糖衣構文(読み書きしやすい書き方)を使うことを強制
+- trailing_closure # 末尾のクロージャ構文を使用することを強制
+- type_name # タイプの命名規則（英数字のみ、先頭大文字、1文字以上60文字以下）
+- unneeded_break_in_switch # 不要なブレーク文を禁止
+- unneeded_parentheses_in_closure_argument # クロージャ引数を宣言するときは、括弧は必要ないので禁止
+- unused_closure_parameter # クロージャ内の未使用パラメーターは、省略することを強制
+- untyped_error_in_catch # 使用されないクロージャの引数は省略することを強制
+- yoda_condition # 定数と変数の比較において、変数は左側に、定数は右側に配置すべき
+
+
+- trailing_comma
+- line_length
+- todo
+
+# ------------------------------------------------------------------------------
+# 適応ルール（OptInRules方式）
+# ------------------------------------------------------------------------------
+
+opt_in_rules:
+- block_based_kvo
+- class_delegate_protocol
+- closing_brace
+- closure_end_indentation
+- closure_parameter_position
+- closure_spacing
+- colon # warningのみ
+- comma
+- compiler_protocol_init
+- contains_over_first_not_nil
+- control_statement
+- cyclomatic_complexity
+- discarded_notification_center_observer
+- discouraged_direct_init # warningのみ
+- dynamic_inline
+- empty_count
+- empty_enum_arguments
+- empty_parameters
+- empty_parentheses_with_trailing_closure
+- empty_string
+- file_length
+- for_where
+- force_cast
+- force_try
+- force_unwrapping
+- function_body_length
+- function_parameter_count
+- is_disjoint
+- leading_whitespace
+- legacy_cggeometry_functions
+- legacy_constant
+- legacy_constructor
+- legacy_nsgeometry_functions
+- literal_expression_end_indentation
+- mark
+- multiline_parameters
+- multiple_closures_with_trailing_closure
+- nesting # warningのみ
+- opening_brace
+- operator_usage_whitespace
+- operator_whitespace
+- private_over_fileprivate # warningのみ
+- private_unit_test
+- protocol_property_accessors_order
+- redundant_void_return
+- required_enum_case
+- return_arrow_whitespace
+- shorthand_operator
+- sorted_imports
+- statement_position
+- superfluous_disable_command
+- switch_case_alignment
+- trailing_newline
+- trailing_semicolon
+- trailing_whitespace
+- type_body_length
+- unused_enumerated
+- unused_optional_binding # warningのみ
+- valid_ibinspectable
+- vertical_parameter_alignment
+- vertical_parameter_alignment_on_call
+- vertical_whitespace # warningのみ
+- void_return
+- weak_delegate
+- xctfail_message
+
+# 保留
+
+# ------------------------------------------------------------------------------
+# ルール詳細設定 
+# ------------------------------------------------------------------------------
+
+# closureでのKey-Value-Observingは制限なし
+block_based_kvo: error
+
+# Delegate Protocolはclass-onlyなProtocolであることを強制
+class_delegate_protocol: error
+
+#「}」と「)」の間の空白文字を強制
+closing_brace: error
+
+# クロージャの「{」・「}」は同じインデントにすることを強
+closure_end_indentation: error
+
+# クロージャの引数リストはクロージャの始まり「{」と同じ行にあることを強制
+closure_parameter_position: error
+
+# クロージャ内の式はカッコの間に1つのスペースがあることを強制
+closure_spacing: error
+
+# 引数の「:」の後ろに空白文字を強制
+colon: warning
+
+# 引数と引数の間の「,」の後ろに空白文字を強制
+comma: error
+
+# 直接書き並べて初期化するタイプのinitializerは直接呼び出すことを禁止
+compiler_protocol_init: error
+
+# first(where:) != nilよりもcontainsの方が望ましい
+contains_over_first_not_nil: warning
+
+# 条件文の「()」を禁止
+control_statement: error
+
+# 関数内の複雑度（条件分岐の数）指定
+cyclomatic_complexity:
+ warning: 20
+ error: 100
+
+# NotificationCenter.addObserverで追加されたobserverは後で除去できるように変数に格納して保持することを強制
+discarded_notification_center_observer: error
+
+# 有害な可能性のあるタイプの直接的な初期化の禁止
+discouraged_direct_init: warning
+
+# @inline指定とdynamicを同時に禁止
+dynamic_inline: error
+
+# 空文字判定はisEmptyを強制
+empty_count: warning
+
+# enumの引数を省略することを強制
+empty_enum_arguments: error
+
+# 関数の引数がない時，Void ->でなく() ->を用いることを強制
+empty_parameters: error
+
+# 末尾クロージャを使用するときは、メソッド名の後に引数のない空の()は書くことを禁止
+empty_parentheses_with_trailing_closure: error
+
+# 文字列を空の文字列リテラルと比較することより、isEmptyをチェックすることを強制
+empty_string: warning
+
+# ファイルの行数制限
+file_length:
+ warning: 500
+ error: 1000
+ ignore_comment_only_lines: true
+
+# for文において，その内部でifによる値チェック処理しかしないのであればwhere句を使用することを強制
+for_where: error
+
+# 強制castの制限
+force_cast: error
+
+# 強制tryの制限
+force_try: error
+
+# 関数の行数制限
+function_body_length:
+ warning: 100
+ error: 200
+
+# 関数の引数の数指定
+function_parameter_count:
+ warning: 10
+ error: 20
+
+# 「set.intersection（_ :).isEmpty」より「Set.isDisjoint（with :)」を使用することを強制
+is_disjoint: warning
+
+# ファイル先頭の空白文字を禁止
+leading_whitespace: error
+
+# CG系のStruct拡張プロパティとメソッドは、従来の関数よりも優先することを強制
+legacy_cggeometry_functions: error
+
+# ストラクチャスコープの定数は、従来のグローバル定数よりも優先することを強制
+legacy_constant: error
+
+# 古いコンストラクタ記述を禁止
+legacy_constructor: error
+
+# NS系のStruct拡張プロパティとメソッドは、従来の関数よりも優先することを強制
+legacy_nsgeometry_functions: error
+
+# 配列と辞書リテラルの終わりは、それを開始した行と同じ字下げを行うことを強制
+literal_expression_end_indentation: error
+
+# MARKコメントは正しいフォーマットで書くことを強制
+mark: error
+
+# 関数定義の引数は、同じ行または1行に1つずつ指定することを強制
+multiline_parameters: error
+
+# 複数のclosureの場合でも、trailing closureを利用することを強制
+multiple_closures_with_trailing_closure: error
+
+# ネストの階層制限
+nesting:
+ type_level:
+  warning: 3
+  error: 5
+ statement_level:
+  warning: 5
+  error: 6
+
+# 「{」前の改行を禁止
+opening_brace: error
+
+# 演算子を使用する際は前後に1つのスペースを開けることを強制
+operator_usage_whitespace: error
+
+# オペレータの前後に空白文字を強制
+operator_whitespace: error
+
+# fileprivate宣言よりprivateを優先することを強制
+private_over_fileprivate: warning
+
+# privateなテストケースメソッドは禁止
+private_unit_test: error
+
+# プロトコルでプロパティを宣言するときは、アクセサーの順序を設定することを強制
+protocol_property_accessors_order: warning
+
+# Voidを返す関数の宣言時に-> Voidを書くのは冗長なため、書くことを禁止
+redundant_void_return: error
+
+# 列挙型がプロトコルに準拠する場合、特定のケースの実装が必要である
+required_enum_case: warning
+
+# 「->」の前後に空白文字を強制
+return_arrow_whitespace: error
+
+# 複号代入演算子を強制
+shorthand_operator: warning
+
+# importはソートされているべき
+sorted_imports: error
+
+# 「else」「catch」の前後に空白文字を強制
+statement_position:
+ severity: error
+
+# 無効なルールがdisable領域で違反を引き起こさなかった場合、SwiftLint 'disable'コマンドは余分であることを強制
+superfluous_disable_command: error
+
+# caseステートメントは、囲みswitchステートメントに垂直に記述することを強制
+switch_case_alignment: error
+
+# 「TODO:」「FIXME:」の禁止
+todo: warning
+
+# ファイルの最終行に空白を強制
+trailing_newline: error
+
+# 文末の「;」を禁止
+trailing_semicolon: error
+
+# 行末の空白文字を禁止
+trailing_whitespace:
+ ignores_empty_lines: true
+
+# 1タイプの行数制限
+type_body_length:
+ warning: 500
+ error: 1000
+
+# for文でindexないしは要素が使用されないときは.enumerated()の記述は除去できるので除去ことを強制
+unused_enumerated: error
+
+# 「let _ =」によるOptional Bindingよりは「!= nil」でOptional判定したほうが良いので強制
+unused_optional_binding: warning
+
+# @IBInspectable属性は明示的な型を持った変数とサポートされた型にのみ用いることを強制
+valid_ibinspectable: error
+
+# 関数の引数を複数行に分けて書く際はそのアラインメントを揃える
+vertical_parameter_alignment: error
+
+# 関数のパラメータの記述において、改行を挟む場合はパラメータの先頭位置を揃えるべき
+vertical_parameter_alignment_on_call: error
+
+# 空行は1行に抑えることを強制
+vertical_whitespace: warning
+
+# 「-> ()」よりは「-> Void」を用いることを強制
+void_return: error
+
+# 循環参照を避けるため、delegateはweakで保持されることを強制
+weak_delegate: error
+
+# XCTFail呼び出しには、アサーションの説明が含まれることを強制
+xctfail_message: error

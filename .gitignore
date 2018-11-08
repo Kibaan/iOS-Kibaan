@@ -1,0 +1,7 @@
+build/
+DerivedData
+*.xcuserstate
+*.pbxuser
+*.xccheckout
+xcuserdata/
+.DS_Store
