@@ -3,7 +3,8 @@
 //
 
 import XCTest
-@testable import Kibaan
+import Kibaan
+@testable import KibaanSample
 
 class SecureStorageTests: XCTestCase {
     

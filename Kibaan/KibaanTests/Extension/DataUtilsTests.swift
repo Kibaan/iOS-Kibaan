@@ -42,34 +42,4 @@ class DataUtilsTest: XCTestCase {
         XCTAssertNil(data)
     }
     
-    func testInit_FileFound() {
-        let testFileName = "Found.txt"
-        let testText = "This is Test Data."
-        let testData = testText.data(using: .utf8)
-        testData?.writeTo(fileName: testFileName)
-        let loadData = Data(fileName: testFileName)
-        XCTAssertNotNil(loadData)
-        XCTAssertEqual(testData, loadData)
-    }
-    
-    // MARK: - WriteTo
-    
-    func testWritTo_Success() {
-        let testFileName = "TestData.txt"
-        let testText = "This is Test Data."
-        let testData = testText.data(using: .utf8)
-        testData?.writeTo(fileName: testFileName)
-        let loadData = Data(fileName: testFileName)
-        XCTAssertNotNil(loadData)
-        XCTAssertEqual(testData, loadData)
-    }
-    
-    func testWritTo_Failure() {
-        let testFileName = ""
-        let testText = "This is Test Data."
-        let testData = testText.data(using: .utf8)
-        testData?.writeTo(fileName: testFileName)
-        let loadData = Data(fileName: testFileName)
-        XCTAssertNil(loadData)
-    }
 }

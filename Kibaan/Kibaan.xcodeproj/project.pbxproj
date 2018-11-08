@@ -91,7 +91,6 @@
 		40241C6D219432CB007EEB71 /* DateUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C56219432CB007EEB71 /* DateUtilsTests.swift */; };
 		40241C6E219432CB007EEB71 /* HTTPConnectorMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C58219432CB007EEB71 /* HTTPConnectorMockTests.swift */; };
 		40241C6F219432CB007EEB71 /* LocalSettingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C5A219432CB007EEB71 /* LocalSettingTest.swift */; };
-		40241C70219432CB007EEB71 /* SecureStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C5B219432CB007EEB71 /* SecureStorageTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -192,7 +191,6 @@
 		40241C56219432CB007EEB71 /* DateUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtilsTests.swift; sourceTree = "<group>"; };
 		40241C58219432CB007EEB71 /* HTTPConnectorMockTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPConnectorMockTests.swift; sourceTree = "<group>"; };
 		40241C5A219432CB007EEB71 /* LocalSettingTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalSettingTest.swift; sourceTree = "<group>"; };
-		40241C5B219432CB007EEB71 /* SecureStorageTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureStorageTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -439,7 +437,6 @@
 			isa = PBXGroup;
 			children = (
 				40241C5A219432CB007EEB71 /* LocalSettingTest.swift */,
-				40241C5B219432CB007EEB71 /* SecureStorageTests.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -635,7 +632,6 @@
 				40241C6D219432CB007EEB71 /* DateUtilsTests.swift in Sources */,
 				40241C6E219432CB007EEB71 /* HTTPConnectorMockTests.swift in Sources */,
 				40241C67219432CB007EEB71 /* StringUtilsTests.swift in Sources */,
-				40241C70219432CB007EEB71 /* SecureStorageTests.swift in Sources */,
 				40241C64219432CB007EEB71 /* BoolUtilsTest.swift in Sources */,
 				40241C65219432CB007EEB71 /* ArrayUtilsTests.swift in Sources */,
 				40241C6F219432CB007EEB71 /* LocalSettingTest.swift in Sources */,

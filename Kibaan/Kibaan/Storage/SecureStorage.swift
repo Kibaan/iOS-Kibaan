@@ -10,6 +10,9 @@ import Foundation
 
 open class SecureStorage {
     
+    public init() {
+    }
+    
     // MARK: - Save
     
     @discardableResult

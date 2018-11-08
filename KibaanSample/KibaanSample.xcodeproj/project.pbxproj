@@ -30,12 +30,14 @@
 		40241C4521943097007EEB71 /* NewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40241C4321943097007EEB71 /* NewsViewController.xib */; };
 		40241C48219430A9007EEB71 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C46219430A9007EEB71 /* MenuViewController.swift */; };
 		40241C49219430A9007EEB71 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40241C47219430A9007EEB71 /* MenuViewController.xib */; };
-		40241C7E21943696007EEB71 /* MockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C77219433AB007EEB71 /* MockViewController.swift */; };
-		40241C7F21943696007EEB71 /* MockSubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C78219433AB007EEB71 /* MockSubViewController.swift */; };
 		40241C8021943696007EEB71 /* ScreenTransitionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C79219433AB007EEB71 /* ScreenTransitionTests.swift */; };
-		40241C8121943696007EEB71 /* MockSubViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40241C7A219433AB007EEB71 /* MockSubViewController.xib */; };
-		40241C8221943696007EEB71 /* MockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40241C7B219433AB007EEB71 /* MockViewController.xib */; };
-		40241C8321943696007EEB71 /* MockBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C7C219433AB007EEB71 /* MockBaseViewController.swift */; };
+		40241C86219438FC007EEB71 /* MockSubViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40241C7A219433AB007EEB71 /* MockSubViewController.xib */; };
+		40241C87219438FC007EEB71 /* MockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40241C7B219433AB007EEB71 /* MockViewController.xib */; };
+		40241C89219439A3007EEB71 /* MockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C77219433AB007EEB71 /* MockViewController.swift */; };
+		40241C8A219439A3007EEB71 /* MockSubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C78219433AB007EEB71 /* MockSubViewController.swift */; };
+		40241C8B219439A3007EEB71 /* MockBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C7C219433AB007EEB71 /* MockBaseViewController.swift */; };
+		40241C9021943A61007EEB71 /* SecureStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C8F21943A61007EEB71 /* SecureStorageTests.swift */; };
+		40241C9221943AE0007EEB71 /* DataUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C9121943AE0007EEB71 /* DataUtilsTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +106,8 @@
 		40241C7A219433AB007EEB71 /* MockSubViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MockSubViewController.xib; sourceTree = "<group>"; };
 		40241C7B219433AB007EEB71 /* MockViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MockViewController.xib; sourceTree = "<group>"; };
 		40241C7C219433AB007EEB71 /* MockBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockBaseViewController.swift; sourceTree = "<group>"; };
+		40241C8F21943A61007EEB71 /* SecureStorageTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureStorageTests.swift; sourceTree = "<group>"; };
+		40241C9121943AE0007EEB71 /* DataUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUtilsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +174,7 @@
 		40241C01219426AC007EEB71 /* KibaanSampleTests */ = {
 			isa = PBXGroup;
 			children = (
+				40241C8C219439FC007EEB71 /* Storage */,
 				40241C7D219433AB007EEB71 /* Controller */,
 				40241C04219426AC007EEB71 /* Info.plist */,
 			);
@@ -284,6 +289,15 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		40241C8C219439FC007EEB71 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				40241C8F21943A61007EEB71 /* SecureStorageTests.swift */,
+				40241C9121943AE0007EEB71 /* DataUtilsTests.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -390,10 +404,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				40241BF8219426AC007EEB71 /* LaunchScreen.storyboard in Resources */,
+				40241C87219438FC007EEB71 /* MockViewController.xib in Resources */,
 				40241C4121943085007EEB71 /* TradeViewController.xib in Resources */,
 				40241C3D21943013007EEB71 /* ChartViewController.xib in Resources */,
 				40241C4521943097007EEB71 /* NewsViewController.xib in Resources */,
 				40241C49219430A9007EEB71 /* MenuViewController.xib in Resources */,
+				40241C86219438FC007EEB71 /* MockSubViewController.xib in Resources */,
 				40241C2721942D82007EEB71 /* FooterTabViewController.xib in Resources */,
 				40241BF5219426AC007EEB71 /* Assets.xcassets in Resources */,
 				40241C3921942FF8007EEB71 /* TopViewController.xib in Resources */,
@@ -405,8 +421,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40241C8221943696007EEB71 /* MockViewController.xib in Resources */,
-				40241C8121943696007EEB71 /* MockSubViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,10 +456,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40241C89219439A3007EEB71 /* MockViewController.swift in Sources */,
+				40241C8A219439A3007EEB71 /* MockSubViewController.swift in Sources */,
 				40241C8021943696007EEB71 /* ScreenTransitionTests.swift in Sources */,
-				40241C7E21943696007EEB71 /* MockViewController.swift in Sources */,
-				40241C7F21943696007EEB71 /* MockSubViewController.swift in Sources */,
-				40241C8321943696007EEB71 /* MockBaseViewController.swift in Sources */,
+				40241C9021943A61007EEB71 /* SecureStorageTests.swift in Sources */,
+				40241C8B219439A3007EEB71 /* MockBaseViewController.swift in Sources */,
+				40241C9221943AE0007EEB71 /* DataUtilsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
