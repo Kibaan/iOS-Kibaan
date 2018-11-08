@@ -44,7 +44,7 @@ open class TickerLabel: UIView {
     
     override open func layoutSubviews() {
         super.layoutSubviews()
-        label.frame.height = frame.height
+        label.frame.size.height = frame.height
     }
     
     /// アニメーションを開始する
@@ -71,7 +71,7 @@ open class TickerLabel: UIView {
         
         UIView.animate(withDuration: interval, delay: 0, options: .curveLinear,
                        animations: {[unowned self] in
-                        self.label.frame.x = -labelWidth
+                        self.label.frame.origin.x = -labelWidth
             }, completion: {[unowned self] result in
                 self.onCompleteAnimation()
         })
@@ -88,8 +88,8 @@ open class TickerLabel: UIView {
     
     private func initAnimation() {
         if let textWidth = label.text?.size(withAttributes: [.font: label.font]).width {
-            label.frame.width = textWidth
-            label.frame.x = (textWidth <= frame.size.width) ? 0 : frame.width
+            label.frame.size.width = textWidth
+            label.frame.origin.x = (textWidth <= frame.size.width) ? 0 : frame.width
         }
     }
     

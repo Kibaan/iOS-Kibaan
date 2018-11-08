@@ -66,7 +66,7 @@ open class ToastPopup: SmartLabel {
         toast.font = UIFont.systemFont(ofSize: ToastPopup.textSize)
         toast.padding = UIEdgeInsets(top: 0, left: padding, bottom: 0, right: padding)
         let rect = toast.sizeThatFits(CGSize(width: width - padding * 2, height: CGFloat.greatestFiniteMagnitude))
-        toast.frame.height = rect.height + padding * 2
+        toast.frame.size.height = rect.height + padding * 2
         toast.frame.origin.y = -toast.frame.height
         return toast
     }
