@@ -223,6 +223,23 @@ public extension String {
         return result
     }
 
+    /// 文字列リテラルに埋め込める形にエスケープする
+    var literalEscaped: String {
+        let conversion = [
+            "\r": "",
+            "\n": "\\n",
+            "\"": "\\\"",
+            "\'": "\\'",
+            "\t": "\\t",
+            ]
+        
+        var result = String(self)
+        conversion.forEach {key, value in
+            result = result.replacingOccurrences(of: key, with: value)
+        }
+        return result
+    }
+    
     /// ローカライズされた文字列を取得する
     var localizedString: String {
         return NSLocalizedString(self, comment: self)

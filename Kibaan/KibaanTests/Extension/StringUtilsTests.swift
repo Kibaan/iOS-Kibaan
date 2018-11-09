@@ -248,4 +248,14 @@ class StringUtilsTests: XCTestCase {
         XCTAssertEqual("AAABBBCCC".toSnakeCase(), "aaabbbccc")
         XCTAssertEqual("abcDefGhiJk123".toSnakeCase(), "abc_def_ghi_jk123")
     }
+    
+    func testLiteralEscaped() {
+        XCTAssertEqual("ABC".literalEscaped, "ABC")
+        XCTAssertEqual("\r".literalEscaped, "")
+        XCTAssertEqual("\n".literalEscaped, "\\n")
+        XCTAssertEqual("\t".literalEscaped, "\\t")
+        XCTAssertEqual("\"".literalEscaped, "\\\"")
+        XCTAssertEqual("\'".literalEscaped, "\\\'")
+        XCTAssertEqual("\r\n\t\"\'".literalEscaped, "\\n\\t\\\"\\\'")
+    }
 }
