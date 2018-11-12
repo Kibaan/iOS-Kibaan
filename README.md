@@ -1,5 +1,12 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/hsylife/SwiftyPickerPopover)
 
+KibaanはiOS、Androidアプリの開発を効率化するためのライブラリです。  
+主な機能としてiOS、Androidに同じ名前のクラスや関数を用意することで、iOSからAndroidへの機械的なコード変換による移植ができるようにしています。
+
+AndroidはKotlinでの開発を想定しており、SwiftからKotlinへのコード変換は、以下のツールを用いてある程度機械的に行うことができます。
+
+[SwiftKotlin](https://github.com/angelolloqui/SwiftKotlin)
+
 # ガイドライン
 
 ## テキスト表示
