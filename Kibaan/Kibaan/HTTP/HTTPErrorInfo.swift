@@ -9,7 +9,13 @@
 import Foundation
 
 public struct HTTPErrorInfo {
-    var error: Error?
-    var response: HTTPURLResponse?
-    var data: Data?
+    public var error: Error?
+    public var response: HTTPURLResponse?
+    public var data: Data?
+    
+    public init(error: Error?, response: HTTPURLResponse?, data: Data?) {
+        self.error = error
+        self.response = response
+        self.data = data
+    }
 }
