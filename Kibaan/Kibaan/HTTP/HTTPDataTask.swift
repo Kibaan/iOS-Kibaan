@@ -10,7 +10,7 @@ import UIKit
 
 open class HTTPDataTask<DataType>: HTTPTask {
     
-    public typealias ErrorHandler = (DataType?, ErrorInfo) -> ErrorHandlingStatus
+    public typealias ErrorHandler = (DataType?, HTTPErrorInfo) -> ErrorHandlingStatus
     
     open var successHandler: ((DataType) -> Void)?
     open var errorHandler: ErrorHandler?
@@ -62,7 +62,7 @@ open class HTTPDataTask<DataType>: HTTPTask {
     }
 
     open func handleError(_ type: HTTPTaskError, result: DataType?, error: Error? = nil, response: HTTPURLResponse?, data: Data?) {
-        let errorInfo = ErrorInfo(error: error, response: response, data: data)
+        let errorInfo = HTTPErrorInfo(error: error, response: response, data: data)
         
         if errorHandler == nil || errorHandler?(result, errorInfo) == .handleError {
             errorProcess(type, result: result, errorInfo: errorInfo)
@@ -71,7 +71,7 @@ open class HTTPDataTask<DataType>: HTTPTask {
         self.error()
     }
     
-    open func errorProcess(_ type: HTTPTaskError, result: DataType?, errorInfo: ErrorInfo) {
+    open func errorProcess(_ type: HTTPTaskError, result: DataType?, errorInfo: HTTPErrorInfo) {
         // Override
     }
 
@@ -95,9 +95,4 @@ open class HTTPDataTask<DataType>: HTTPTask {
         // Override
     }
 
-    public struct ErrorInfo {
-        var error: Error?
-        var response: HTTPURLResponse?
-        var data: Data?
-    }
 }

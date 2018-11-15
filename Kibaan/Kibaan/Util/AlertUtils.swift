@@ -16,8 +16,8 @@ public class AlertUtils {
     }
     
     /// 閉じるだけのアラートを表示する
-    static public func showNotice(title: String, message: String) {
-        show(title: title, message: message)
+    static public func showNotice(title: String, message: String, handler:(() -> Void)? = nil) {
+        show(title: title, message: message, handler: handler)
     }
     
     /// 閉じるだけのエラーアラートを表示する

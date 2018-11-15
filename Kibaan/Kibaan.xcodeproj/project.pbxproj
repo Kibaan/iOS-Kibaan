@@ -91,6 +91,7 @@
 		40241C6D219432CB007EEB71 /* DateUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C56219432CB007EEB71 /* DateUtilsTests.swift */; };
 		40241C6E219432CB007EEB71 /* HTTPConnectorMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C58219432CB007EEB71 /* HTTPConnectorMockTests.swift */; };
 		40241C6F219432CB007EEB71 /* LocalSettingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C5A219432CB007EEB71 /* LocalSettingTest.swift */; };
+		40D639EA219D1EA40052941A /* HTTPErrorInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D639E9219D1EA40052941A /* HTTPErrorInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -191,6 +192,7 @@
 		40241C56219432CB007EEB71 /* DateUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtilsTests.swift; sourceTree = "<group>"; };
 		40241C58219432CB007EEB71 /* HTTPConnectorMockTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPConnectorMockTests.swift; sourceTree = "<group>"; };
 		40241C5A219432CB007EEB71 /* LocalSettingTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalSettingTest.swift; sourceTree = "<group>"; };
+		40D639E9219D1EA40052941A /* HTTPErrorInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPErrorInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -396,6 +398,7 @@
 				40241B992194254F007EEB71 /* HTTPConnectorImpl.swift */,
 				40241B9A2194254F007EEB71 /* HTTPConnectorMock.swift */,
 				40241B9B2194254F007EEB71 /* HTTPConnector.swift */,
+				40D639E9219D1EA40052941A /* HTTPErrorInfo.swift */,
 			);
 			path = HTTP;
 			sourceTree = "<group>";
@@ -594,6 +597,7 @@
 				40241BC12194254F007EEB71 /* NavigationController.swift in Sources */,
 				40241BDB2194254F007EEB71 /* ConnectionHolder.swift in Sources */,
 				40241BD72194254F007EEB71 /* String+Utils.swift in Sources */,
+				40D639EA219D1EA40052941A /* HTTPErrorInfo.swift in Sources */,
 				40241BAF2194254F007EEB71 /* SmartTextView.swift in Sources */,
 				40241BD62194254F007EEB71 /* Collection+Utils.swift in Sources */,
 				40241BAD2194254F007EEB71 /* CustomView.swift in Sources */,
