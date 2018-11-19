@@ -7,6 +7,24 @@ AndroidはKotlinでの開発を想定しており、SwiftからKotlinへのコ�
 
 [SwiftKotlin](https://github.com/angelolloqui/SwiftKotlin)
 
+# CocoaPodsアップデート方法
+
+1. `Kibaan.podspec`に記載された`s.version`を更新する
+2. GitHubにPUSHする
+3. GitHubで1に記載したバージョンと同じバージョンのリリースを作成する
+4. CocoaPodsサーバーに`Kibaan.podspec`をアップロードする
+
+```
+pod trunk push Kibaan.podspec
+```
+
+4を行うには事前にPodへのユーザー登録が必要になる。  
+同じユーザーで登録可能なのか不明。
+
+```
+pod trunk register info@altonotes.co.jp 'altonotes Inc.'
+```
+
 # ガイドライン
 
 ## テキスト表示
