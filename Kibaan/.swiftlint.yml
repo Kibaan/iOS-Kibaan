@@ -9,8 +9,7 @@
 
 excluded:
 
-- Pods
-- iOSTemplateTests
+- KibaanTests
 
 # ------------------------------------------------------------------------------
 # レポートファイル出力形式
@@ -75,7 +74,6 @@ disabled_rules:
 - unused_closure_parameter # クロージャ内の未使用パラメーターは、省略することを強制
 - untyped_error_in_catch # 使用されないクロージャの引数は省略することを強制
 - yoda_condition # 定数と変数の比較において、変数は左側に、定数は右側に配置すべき
-
 
 - trailing_comma
 - line_length

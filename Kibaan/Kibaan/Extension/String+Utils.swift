@@ -231,7 +231,7 @@ public extension String {
             "\"": "\\\"",
             "\'": "\\'",
             "\t": "\\t",
-            ]
+        ]
         
         var result = String(self)
         conversion.forEach {key, value in
