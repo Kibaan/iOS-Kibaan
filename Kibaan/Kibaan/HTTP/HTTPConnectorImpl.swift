@@ -9,7 +9,8 @@ open class HTTPConnectorImpl: HTTPConnector {
     
     open func execute(request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
         isCancelled = false
-        let config = URLSessionConfiguration.ephemeral
+        let config = URLSessionConfiguration.default
+        config.urlCache = nil
         config.timeoutIntervalForRequest = timeoutIntervalForRequest
         config.timeoutIntervalForResource = timeoutIntervalForResource
         let session = URLSession(configuration: config)
