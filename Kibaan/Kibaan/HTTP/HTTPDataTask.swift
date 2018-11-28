@@ -36,7 +36,7 @@ open class HTTPDataTask<DataType>: HTTPTask {
         // データをパース
         let result: DataType
         do {
-            result = try parseResponse(data)
+            result = try parseResponse(data, response: response)
         } catch {
             handleError(.parse, result: nil, response: response, data: data)
             return
@@ -75,7 +75,7 @@ open class HTTPDataTask<DataType>: HTTPTask {
         // Override
     }
 
-    open func parseResponse(_ data: Data) throws -> DataType {
+    open func parseResponse(_ data: Data, response: HTTPURLResponse) throws -> DataType {
         throw HTTPTaskError.parse
     }
     
