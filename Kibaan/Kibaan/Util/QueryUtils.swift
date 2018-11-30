@@ -17,13 +17,13 @@ public class QueryUtils {
     }
     
     /// クエリ文字列からKey-Valueのリストを取得する
-    static public func getParameter(_ query: String?) -> [(key: String, value: String?)] {
+    static public func getParameter(_ query: String?) -> [KeyValue] {
         guard let query = query else { return [] }
         return query.components(separatedBy: "&").map {
             let pairs = $0.components(separatedBy: "=")
             let key = pairs[0].removingPercentEncoding ?? ""
             let value = 1 < pairs.count ? pairs[1].removingPercentEncoding : nil
-            return (key, value)
+            return KeyValue(key: key, value: value)
         }
     }
     

@@ -19,15 +19,16 @@ open class HTTPTask: Task {
 
     /// 通信インジケーター
     open var indicator: UIView?
+    /// データ転送のタイムアウト時間
+    open var timeoutIntervalForRequest: TimeInterval = 30
+    /// 通信完了までのタイムアウト時間
+    open var timeoutIntervalForResource: TimeInterval = 60
+    /// 通信オブジェクト
+    open var httpConnector: HTTPConnector = HTTPTask.createHttpConnector()
+
     /// クエリパラメーター
     private var queryItems: [KeyValue] = []
-    /// データ転送のタイムアウト時間
-    private var timeoutIntervalForRequest: TimeInterval = 30
-    /// 通信完了までのタイムアウト時間
-    private var timeoutIntervalForResource: TimeInterval = 60
-    /// 通信オブジェクト
-    private var httpConnector: HTTPConnector = HTTPTask.createHttpConnector()
-    
+
     /// リクエスト内容をログ出力するか
     open var isRequestLogEnabled: Bool { return true }
     /// レスポンス内容をログ出力するか

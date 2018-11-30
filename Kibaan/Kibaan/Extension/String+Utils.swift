@@ -244,6 +244,17 @@ public extension String {
     var localizedString: String {
         return NSLocalizedString(self, comment: self)
     }
+    
+    var urlEncoded: String {
+        // NSCharacterSet.urlQueryAllowedは?や&がエンコードされないので使えない
+        var allowedCharacterSet = CharacterSet.alphanumerics
+        allowedCharacterSet.insert(charactersIn: "-._~")
+        return addingPercentEncoding(withAllowedCharacters: allowedCharacterSet) ?? ""
+    }
+    
+    var urlDecoded: String {
+        return removingPercentEncoding ?? ""
+    }
 }
 
 public extension Optional where Wrapped == String {
