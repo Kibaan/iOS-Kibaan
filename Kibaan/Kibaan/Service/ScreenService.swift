@@ -131,4 +131,10 @@ open class ScreenService {
         return indicatorBackground
     }
     
+    /// ViewControllerのSupportedInterfaceOrientationを画面に反映する
+    open func reflectSupportedInterfaceOrientation() {
+        let rootViewController = window.rootViewController
+        window.rootViewController = nil
+        window.rootViewController = rootViewController
+    }
 }
