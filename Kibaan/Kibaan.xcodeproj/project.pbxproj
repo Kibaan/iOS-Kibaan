@@ -235,11 +235,10 @@
 		40241B3521941EC9007EEB71 /* Kibaan */ = {
 			isa = PBXGroup;
 			children = (
+				40D86D7D21BF895D00B63EF7 /* Framework */,
 				40241B612194254F007EEB71 /* Component */,
-				40241B762194254F007EEB71 /* Controller */,
 				40241B7B2194254F007EEB71 /* Extension */,
 				40241B942194254F007EEB71 /* HTTP */,
-				40241B4D2194254F007EEB71 /* Service */,
 				40241B532194254F007EEB71 /* Storage */,
 				40241B4F2194254F007EEB71 /* Task */,
 				40241B642194254F007EEB71 /* UI */,
@@ -261,14 +260,6 @@
 				40241B4321941EC9007EEB71 /* Info.plist */,
 			);
 			path = KibaanTests;
-			sourceTree = "<group>";
-		};
-		40241B4D2194254F007EEB71 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				40241B4E2194254F007EEB71 /* ScreenService.swift */,
-			);
-			path = Service;
 			sourceTree = "<group>";
 		};
 		40241B4F2194254F007EEB71 /* Task */ = {
@@ -344,17 +335,6 @@
 				40241B752194254F007EEB71 /* ButtonGroup.swift */,
 			);
 			path = UI;
-			sourceTree = "<group>";
-		};
-		40241B762194254F007EEB71 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				40241B772194254F007EEB71 /* SmartAppDelegate.swift */,
-				40241B782194254F007EEB71 /* BaseViewController.swift */,
-				40241B792194254F007EEB71 /* ViewControllerCache.swift */,
-				40241B7A2194254F007EEB71 /* NavigationController.swift */,
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 		40241B7B2194254F007EEB71 /* Extension */ = {
@@ -442,6 +422,18 @@
 				40241C5A219432CB007EEB71 /* LocalSettingTest.swift */,
 			);
 			path = Storage;
+			sourceTree = "<group>";
+		};
+		40D86D7D21BF895D00B63EF7 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				40241B772194254F007EEB71 /* SmartAppDelegate.swift */,
+				40241B782194254F007EEB71 /* BaseViewController.swift */,
+				40241B792194254F007EEB71 /* ViewControllerCache.swift */,
+				40241B7A2194254F007EEB71 /* NavigationController.swift */,
+				40241B4E2194254F007EEB71 /* ScreenService.swift */,
+			);
+			path = Framework;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
