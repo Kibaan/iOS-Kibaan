@@ -208,7 +208,7 @@ open class HTTPTask: Task {
     open func makeQueryString() -> String? {
         guard let query = QueryUtils.makeQueryString(items: queryItems, encoder: parameterEncoder) else { return nil }
         if isRequestLogEnabled {
-            print("      > \(query)")
+            print("> \(query)")
         }
         return query
     }
