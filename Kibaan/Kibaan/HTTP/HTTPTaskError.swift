@@ -21,7 +21,7 @@ public enum HTTPTaskError: Error {
     // レスポンスは取得できたが内容がエラー
     case invalidResponse
     
-    var description: String {
+    public var description: String {
         switch self {
         case .invalidURL:
             return "URLが不正です"
