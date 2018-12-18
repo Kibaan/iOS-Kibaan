@@ -258,4 +258,33 @@ class StringUtilsTests: XCTestCase {
         XCTAssertEqual("\'".literalEscaped, "\\\'")
         XCTAssertEqual("\r\n\t\"\'".literalEscaped, "\\n\\t\\\"\\\'")
     }
+    
+    func testSplitSimple() {
+        var result = "123456789".split(length: 3)
+        XCTAssertEqual(3, result.count)
+        XCTAssertEqual("123", result[0])
+        XCTAssertEqual("456", result[1])
+        XCTAssertEqual("789", result[2])
+    }
+    
+    func testSplitShortOne() {
+        var result = "12".split(length: 3)
+        XCTAssertEqual(1, result.count)
+        XCTAssertEqual("12", result[0])
+    }
+    
+    func testSplitShortMulti() {
+        var result = "AAAABBBBCC".split(length: 4)
+        XCTAssertEqual(3, result.count)
+        XCTAssertEqual("AAAA", result[0])
+        XCTAssertEqual("BBBB", result[1])
+        XCTAssertEqual("CC", result[2])
+    }
+    
+    func testSplitBlank() {
+        var result = "".split(length: 4)
+        XCTAssertEqual(1, result.count)
+        XCTAssertEqual("", result[0])
+    }
+
 }
