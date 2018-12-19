@@ -259,32 +259,63 @@ class StringUtilsTests: XCTestCase {
         XCTAssertEqual("\r\n\t\"\'".literalEscaped, "\\n\\t\\\"\\\'")
     }
     
-    func testSplitSimple() {
-        var result = "123456789".split(length: 3)
+    // MARK: - Split(Left)
+    
+    func testSplitLeftSimple() {
+        var result = "123456789".splitFromLeft(length: 3)
         XCTAssertEqual(3, result.count)
         XCTAssertEqual("123", result[0])
         XCTAssertEqual("456", result[1])
         XCTAssertEqual("789", result[2])
     }
     
-    func testSplitShortOne() {
-        var result = "12".split(length: 3)
+    func testSplitLeftShortOne() {
+        var result = "12".splitFromLeft(length: 3)
         XCTAssertEqual(1, result.count)
         XCTAssertEqual("12", result[0])
     }
     
-    func testSplitShortMulti() {
-        var result = "AAAABBBBCC".split(length: 4)
+    func testSplitLeftShortMulti() {
+        var result = "AAAABBBBCC".splitFromLeft(length: 4)
         XCTAssertEqual(3, result.count)
         XCTAssertEqual("AAAA", result[0])
         XCTAssertEqual("BBBB", result[1])
         XCTAssertEqual("CC", result[2])
     }
     
-    func testSplitBlank() {
-        var result = "".split(length: 4)
+    func testSplitLeftBlank() {
+        var result = "".splitFromLeft(length: 4)
         XCTAssertEqual(1, result.count)
         XCTAssertEqual("", result[0])
     }
 
+    // MARK: - Split(Right)
+    
+    func testSplitRightSimple() {
+        var result = "123456789".splitFromRight(length: 3)
+        XCTAssertEqual(3, result.count)
+        XCTAssertEqual("123", result[0])
+        XCTAssertEqual("456", result[1])
+        XCTAssertEqual("789", result[2])
+    }
+    
+    func testSplitRightShortOne() {
+        var result = "12".splitFromRight(length: 3)
+        XCTAssertEqual(1, result.count)
+        XCTAssertEqual("12", result[0])
+    }
+    
+    func testSplitRightShortMulti() {
+        var result = "AAAABBBBCC".splitFromRight(length: 4)
+        XCTAssertEqual(3, result.count)
+        XCTAssertEqual("AA", result[0])
+        XCTAssertEqual("AABB", result[1])
+        XCTAssertEqual("BBCC", result[2])
+    }
+    
+    func testSplitRightBlank() {
+        var result = "".splitFromRight(length: 4)
+        XCTAssertEqual(1, result.count)
+        XCTAssertEqual("", result[0])
+    }
 }

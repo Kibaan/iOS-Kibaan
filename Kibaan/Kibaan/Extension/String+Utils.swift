@@ -126,15 +126,40 @@ public extension String {
     
     /// 指定した文字数ごとに区切った配列を返す
     func split(length: Int) -> [String] {
+        return splitFromLeft(length: length)
+    }
+    
+    /// 文字列の左側から指定した文字数ごとに区切った配列を返す
+    func splitFromLeft(length: Int) -> [String] {
+        guard !isEmpty else { return [""] }
         var array: [String] = []
         var i = 0
         while i < self.count {
             if let str = substring(from: i, length: length) {
                 array.append(str)
+            } else if let str = substring(from: i) {
+                array.append(str)
             }
             i += length
         }
         return array
+    }
+    
+    /// 文字列の右側から指定した文字数ごとに区切った配列を返す
+    func splitFromRight(length: Int) -> [String] {
+        guard !isEmpty else { return [""] }
+        var array: [String] = []
+        var i = 0
+        while i < self.count {
+            let from = self.count - (i + length)
+            if let str = substring(from: from, length: length) {
+                array.append(str)
+            } else if let str = substring(to: from + length) {
+                array.append(str)
+            }
+            i += length
+        }
+        return array.reversed()
     }
     
     /// 引数のいずれかの文字列で始まる場合はtrue
