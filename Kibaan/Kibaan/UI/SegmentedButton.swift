@@ -81,6 +81,11 @@ open class SegmentedButton: CustomView {
         return buttons.index { $0.isSelected } ?? nil
     }
     
+    /// 選択されているボタンのタイトル
+    var selectedTitle: String? {
+        return buttons.first { $0.isSelected }?.currentTitle
+    }
+    
     /// ボタンに紐づく値の一覧
     open var values: [String] {
         return buttonGroup.values
