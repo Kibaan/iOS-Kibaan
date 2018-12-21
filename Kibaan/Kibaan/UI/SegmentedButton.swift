@@ -21,6 +21,8 @@ open class SegmentedButton: CustomView {
     private var buttonGroup = ButtonGroup<String>()
     /// タップ時の処理
     private var tapHandler: ((String) -> Void)?
+    /// タップ時の処理（タップ前の選択値付き）
+    private var tapHandlerWithOldValue: ((String?, String) -> Void)?
     /// 縦のスタックビュー。2行以上になる場合このビューにスタックされる
     private var verticalStackView: UIStackView = UIStackView()
     /// 角丸サイズ
@@ -126,9 +128,10 @@ open class SegmentedButton: CustomView {
     // MARK: - Action
     
     @objc func actionSelect(_ button: UIButton) {
+        let oldValue = buttonGroup.selectedValue
         buttonGroup.select(button: button)
         setSelectedButtonBold()
-        executeCallback()
+        executeCallback(oldValue: oldValue)
     }
     
     // MARK: - Getter
@@ -163,6 +166,19 @@ open class SegmentedButton: CustomView {
     open func onSelected(_ callback: @escaping (String, Int) -> Void) {
         tapHandler = {[weak self] value in
             callback(value, self?.selectedIndex ?? 0)
+        }
+    }
+    
+    /// ボタン選択時の処理を設定する（選択前の値が取得可能）
+    func onSelectedWithOldValue<T: RawRepresentable>(_ callback: @escaping (T?, T, Int) -> Void) where T.RawValue == String {
+        tapHandlerWithOldValue = {[weak self] oldValue, newValue in
+            if let enumValue = T(rawValue: newValue) {
+                var oldEnumValue: T? = nil
+                if let oldValue = oldValue {
+                    oldEnumValue = T(rawValue: oldValue)
+                }
+                callback(oldEnumValue, enumValue, self?.selectedIndex ?? 0)
+            }
         }
     }
 
@@ -222,10 +238,11 @@ open class SegmentedButton: CustomView {
     /// 指定した値に紐づくボタンを選択する
     open func select(string: String, needCallback: Bool = false) {
         if let button = buttonGroup.get(string), button.isEnabled {
+            let oldValue = buttonGroup.selectedValue
             buttonGroup.select(button: button)
             setSelectedButtonBold()
             if needCallback {
-                executeCallback()
+                executeCallback(oldValue: oldValue)
             }
         }
     }
@@ -234,10 +251,11 @@ open class SegmentedButton: CustomView {
     open func select(_ index: Int, needCallback: Bool = false) {
         let button = buttons[index]
         if button.isEnabled {
+            let oldValue = buttonGroup.selectedValue
             buttonGroup.select(button: button)
             setSelectedButtonBold()
             if needCallback {
-                executeCallback()
+                executeCallback(oldValue: oldValue)
             }
         }
     }
@@ -270,10 +288,11 @@ open class SegmentedButton: CustomView {
     
     /// 選択状態を解除する
     open func clearSelection(needCallback: Bool = false) {
+        let oldValue = buttonGroup.selectedValue
         buttonGroup.selectedValue = nil
         setSelectedButtonBold()
         if needCallback {
-            executeCallback()
+            executeCallback(oldValue: oldValue)
         }
     }
 
@@ -362,9 +381,10 @@ open class SegmentedButton: CustomView {
     }
     
     /// コールバックを実行する
-    private func executeCallback() {
-        if let value = buttonGroup.selectedValue {
-            tapHandler?(value)
+    private func executeCallback(oldValue: String?) {
+        if let newValue = buttonGroup.selectedValue {
+            tapHandler?(newValue)
+            tapHandlerWithOldValue?(oldValue, newValue)
         }
     }
     
