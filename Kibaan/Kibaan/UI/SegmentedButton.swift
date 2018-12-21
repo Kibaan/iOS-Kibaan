@@ -27,7 +27,11 @@ open class SegmentedButton: CustomView {
     private var verticalStackView: UIStackView = UIStackView()
     /// 角丸サイズ
     open var segmentCornerRadius: CGFloat = 6 {
-        didSet { setCornerRadius() }
+        didSet {
+            verticalStackView.arrangedSubviews.compactMap { $0 as? UIStackView }.forEach {
+                setCornerRadius(stackView: $0)
+            }
+        }
     }
     /// ボタン間の横スペース
     open var horizontalSpacing: CGFloat = 1.0 {
@@ -45,7 +49,11 @@ open class SegmentedButton: CustomView {
     // MARK: - Inspectable
     /// スタイル
     private var styleType: Style = .plain {
-        didSet { setCornerRadius() }
+        didSet {
+            verticalStackView.arrangedSubviews.compactMap { $0 as? UIStackView }.forEach {
+                setCornerRadius(stackView: $0)
+            }
+        }
     }
     /// ボタンの表示スタイル（squareまたはroundedSquare）
     @IBInspectable open var style: String {
@@ -105,24 +113,6 @@ open class SegmentedButton: CustomView {
         AutoLayoutUtils.fit(verticalStackView, superView: self)
         
         constructSegments()
-    }
-    
-    // MARK: - Life cycle
-    
-    override open func layoutSubviews() {
-        super.layoutSubviews()
-        verticalStackView.layoutIfNeeded()
-    }
-    
-    override open func layoutSublayers(of layer: CALayer) {
-        super.layoutSublayers(of: layer)
-        // 角丸のマスクのサイズを更新する必要がある為、角丸を設定し直す
-        setCornerRadius()
-    }
-    
-    override open func layoutIfNeeded() {
-        super.layoutIfNeeded()
-        verticalStackView.layoutIfNeeded()
     }
     
     // MARK: - Action
@@ -334,7 +324,11 @@ open class SegmentedButton: CustomView {
     
     /// 行のスタックビューを追加する
     private func addHorizontalStackView() -> UIStackView {
-        let stackView = UIStackView()
+        let stackView = InnerStackView()
+        stackView.onLayoutSublayers = { [weak self] in
+            // 角丸のマスクのサイズを更新する必要がある為、角丸を設定し直す
+            self?.setCornerRadius(stackView: stackView)
+        }
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.spacing = horizontalSpacing
@@ -389,16 +383,14 @@ open class SegmentedButton: CustomView {
     }
     
     /// 角丸を設定する
-    private func setCornerRadius() {
-        verticalStackView.arrangedSubviews.compactMap { $0 as? UIStackView }.forEach {
-            $0.arrangedSubviews.forEach { $0.layer.mask = nil }
-            let visibleButtons = $0.arrangedSubviews.filter { $0.alpha != 0.0 }
-            let firstButton = visibleButtons.first as? UIButton
-            let lastButton = visibleButtons.last as? UIButton
-            if styleType == .roundedSquare {
-                firstButton?.setCornerRadius(corners: [.topLeft, .bottomLeft], radius: segmentCornerRadius)
-                lastButton?.setCornerRadius(corners: [.topRight, .bottomRight], radius: segmentCornerRadius)
-            }
+    private func setCornerRadius(stackView: UIStackView) {
+        stackView.arrangedSubviews.forEach { $0.layer.mask = nil }
+        let visibleButtons = stackView.arrangedSubviews.filter { $0.alpha != 0.0 }
+        let firstButton = visibleButtons.first as? UIButton
+        let lastButton = visibleButtons.last as? UIButton
+        if styleType == .roundedSquare {
+            firstButton?.setCornerRadius(corners: [.topLeft, .bottomLeft], radius: segmentCornerRadius)
+            lastButton?.setCornerRadius(corners: [.topRight, .bottomRight], radius: segmentCornerRadius)
         }
     }
     
@@ -408,5 +400,15 @@ open class SegmentedButton: CustomView {
         case plain
         /// 両端が角丸
         case roundedSquare
+    }
+    
+    class InnerStackView: UIStackView {
+        
+        var onLayoutSublayers: (() -> Void)?
+        
+        override func layoutSublayers(of layer: CALayer) {
+            super.layoutSublayers(of: layer)
+            onLayoutSublayers?()
+        }
     }
 }
