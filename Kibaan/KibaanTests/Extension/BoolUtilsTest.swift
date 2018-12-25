@@ -22,6 +22,11 @@ class BoolUtilsTests: XCTestCase {
         XCTAssertFalse(bool.isTrue)
     }
     
+    func testStringValue() {
+        XCTAssertEqual("false", false.stringValue)
+        XCTAssertEqual("true", true.stringValue)
+    }
+    
     func testRandom() {
         var hasTrue = false
         var hasFalse = false

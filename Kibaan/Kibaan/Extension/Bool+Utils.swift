@@ -5,6 +5,10 @@ public extension Bool {
     static func randomValue() -> Bool {
         return arc4random_uniform(2) == 0
     }
+    
+    var stringValue: String {
+        return self ? "true" : "false"
+    }
 }
 
 public extension Optional where Wrapped == Bool {
