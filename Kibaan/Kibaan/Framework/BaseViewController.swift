@@ -52,22 +52,22 @@ open class BaseViewController: UIViewController {
     }
     
     /// 画面を追加する
-    open func added() {
+    func added() {
         onAddedToScreen()
     }
     
     /// 画面表示を開始する
-    open func enter() {
+    func enter() {
         foregroundController.onEnterForeground()
     }
 
     /// 画面表示を終了する
-    open func leave() {
+    func leave() {
         foregroundController.onLeaveForeground()
     }
     
     /// 画面を取り除く
-    open func removed() {
+    func removed() {
         onRemovedFromScreen()
     }
     
