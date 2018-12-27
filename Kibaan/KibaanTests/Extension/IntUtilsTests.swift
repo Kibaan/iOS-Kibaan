@@ -7,6 +7,26 @@ import XCTest
 
 class IntUtilsTests: XCTestCase {
     
+    func testOptionalStringValue() {
+        let i: Int? = 123
+        XCTAssertEqual(i.stringValue, "123")
+    }
+    
+    func testOptionalStringValueNil() {
+        let i: Int? = nil
+        XCTAssertEqual(i.stringValue, "")
+    }
+    
+    func testStringValue() {
+        let i: Int = 123
+        XCTAssertEqual(i.stringValue, "123")
+    }
+    
+    func testIniStringValue() {
+        let i: Int = Int()
+        XCTAssertEqual(i.stringValue, "0")
+    }
+    
     func testRandom() {
         let min = -3
         let max = 3

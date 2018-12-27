@@ -83,7 +83,7 @@ public extension String {
         return replacingOccurrences(of: item, with: "")
     }
     
-    // 複数の対象の文字列を削除する
+    /// 複数の対象の文字列を削除する
     func removeAll(items: [String]) -> String {
         var value = self
         items.forEach { value = value.remove($0) }

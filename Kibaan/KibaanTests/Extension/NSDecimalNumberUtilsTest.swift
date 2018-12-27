@@ -35,4 +35,48 @@ class NSDecimalNumberUtilsTest: XCTestCase {
         XCTAssertEqual(decimal.roundPlain(2).stringValue, "1.57")
 
     }
+    
+    // MARK: - Comparable
+
+    func testOrderAcendingLess() {
+        let LeftDecimal = NSDecimalNumber(string: "1.2")
+        let RightDecimal = NSDecimalNumber(string: "1.3")
+        var decimal = NSDecimalNumber(string: "2.225")
+        if LeftDecimal < RightDecimal {
+            decimal = LeftDecimal
+            XCTAssert(true)
+        }
+        XCTAssertEqual(decimal, NSDecimalNumber(string: "1.2"))
+    }
+    
+    func testSameValueOrderAcendingless() {
+        let LeftDecimal = NSDecimalNumber(string: "1.51")
+        let RightDecimal = NSDecimalNumber(string: "1.51")
+        var decimal = NSDecimalNumber(string: "2.225")
+        if LeftDecimal < RightDecimal {
+            decimal = LeftDecimal
+            XCTAssert(false)
+        }
+        XCTAssertEqual(decimal, NSDecimalNumber(string: "2.225"))
+    }
+    
+    func testEqual() {
+        let LeftDecimal = NSDecimalNumber(string: "1.51")
+        let RightDecimal = NSDecimalNumber(string: "1.51")
+        if LeftDecimal == RightDecimal {
+            XCTAssert(true)
+        } else {
+            XCTAssert(false)
+        }
+    }
+    
+    func testNotEqual() {
+        let LeftDecimal = NSDecimalNumber(string: "2.5")
+        let RightDecimal = NSDecimalNumber(string: "2.512")
+        if LeftDecimal == RightDecimal {
+            XCTAssert(false)
+        } else {
+            XCTAssert(true)
+        }
+    }
 }
