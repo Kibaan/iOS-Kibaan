@@ -30,4 +30,8 @@ public extension Character {
     func toLowerCase() -> String {
         return String(self).lowercased()
     }
+    
+    func toUpperCase() -> String {
+        return String(self).uppercased()
+    }
 }
