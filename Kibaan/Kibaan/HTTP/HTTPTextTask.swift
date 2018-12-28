@@ -13,7 +13,7 @@ open class HTTPTextTask: HTTPDataTask<String> {
     private let url: String
     private var defaultEncoding: String.Encoding
     
-    init(url: String, defaultEncoding: String.Encoding = .utf8) {
+    public init(url: String, defaultEncoding: String.Encoding = .utf8) {
         self.url = url
         self.defaultEncoding = defaultEncoding
         super.init()
