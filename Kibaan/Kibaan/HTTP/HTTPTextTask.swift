@@ -8,7 +8,7 @@
 
 import Foundation
 
-class HTTPTextTask: HTTPDataTask<String> {
+open class HTTPTextTask: HTTPDataTask<String> {
     
     private let url: String
     private var defaultEncoding: String.Encoding
