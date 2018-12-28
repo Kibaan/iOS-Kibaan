@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		107E694021D5CC8F00190AD6 /* HTTPTextTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E693F21D5CC8F00190AD6 /* HTTPTextTask.swift */; };
 		40241B3D21941EC9007EEB71 /* Kibaan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40241B3321941EC9007EEB71 /* Kibaan.framework */; };
 		40241B4421941EC9007EEB71 /* Kibaan.h in Headers */ = {isa = PBXBuildFile; fileRef = 40241B3621941EC9007EEB71 /* Kibaan.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		40241B9C2194254F007EEB71 /* ScreenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241B4E2194254F007EEB71 /* ScreenService.swift */; };
@@ -112,6 +113,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		107E693F21D5CC8F00190AD6 /* HTTPTextTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTextTask.swift; sourceTree = "<group>"; };
 		40241B3321941EC9007EEB71 /* Kibaan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Kibaan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		40241B3621941EC9007EEB71 /* Kibaan.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Kibaan.h; sourceTree = "<group>"; };
 		40241B3721941EC9007EEB71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -385,14 +387,15 @@
 		40241B942194254F007EEB71 /* HTTP */ = {
 			isa = PBXGroup;
 			children = (
+				40241B982194254F007EEB71 /* HTTPTaskError.swift */,
 				40241B952194254F007EEB71 /* HTTPDataTask.swift */,
 				40241B962194254F007EEB71 /* ConnectionHolder.swift */,
 				40241B972194254F007EEB71 /* HTTPTask.swift */,
-				40241B982194254F007EEB71 /* HTTPTaskError.swift */,
 				40241B992194254F007EEB71 /* HTTPConnectorImpl.swift */,
 				40241B9A2194254F007EEB71 /* HTTPConnectorMock.swift */,
 				40241B9B2194254F007EEB71 /* HTTPConnector.swift */,
 				40D639E9219D1EA40052941A /* HTTPErrorInfo.swift */,
+				107E693F21D5CC8F00190AD6 /* HTTPTextTask.swift */,
 			);
 			path = HTTP;
 			sourceTree = "<group>";
@@ -646,6 +649,7 @@
 				40241BCC2194254F007EEB71 /* Character+Utils.swift in Sources */,
 				40241BC32194254F007EEB71 /* UIView+Utils.swift in Sources */,
 				40241BE02194254F007EEB71 /* HTTPConnector.swift in Sources */,
+				107E694021D5CC8F00190AD6 /* HTTPTextTask.swift in Sources */,
 				40241BB22194254F007EEB71 /* SmartLabel.swift in Sources */,
 				40241BA02194254F007EEB71 /* SecureStorage.swift in Sources */,
 				40241BDE2194254F007EEB71 /* HTTPConnectorImpl.swift in Sources */,
