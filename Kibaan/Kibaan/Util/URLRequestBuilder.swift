@@ -51,11 +51,11 @@ public class URLRequestBuilder {
     public func build(method: HttpMethod = .get) -> URLRequest? {
         var httpBody: Data?
         var urlStr = requestUrl
-        let query = QueryUtils.makeQueryString(items: queryItems)
+        let query = Query(keyValues: queryItems).stringValue
         if method == .post {
-            httpBody = query?.data(using: .utf8)
+            httpBody = query.data(using: .utf8)
         } else {
-            urlStr += query ?? ""
+            urlStr += query
         }
         if let url = URL(string: urlStr) {
             var request = URLRequest(url: url, cachePolicy: cachePolicy, timeoutInterval: timeoutInterval)

@@ -97,4 +97,13 @@ class QueryTests: XCTestCase {
         XCTAssertEqual("222", query["bbb"])
         XCTAssertEqual("333", query["ccc"])
     }
+    
+    func testCustomEncoded() {
+        let query = Query(string: "aa#=11#&bb#=22#")
+        let string = query.stringValueCustomEncoded {str in
+            return str.replacingOccurrences(of: "#", with: "%")
+        }
+        
+        XCTAssertEqual("aa%=11%&bb%=22%", string)
+    }
 }

@@ -58,4 +58,14 @@ open class Query {
             }
         }
     }
+    
+    open func stringValueCustomEncoded(encoder: (String) -> (String)) -> String {
+        return keyValues.map {
+            var item = encoder($0.key)
+            if let value = $0.value {
+                item += "=\(encoder(value))"
+            }
+            return item
+        }.joined(separator: "&")
+    }
 }
