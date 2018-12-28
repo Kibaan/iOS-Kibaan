@@ -318,4 +318,336 @@ class StringUtilsTests: XCTestCase {
         XCTAssertEqual(1, result.count)
         XCTAssertEqual("", result[0])
     }
+    
+    // MARK: - IsNotEmpty
+    
+    func testIsNotEmpty() {
+        XCTAssertEqual("ABC".isNotEmpty, true)
+    }
+    
+    func testIsEmpty() {
+        XCTAssertEqual("".isNotEmpty, false)
+    }
+    
+    func testOptionalIsEmptyNil() {
+        let str: String? = nil
+        XCTAssertEqual(str.isEmpty, true)
+    }
+    
+    func testOptionalIsEmpty空文字() {
+        let str: String? = ""
+        XCTAssertEqual(str.isEmpty, true)
+    }
+    
+    func testOptionalStringIsEmpty() {
+        let str: String? = "ABC"
+        XCTAssertEqual(str.isEmpty, false)
+    }
+    
+    func testOptionalIsNotEmpty() {
+        let str: String? = "ABC"
+        XCTAssertEqual(str.isNotEmpty, true)
+    }
+    
+    func testOptionalIsNotEmpty空文字() {
+        let str: String? = ""
+        XCTAssertEqual(str.isNotEmpty, false)
+    }
+    
+    func testOptionalisNotEmptyNil() {
+        let str: String? = nil
+        XCTAssertEqual(str.isNotEmpty, false)
+    }
+    
+    // MARK: - remove
+    
+    func testRemove() {
+        let str: String = "ABCDEFGHIJKLMN"
+        XCTAssertEqual(str.remove("A"), "BCDEFGHIJKLMN")
+        XCTAssertEqual(str.remove("N"), "ABCDEFGHIJKLM")
+        XCTAssertEqual(str.remove("FGH"), "ABCDEIJKLMN")
+        XCTAssertEqual(str.remove("ABC"), "DEFGHIJKLMN")
+        XCTAssertEqual(str.remove("LMN"), "ABCDEFGHIJK")
+        XCTAssertEqual(str.remove("ABCDEFGHIJKLMN"), "")
+    }
+    
+    func testNotRemove() {
+        let str: String = "ABC"
+        XCTAssertEqual(str.remove("DEFG"), "ABC")
+        XCTAssertEqual(str.remove(""), "ABC")
+    }
+    
+    // MARK: - removeAll
+    
+    func testRemoveAll() {
+        let str: String = "ABCDEFGHIJKLMN"
+        XCTAssertEqual(str.removeAll(items: ["A", "G", "K", "N"]), "BCDEFHIJLM")
+    }
+    
+    func testNotRemoveAll() {
+        let str: String = "ABCD"
+        XCTAssertEqual(str.removeAll(items: ["EFGHIJ"]), "ABCD")
+        XCTAssertEqual(str.removeAll(items: []), "ABCD")
+    }
+    
+    // MARK: - removePrefix
+    
+    func testRemovePrefix_001() {
+        let str: String = "123456789"
+        XCTAssertEqual(str.removePrefix("1"), "23456789")
+        XCTAssertEqual(str.removePrefix("12"), "3456789")
+        XCTAssertEqual(str.removePrefix("123"), "456789")
+    }
+    
+    func testRemovePrefix_002() {
+        let str: String = "123456789"
+        XCTAssertEqual(str.removePrefix("123456789"), "")
+    }
+    
+    func testNotRemovePrefix_001() {
+        let str: String = "123"
+        XCTAssertEqual(str.removePrefix("4"), "123")
+        XCTAssertEqual(str.removePrefix("45"), "123")
+        XCTAssertEqual(str.removePrefix("456"), "123")
+    }
+    
+    // 先頭から完全一致ではない時
+    func testNotRemovePrefix_002() {
+        let str: String = "123456789"
+        XCTAssertEqual(str.removePrefix("1234567890"), "123456789")
+        XCTAssertEqual(str.removePrefix("12356789"), "123456789")
+    }
+    
+    // MARK: - removeSuffix
+    
+    func testRemoveSuffix_001() {
+        let str: String = "123456789"
+        XCTAssertEqual(str.removeSuffix("9"), "12345678")
+        XCTAssertEqual(str.removeSuffix("89"), "1234567")
+        XCTAssertEqual(str.removeSuffix("789"), "123456")
+    }
+    
+    func testRemoveSuffix_002() {
+        let str: String = "123456789"
+        XCTAssertEqual(str.removeSuffix("123456789"), "")
+    }
+    
+    func testNotRemoveSuffix_001() {
+        let str: String = "123"
+        XCTAssertEqual(str.removeSuffix("4"), "123")
+        XCTAssertEqual(str.removeSuffix("45"), "123")
+        XCTAssertEqual(str.removeSuffix("456"), "123")
+    }
+    
+    // 後ろから完全一致ではない時
+    func testNotRemoveSuffix_002() {
+        let str: String = "123456789"
+        XCTAssertEqual(str.removeSuffix("1234567890"), "123456789")
+        XCTAssertEqual(str.removeSuffix("12346789"), "123456789")
+    }
+    
+    func testTrim() {
+        let leadBlank: String = "   ABC"
+        let backBlank: String = "ABC   "
+        let leadBackBlank: String = "    ABC    "
+        XCTAssertEqual(leadBlank.trim(), "ABC")
+        XCTAssertEqual(backBlank.trim(), "ABC")
+        XCTAssertEqual(leadBackBlank.trim(), "ABC")
+    }
+    
+    func testNotTrim() {
+        let str: String = "ABC"
+        XCTAssertEqual(str.trim(), "ABC")
+        
+    }
+    
+    func testBlankTrim() {
+        let str: String = "      "
+        XCTAssertEqual(str.trim(), "")
+    }
+    
+    // MARK: - doubleValue
+    
+    func testDoubleValue() {
+        let str: String = "20"
+        XCTAssertEqual(str.doubleValue, Double(20.0))
+    }
+    
+    func testNotDoubleValue() {
+        let str: String = "ABC"
+        XCTAssertEqual(str.doubleValue, Double(0))
+    }
+    
+    func testBlankDoubleValue() {
+        let str: String = ""
+        XCTAssertEqual(str.doubleValue, Double(0))
+    }
+    
+    func testNilDoubleValue() {
+        let str: String = String()
+        XCTAssertEqual(str.doubleValue, Double(0))
+    }
+    
+    // MARK: - floatValue
+    
+    func testFloatValue() {
+        let str: String = "20"
+        XCTAssertEqual(str.floatValue, CGFloat(20.0))
+    }
+    
+    func testNotFloatValue() {
+        let str: String = "ABC"
+        XCTAssertEqual(str.floatValue, CGFloat(0))
+    }
+    
+    func testBlankFloatValue() {
+        let str: String = ""
+        XCTAssertEqual(str.floatValue, CGFloat(0))
+    }
+    
+    func testNilFloatValue() {
+        let str: String = String()
+        XCTAssertEqual(str.floatValue, CGFloat(0))
+    }
+    
+    // MARK: - integerValue
+    
+    func testIntegerValue() {
+        let str: String = "20"
+        XCTAssertEqual(str.integerValue, Int(20))
+    }
+    
+    func testNotIntegerValue() {
+        let str: String = "ABC"
+        XCTAssertEqual(str.integerValue, Int(0))
+    }
+    
+    func testBlankIntegerValue() {
+        let str: String = ""
+        XCTAssertEqual(str.integerValue, Int(0))
+    }
+    
+    func testNilIntegerValue() {
+        let str: String = String()
+        XCTAssertEqual(str.integerValue, Int(0))
+    }
+    
+    // MARK: - split
+    
+    func testSplit() {
+        let str: String = "ABCDEFGHI"
+        XCTAssertEqual(str.split(length: 3), ["ABC", "DEF", "GHI"])
+        XCTAssertEqual(str.split(length: 2), ["AB", "CD", "EF", "GH", "I"])
+        XCTAssertEqual(str.split(length: 9), ["ABCDEFGHI"])
+    }
+    
+    func testNotSplit() {
+        let str: String = "123"
+        XCTAssertEqual(str.split(length: 4), ["123"])
+    }
+    
+    func testBlankSplit() {
+        let str: String = ""
+        XCTAssertEqual(str.split(length: 2), [""])
+    }
+    
+    // MARK: - hasAnyPrefix
+    
+    func testHasAnyPrefix() {
+        let cafe: String = "Café du Monde"
+        let composedCafe = "Café"
+        let deComposedCafe = "Cafe\u{0301}"
+        XCTAssertEqual(cafe.hasAnyPrefix([composedCafe]), true)
+        XCTAssertEqual(cafe.hasAnyPrefix([deComposedCafe]), true)
+        XCTAssertEqual(cafe.hasAnyPrefix([""]), true)
+    }
+    
+    func testHasNotAnyPrefix() {
+        let cafe: String = "Café du Monde"
+        XCTAssertEqual(cafe.hasAnyPrefix(["café"]), false)
+        XCTAssertEqual(cafe.hasAnyPrefix(["Cafédu"]), false)
+    }
+    
+    // MARK: - anyPrefix
+    
+    func testAnyPrefix() {
+        let str: String = "ABC"
+        XCTAssertEqual(str.anyPrefix(in: ["A"]), "A")
+        XCTAssertEqual(str.anyPrefix(in: ["AB"]), "AB")
+        XCTAssertEqual(str.anyPrefix(in:  ["ABC"]), "ABC")
+        XCTAssertEqual(str.anyPrefix(in: ["A","AB"]), "A")
+        XCTAssertEqual(str.anyPrefix(in: ["A", "AB", "ABC"]), "A")
+    }
+    
+    func testNotAnyPrefix() {
+        let str: String = "ABC"
+        XCTAssertEqual(str.anyPrefix(in: [""]), "")
+        XCTAssertEqual(str.anyPrefix(in: ["B", "C"]), nil)
+    }
+    
+    // MARK: - isNumber
+    
+    func testIsNumber() {
+        XCTAssertEqual("123".isNumber, true)
+        XCTAssertEqual("1.23".isNumber, true)
+        XCTAssertEqual("-123".isNumber, true)
+        XCTAssertEqual("-1.23".isNumber, true)
+    }
+    
+    func testIsNotNumber() {
+        XCTAssertEqual("ABC".isNumber, false)
+        XCTAssertEqual("".isNumber, false)
+        XCTAssertEqual("１２３".isNumber, false)
+    }
+    
+    // MARK: - enclosed
+    
+    func testEnclosed() {
+        let str: String = "ABCDEFGHIJK"
+        XCTAssertEqual(str.enclosed("A", "K"), "BCDEFGHIJ")
+        XCTAssertEqual(str.enclosed("AB", "JK"), "CDEFGHI")
+    }
+    
+    func testNotEnclosed() {
+        let str: String = "ABCDEFGHIJK"
+        XCTAssertEqual(str.enclosed("AC", "IK"), nil)
+        XCTAssertEqual(str.enclosed("", ""), nil)
+    }
+    
+    // MARK: - localizedString
+    
+    func testLocalizedString() {
+        let str: String = "こんにちは"
+        XCTAssertEqual(str.localizedString, "こんにちは")
+    }
+    
+    // MARK: - unwrapped
+    
+    func testUnwrapped() {
+        let str: String? = "ABC"
+        XCTAssertEqual(str.unwrapped, "ABC")
+    }
+    
+    func testNotUnwrapped() {
+        let str: String? = nil
+        XCTAssertEqual(str.unwrapped, "")
+    }
+    
+    // MARK: - emptyConverted
+    
+    func testEmptyConverted() {
+        let str: String? = String()
+        XCTAssertEqual(str.emptyConverted("ABC"), "ABC")
+    }
+    
+    func testEmptyConvertedNil() {
+        let str: String? = nil
+        XCTAssertEqual(str.emptyConverted("ABC"), "ABC")
+    }
+    
+    func testNotEmptyConvertedNil() {
+        let str: String? = "ABCDE"
+        XCTAssertEqual(str.emptyConverted("ABC"), "ABCDE")
+    }
+    
 }

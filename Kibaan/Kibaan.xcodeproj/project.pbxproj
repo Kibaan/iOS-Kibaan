@@ -99,6 +99,7 @@
 		5914211721D319FD00A61770 /* CGFloatUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914211621D319FD00A61770 /* CGFloatUtilsTests.swift */; };
 		59715CB421D230470084A1A9 /* UIFontUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59715CB321D230470084A1A9 /* UIFontUtilsTests.swift */; };
 		59715CB621D234DB0084A1A9 /* CharacterUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59715CB521D234DB0084A1A9 /* CharacterUtilsTests.swift */; };
+		59B9EC9C21D5BD6500145BCB /* UILayoutPriorityUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B9EC9B21D5BD6500145BCB /* UILayoutPriorityUtilsTests.swift */; };
 		59DA86AD21D3476B00646952 /* UIImageUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DA86AC21D3476B00646952 /* UIImageUtilsTests.swift */; };
 		59DA86AF21D3519C00646952 /* UIEdgeInsetsUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DA86AE21D3519C00646952 /* UIEdgeInsetsUtilsTests.swift */; };
 /* End PBXBuildFile section */
@@ -209,6 +210,7 @@
 		5914211621D319FD00A61770 /* CGFloatUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFloatUtilsTests.swift; sourceTree = "<group>"; };
 		59715CB321D230470084A1A9 /* UIFontUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontUtilsTests.swift; sourceTree = "<group>"; };
 		59715CB521D234DB0084A1A9 /* CharacterUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterUtilsTests.swift; sourceTree = "<group>"; };
+		59B9EC9B21D5BD6500145BCB /* UILayoutPriorityUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILayoutPriorityUtilsTests.swift; sourceTree = "<group>"; };
 		59DA86AC21D3476B00646952 /* UIImageUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageUtilsTests.swift; sourceTree = "<group>"; };
 		59DA86AE21D3519C00646952 /* UIEdgeInsetsUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEdgeInsetsUtilsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -430,6 +432,7 @@
 				59DA86AC21D3476B00646952 /* UIImageUtilsTests.swift */,
 				59DA86AE21D3519C00646952 /* UIEdgeInsetsUtilsTests.swift */,
 				5904E2F621D4B3FF004591AE /* CaseIterableUtilsTests.swift */,
+				59B9EC9B21D5BD6500145BCB /* UILayoutPriorityUtilsTests.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -672,6 +675,7 @@
 			files = (
 				40241C63219432CB007EEB71 /* SmartButtonTests.swift in Sources */,
 				40241C68219432CB007EEB71 /* DataUtilsTests.swift in Sources */,
+				59B9EC9C21D5BD6500145BCB /* UILayoutPriorityUtilsTests.swift in Sources */,
 				59715CB421D230470084A1A9 /* UIFontUtilsTests.swift in Sources */,
 				5904E2F721D4B3FF004591AE /* CaseIterableUtilsTests.swift in Sources */,
 				5914211721D319FD00A61770 /* CGFloatUtilsTests.swift in Sources */,
