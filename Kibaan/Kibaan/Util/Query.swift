@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// key=valueの&つなぎ形式のクエリ
 open class Query {
     
     open var stringValue: String {
