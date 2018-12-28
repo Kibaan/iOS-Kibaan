@@ -19,15 +19,15 @@ open class HTTPTextTask: HTTPDataTask<String> {
         super.init()
     }
     
-    override var requestURL: String {
+    override open var requestURL: String {
         return url
     }
     
-    override var httpMethod: String {
+    override open var httpMethod: String {
         return "GET"
     }
     
-    override func parseResponse(_ data: Data, response: HTTPURLResponse) throws -> String {
+    override open func parseResponse(_ data: Data, response: HTTPURLResponse) throws -> String {
         var stringEncoding: String.Encoding = defaultEncoding
         if let textEncodingName = response.textEncodingName as CFString? {
             let responseEncoding = CFStringConvertEncodingToNSStringEncoding(CFStringConvertIANACharSetNameToEncoding(textEncodingName))
