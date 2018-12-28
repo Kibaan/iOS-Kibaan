@@ -22,7 +22,7 @@ class QueryTests: XCTestCase {
         let keyValues = query.keyValues
         
         XCTAssertEqual(3, keyValues.count)
-        XCTAssertEqual("aaa=bbb", keyValues[0].stringValue)
+        XCTAssertEqual("aaa=111", keyValues[0].stringValue)
         XCTAssertEqual("bbb=222", keyValues[1].stringValue)
         XCTAssertEqual("ccc=333", keyValues[2].stringValue)
     }
@@ -61,7 +61,7 @@ class QueryTests: XCTestCase {
         ]
         
         let query = Query(keyValues: srcKeyValues)
-        XCTAssertEqual("aaa=111&bbb=%e3%81%82%e3%81%84%e3%81%86%26&ccc=333", query.stringValue)
+        XCTAssertEqual("aaa=111&bbb=%E3%81%82%E3%81%84%E3%81%86%26&ccc=333", query.stringValue)
     }
     
     func testSubscriptGet() {
@@ -72,7 +72,7 @@ class QueryTests: XCTestCase {
     }
     
     func testSubscriptGetURLDecode() {
-        let query = Query(string: "aaa=111&bbb=%e3%81%82%e3%81%84%e3%81%86%26&ccc=333")
+        let query = Query(string: "aaa=111&bbb=%E3%81%82%E3%81%84%E3%81%86%26&ccc=333")
         XCTAssertEqual("111", query["aaa"])
         XCTAssertEqual("あいう&", query["bbb"])
         XCTAssertEqual("333", query["ccc"])
@@ -88,6 +88,13 @@ class QueryTests: XCTestCase {
     func testSubscriptSetURLEncode() {
         let query = Query()
         query["aaa"] = "あいう&"
-        XCTAssertEqual("aaa=%e3%81%82%e3%81%84%e3%81%86%26", query.stringValue)
+        XCTAssertEqual("aaa=%E3%81%82%E3%81%84%E3%81%86%26", query.stringValue)
+    }
+    
+    func testTrim() {
+        let query = Query(string: "   aaa=111&bbb=222&ccc=333   ")
+        XCTAssertEqual("111", query["aaa"])
+        XCTAssertEqual("222", query["bbb"])
+        XCTAssertEqual("333", query["ccc"])
     }
 }
