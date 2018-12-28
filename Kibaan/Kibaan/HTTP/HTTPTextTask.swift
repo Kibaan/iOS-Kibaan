@@ -11,9 +11,11 @@ import Foundation
 class HTTPTextTask: HTTPDataTask<String> {
     
     private let url: String
+    private var defaultEncoding: String.Encoding
     
-    init(url: String) {
+    init(url: String, defaultEncoding: String.Encoding = .utf8) {
         self.url = url
+        self.defaultEncoding = defaultEncoding
         super.init()
     }
     
@@ -23,5 +25,20 @@ class HTTPTextTask: HTTPDataTask<String> {
     
     override var httpMethod: String {
         return "GET"
+    }
+    
+    override func parseResponse(_ data: Data, response: HTTPURLResponse) throws -> String {
+        var stringEncoding: String.Encoding = defaultEncoding
+        if let textEncodingName = response.textEncodingName as CFString? {
+            let responseEncoding = CFStringConvertEncodingToNSStringEncoding(CFStringConvertIANACharSetNameToEncoding(textEncodingName))
+            let encoding: String.Encoding? = String.Encoding(rawValue: responseEncoding)
+            if let encoding = encoding {
+                stringEncoding = encoding
+            }
+        }
+        if let string = String(data: data, encoding: stringEncoding) {
+            return string
+        }
+        throw HTTPTaskError.parse
     }
 }

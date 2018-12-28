@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		107E694021D5CC8F00190AD6 /* HTTPTextTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E693F21D5CC8F00190AD6 /* HTTPTextTask.swift */; };
+		107E694221D5E87300190AD6 /* HTTPTextTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E694121D5E87300190AD6 /* HTTPTextTaskTests.swift */; };
 		40241B3D21941EC9007EEB71 /* Kibaan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40241B3321941EC9007EEB71 /* Kibaan.framework */; };
 		40241B4421941EC9007EEB71 /* Kibaan.h in Headers */ = {isa = PBXBuildFile; fileRef = 40241B3621941EC9007EEB71 /* Kibaan.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		40241B9C2194254F007EEB71 /* ScreenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241B4E2194254F007EEB71 /* ScreenService.swift */; };
@@ -114,6 +115,7 @@
 
 /* Begin PBXFileReference section */
 		107E693F21D5CC8F00190AD6 /* HTTPTextTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTextTask.swift; sourceTree = "<group>"; };
+		107E694121D5E87300190AD6 /* HTTPTextTaskTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTextTaskTests.swift; sourceTree = "<group>"; };
 		40241B3321941EC9007EEB71 /* Kibaan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Kibaan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		40241B3621941EC9007EEB71 /* Kibaan.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Kibaan.h; sourceTree = "<group>"; };
 		40241B3721941EC9007EEB71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -436,6 +438,7 @@
 			isa = PBXGroup;
 			children = (
 				40241C58219432CB007EEB71 /* HTTPConnectorMockTests.swift */,
+				107E694121D5E87300190AD6 /* HTTPTextTaskTests.swift */,
 			);
 			path = HTTP;
 			sourceTree = "<group>";
@@ -678,6 +681,7 @@
 				40241C6D219432CB007EEB71 /* DateUtilsTests.swift in Sources */,
 				40241C6E219432CB007EEB71 /* HTTPConnectorMockTests.swift in Sources */,
 				40241C67219432CB007EEB71 /* StringUtilsTests.swift in Sources */,
+				107E694221D5E87300190AD6 /* HTTPTextTaskTests.swift in Sources */,
 				5914211521D3094F00A61770 /* CGrectUtilsTests.swift in Sources */,
 				40241C64219432CB007EEB71 /* BoolUtilsTest.swift in Sources */,
 				59DA86AF21D3519C00646952 /* UIEdgeInsetsUtilsTests.swift in Sources */,
