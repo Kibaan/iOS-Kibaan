@@ -106,4 +106,22 @@ class QueryTests: XCTestCase {
         
         XCTAssertEqual("aa%=11%&bb%=22%", string)
     }
+    
+    func testDictionary() {
+        let query: Query = [
+            "aaa": "111",
+            "bbb": "222",
+            "ccc": "333",
+        ]
+        XCTAssertEqual("aaa=111&bbb=222&ccc=333", query.stringValue)
+    }
+    
+    func testDictionaryContainsNil() {
+        let query: Query = [
+            "aaa": "111",
+            "bbb": nil,
+            "ccc": "333",
+        ]
+        XCTAssertEqual("aaa=111&bbb&ccc=333", query.stringValue)
+    }
 }

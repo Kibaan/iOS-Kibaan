@@ -9,7 +9,7 @@
 import Foundation
 
 /// key=valueの&つなぎ形式のクエリ
-open class Query {
+open class Query: ExpressibleByDictionaryLiteral {
     
     open var stringValue: String {
         return keyValues.map {
@@ -37,6 +37,10 @@ open class Query {
                 let value = 1 < pairs.count ? pairs[1].removingPercentEncoding : nil
                 return KeyValue(key: key, value: value)
             }
+    }
+    
+    public required init(dictionaryLiteral elements: (String, String?)...) {
+        keyValues = elements.map { KeyValue(key: $0.0, value: $0.1) }
     }
     
     public init(keyValues: [KeyValue]) {
