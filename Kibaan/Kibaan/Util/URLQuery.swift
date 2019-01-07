@@ -9,7 +9,7 @@
 import Foundation
 
 /// key=valueの&つなぎ形式のクエリ
-open class Query: ExpressibleByDictionaryLiteral {
+open class URLQuery: ExpressibleByDictionaryLiteral {
     
     open var stringValue: String {
         return keyValues.map {

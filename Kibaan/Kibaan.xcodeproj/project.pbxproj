@@ -93,8 +93,8 @@
 		40241C6D219432CB007EEB71 /* DateUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C56219432CB007EEB71 /* DateUtilsTests.swift */; };
 		40241C6E219432CB007EEB71 /* HTTPConnectorMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C58219432CB007EEB71 /* HTTPConnectorMockTests.swift */; };
 		40241C6F219432CB007EEB71 /* LocalSettingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C5A219432CB007EEB71 /* LocalSettingTest.swift */; };
-		40698B3921D5E31100B5CD85 /* Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40698B3821D5E31100B5CD85 /* Query.swift */; };
-		40698B3D21D6007600B5CD85 /* QueryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40698B3C21D6007600B5CD85 /* QueryTests.swift */; };
+		40698B3921D5E31100B5CD85 /* URLQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40698B3821D5E31100B5CD85 /* URLQuery.swift */; };
+		40698B3D21D6007600B5CD85 /* URLQueryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40698B3C21D6007600B5CD85 /* URLQueryTests.swift */; };
 		40D639EA219D1EA40052941A /* HTTPErrorInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D639E9219D1EA40052941A /* HTTPErrorInfo.swift */; };
 		5904E2F721D4B3FF004591AE /* CaseIterableUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5904E2F621D4B3FF004591AE /* CaseIterableUtilsTests.swift */; };
 		5914211521D3094F00A61770 /* CGrectUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914211421D3094F00A61770 /* CGrectUtilsTests.swift */; };
@@ -206,8 +206,8 @@
 		40241C56219432CB007EEB71 /* DateUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtilsTests.swift; sourceTree = "<group>"; };
 		40241C58219432CB007EEB71 /* HTTPConnectorMockTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPConnectorMockTests.swift; sourceTree = "<group>"; };
 		40241C5A219432CB007EEB71 /* LocalSettingTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalSettingTest.swift; sourceTree = "<group>"; };
-		40698B3821D5E31100B5CD85 /* Query.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Query.swift; sourceTree = "<group>"; };
-		40698B3C21D6007600B5CD85 /* QueryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryTests.swift; sourceTree = "<group>"; };
+		40698B3821D5E31100B5CD85 /* URLQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLQuery.swift; sourceTree = "<group>"; };
+		40698B3C21D6007600B5CD85 /* URLQueryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLQueryTests.swift; sourceTree = "<group>"; };
 		40D639E9219D1EA40052941A /* HTTPErrorInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPErrorInfo.swift; sourceTree = "<group>"; };
 		5904E2F621D4B3FF004591AE /* CaseIterableUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseIterableUtilsTests.swift; sourceTree = "<group>"; };
 		5914211421D3094F00A61770 /* CGrectUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGrectUtilsTests.swift; sourceTree = "<group>"; };
@@ -317,7 +317,7 @@
 				40241B5C2194254F007EEB71 /* QueryUtils.swift */,
 				40241B5D2194254F007EEB71 /* OSUtils.swift */,
 				40241B5E2194254F007EEB71 /* IOUtils.swift */,
-				40698B3821D5E31100B5CD85 /* Query.swift */,
+				40698B3821D5E31100B5CD85 /* URLQuery.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -463,7 +463,7 @@
 		40698B3B21D6005000B5CD85 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				40698B3C21D6007600B5CD85 /* QueryTests.swift */,
+				40698B3C21D6007600B5CD85 /* URLQueryTests.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -631,7 +631,7 @@
 				40241BB82194254F007EEB71 /* SegmentedButton.swift in Sources */,
 				40241BA32194254F007EEB71 /* ClassUtils.swift in Sources */,
 				40241BB72194254F007EEB71 /* LoopPagerView.swift in Sources */,
-				40698B3921D5E31100B5CD85 /* Query.swift in Sources */,
+				40698B3921D5E31100B5CD85 /* URLQuery.swift in Sources */,
 				40241BAE2194254F007EEB71 /* SmartButton.swift in Sources */,
 				40241BCE2194254F007EEB71 /* Data+Utils.swift in Sources */,
 				40241BC22194254F007EEB71 /* UIDevice+Utils.swift in Sources */,
@@ -691,7 +691,7 @@
 				40241C63219432CB007EEB71 /* SmartButtonTests.swift in Sources */,
 				40241C68219432CB007EEB71 /* DataUtilsTests.swift in Sources */,
 				59B9EC9C21D5BD6500145BCB /* UILayoutPriorityUtilsTests.swift in Sources */,
-				40698B3D21D6007600B5CD85 /* QueryTests.swift in Sources */,
+				40698B3D21D6007600B5CD85 /* URLQueryTests.swift in Sources */,
 				59715CB421D230470084A1A9 /* UIFontUtilsTests.swift in Sources */,
 				5904E2F721D4B3FF004591AE /* CaseIterableUtilsTests.swift in Sources */,
 				5914211721D319FD00A61770 /* CGFloatUtilsTests.swift in Sources */,
