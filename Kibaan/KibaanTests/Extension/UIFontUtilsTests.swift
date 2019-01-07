@@ -17,6 +17,7 @@ class UIFontUtilsTests: XCTestCase {
     }
     
     func testIsNotBold() {
+        XCTAssertEqual(UIFont.systemFont(ofSize: UIFont.labelFontSize).isBold, false)
         XCTAssertEqual(UIFont.italicSystemFont(ofSize: UIFont.labelFontSize).isBold, false)
     }
 }

@@ -12,6 +12,11 @@ class IntUtilsTests: XCTestCase {
         XCTAssertEqual(i.stringValue, "123")
     }
     
+    func testOptionalMinusStringValue() {
+        let i: Int? = -123
+        XCTAssertEqual(i.stringValue, "-123")
+    }
+    
     func testOptionalStringValueNil() {
         let i: Int? = nil
         XCTAssertEqual(i.stringValue, "")
@@ -20,6 +25,11 @@ class IntUtilsTests: XCTestCase {
     func testStringValue() {
         let i: Int = 123
         XCTAssertEqual(i.stringValue, "123")
+    }
+    
+    func testMinusStringValue() {
+        let i: Int = -123
+        XCTAssertEqual(i.stringValue, "-123")
     }
     
     func testIniStringValue() {

@@ -8,7 +8,7 @@ import XCTest
 class UIColorUtilsTests: XCTestCase {
     
     func testWhiteAdded() {
-        let color: UIColor = UIColor.init(rgbValue: 000000)
+        let color: UIColor = UIColor.init(rgbValue: 0x000000)
         XCTAssertEqual(color.whiteAdded(1 / 255), UIColor(rgbValue: 0x010101))
         XCTAssertEqual(color.whiteAdded(2 / 255), UIColor(rgbValue: 0x020202))
         XCTAssertEqual(color.whiteAdded(1), UIColor(rgbValue: 0xFFFFFF))
@@ -17,6 +17,18 @@ class UIColorUtilsTests: XCTestCase {
     func testMaxWhiteAdded() {
         let color: UIColor = UIColor.init(rgbValue: 0xFFFFFF)
         XCTAssertEqual(color.whiteAdded(1 / 255), UIColor(rgbValue: 0xFFFFFF))
+    }
+    
+    func testWhiteAddedMinus() {
+        let color: UIColor = UIColor.init(rgbValue: 0xFFFFFF)
+        XCTAssertEqual(color.whiteAdded(-1 / 255), UIColor(rgbValue: 0xFEFEFE))
+        XCTAssertEqual(color.whiteAdded(-2 / 255), UIColor(rgbValue: 0xFDFDFD))
+        XCTAssertEqual(color.whiteAdded(-1), UIColor(rgbValue: 0x000000))
+    }
+    
+    func testMaxWhiteAddedMinus() {
+        let color: UIColor = UIColor.init(rgbValue: 0x000000)
+        XCTAssertEqual(color.whiteAdded(-1 / 255), UIColor(rgbValue: 0x000000))
     }
     
     func testColorCode() {

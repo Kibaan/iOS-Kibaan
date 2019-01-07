@@ -187,6 +187,9 @@ public extension String {
             if let lastRange = range(of: right, options: .backwards) {
                 endIndex = lastRange.lowerBound
             }
+            if endIndex < startIndex {
+                return nil
+            }
             return String(self[startIndex..<endIndex])
         }
         
@@ -270,6 +273,7 @@ public extension String {
         return NSLocalizedString(self, comment: self)
     }
     
+    /// URLエンコードされた文字列を取得する
     var urlEncoded: String {
         // NSCharacterSet.urlQueryAllowedは?や&がエンコードされないので使えない
         var allowedCharacterSet = CharacterSet.alphanumerics
@@ -277,6 +281,7 @@ public extension String {
         return addingPercentEncoding(withAllowedCharacters: allowedCharacterSet) ?? ""
     }
     
+    /// URLデコードされた文字列を取得する
     var urlDecoded: String {
         return removingPercentEncoding ?? ""
     }

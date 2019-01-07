@@ -12,19 +12,15 @@ import XCTest
 class CaseIterableUtilsTests: XCTestCase {
     
     enum Foo: CaseIterable {
-        case AAA
-        case BBB
-        case CCC
-    }
-    
-    enum Bar: CaseIterable {
-        
+        case aaa
+        case bbb
+        case ccc
     }
     
     // MARK: - values
     
     func testValues() {
-        XCTAssertEqual(Foo.values(), [CaseIterableUtilsTests.Foo.AAA, CaseIterableUtilsTests.Foo.BBB, CaseIterableUtilsTests.Foo.CCC])
+        XCTAssertEqual(Foo.values(), [Foo.aaa, Foo.bbb, Foo.ccc])
     }
 }
 

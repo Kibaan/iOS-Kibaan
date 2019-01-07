@@ -9,7 +9,8 @@
 import UIKit
 
 public extension UIFont {
-    
+
+    /// 太字かどうかを返す
     var isBold: Bool {
         return fontDescriptor.symbolicTraits.contains(.traitBold)
     }

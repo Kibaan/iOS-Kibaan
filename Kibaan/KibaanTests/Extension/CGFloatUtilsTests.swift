@@ -18,38 +18,45 @@ class CGFloatUtilsTests: XCTestCase {
         floatValue = CGFloat(1.25)
         XCTAssertEqual(floatValue.stringValue, "1.25")
         
+        floatValue = CGFloat(50)
+        XCTAssertEqual(floatValue.stringValue, "50.0")
+        
+        floatValue = CGFloat(-50)
+        XCTAssertEqual(floatValue.stringValue, "-50.0")
+        
         floatValue = CGFloat(.infinity * 1.0)
         XCTAssertEqual(floatValue.stringValue, "inf")
         
         floatValue = CGFloat(.infinity * -1.0)
         XCTAssertEqual(floatValue.stringValue, "-inf")
         
-        floatValue = CGFloat(50)
-        XCTAssertEqual(floatValue.stringValue, "50.0")
-        
-        floatValue = CGFloat(-50)
-        XCTAssertEqual(floatValue.stringValue, "-50.0")
+        floatValue = CGFloat.nan
+        XCTAssertEqual(floatValue.stringValue, "nan")
     }
-    
-    func testNanStringValue() {
-        var nanFloat: CGFloat = 0.0 * .infinity
-        XCTAssertEqual(nanFloat.stringValue(decimalLength: 0), "nan")
+
+    func testStringValueDecimalLength() {
+        var floatValue: CGFloat = 0
+        XCTAssertEqual(floatValue.stringValue(decimalLength: 0), "0")
+        XCTAssertEqual(floatValue.stringValue(decimalLength: 1), "0.0")
         
-        nanFloat = -0.0 * .infinity
-        XCTAssertEqual(nanFloat.stringValue(decimalLength: 0), "nan")
-    }
-    
-    func testNotNanStringValue() {
-        var notNanFloat: CGFloat = 0
-        XCTAssertEqual(notNanFloat.stringValue(decimalLength: 0), "0")
+        floatValue = CGFloat(1.2568)
+        XCTAssertEqual(floatValue.stringValue(decimalLength: 2), "1.26")
+        XCTAssertEqual(floatValue.stringValue(decimalLength: 3), "1.257")
         
-        notNanFloat = CGFloat(1.2568)
-        XCTAssertEqual(notNanFloat.stringValue(decimalLength: 2), "1.26")
+        floatValue = CGFloat(-1.2568)
+        XCTAssertEqual(floatValue.stringValue(decimalLength: 4), "-1.2568")
+        XCTAssertEqual(floatValue.stringValue(decimalLength: 1), "-1.3")
         
-        notNanFloat = CGFloat(-1.2568)
-        XCTAssertEqual(notNanFloat.stringValue(decimalLength: 3), "-1.257")
+        floatValue = CGFloat(1.123456789)
+        XCTAssertEqual(floatValue.stringValue(decimalLength: 9), "1.123456789")
+        XCTAssertEqual(floatValue.stringValue(decimalLength: 10), "1.1234567890")
         
-        notNanFloat = CGFloat(1.123456789)
-        XCTAssertEqual(notNanFloat.stringValue(decimalLength: 9), "1.123456789")
+        floatValue = CGFloat(100)
+        XCTAssertEqual(floatValue.stringValue(decimalLength: 2), "100.00")
+        XCTAssertEqual(floatValue.stringValue(decimalLength: -1), "100")
+        
+        floatValue = CGFloat.nan
+        XCTAssertEqual(floatValue.stringValue(decimalLength: 0), "nan")
+        XCTAssertEqual(floatValue.stringValue(decimalLength: 2), "nan")
     }
 }

@@ -24,6 +24,7 @@ public extension UIView {
         self.layer.mask = maskLayer
     }
     
+    /// 角丸半径
     @IBInspectable var cornerRadius: CGFloat {
         get { return layer.cornerRadius }
         set(value) {
@@ -32,6 +33,7 @@ public extension UIView {
         }
     }
     
+    /// 枠線の色
     @IBInspectable var borderColor: UIColor? {
         get {
             if let cgColor = layer.borderColor {
@@ -44,6 +46,7 @@ public extension UIView {
         }
     }
     
+    /// 枠線の太さ
     @IBInspectable var borderWidth: CGFloat {
         get { return layer.borderWidth }
         set(value) {

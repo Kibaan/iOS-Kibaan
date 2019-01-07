@@ -34,6 +34,18 @@ class CollectionUtilsTests: XCTestCase {
         XCTAssertEqual(array[safe: 5], nil)
     }
     
+    // MARK: - FilterNotNull
+    
+    func testFilterNotNull() {
+        let bar1 = Bar(num: 1)
+        let bar2 = Bar(num: 2)
+        let bar3 = Bar(num: 3)
+        let array: [Bar?] = [bar1, bar2, nil, bar3, nil]
+        let filteredArray = array.filterNotNull()
+        XCTAssertEqual(array.count, 5)
+        XCTAssertEqual(filteredArray.count, 3)
+    }
+    
     // MARK: - Contains(AnyObject)
     
     func testContainsAnyObject_ある場合() {
