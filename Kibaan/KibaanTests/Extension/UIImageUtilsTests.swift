@@ -12,13 +12,18 @@ import XCTest
 class UIImageUtilsTests: XCTestCase {
     // 保留
     func testMakeColorImageサイズ指定あり() {
+        UIGraphicsBeginImageContext(CGSize(width: 20, height: 30))
         let image = UIImage.makeColorImage(color: .red, size: CGSize(width: 20, height: 30))
         if let image = image {
             XCTAssertEqual(image.size.width, 20)
             XCTAssertEqual(image.size.height, 30)
+        } else {
+            XCTFail()
         }
+        UIGraphicsEndImageContext()
     }
     func testMakeColorImageサイズ指定なし() {
+        UIGraphicsBeginImageContext(CGSize(width: 1, height: 1))
         let image = UIImage.makeColorImage(color: .red)
         if let image = image {
             XCTAssertEqual(image.size.width, 1)
@@ -26,14 +31,19 @@ class UIImageUtilsTests: XCTestCase {
         } else {
             XCTFail()
         }
+        UIGraphicsEndImageContext()
     }
     
     func testMakeColorImage色取得できる() {
+        UIGraphicsBeginImageContext(CGSize(width: 1, height: 1))
         let image = UIImage.makeColorImage(color: .red)
         if let image = image {
             let color: UIColor = getPixelColor(image, CGPoint(x: 1, y: 1))
             XCTAssertEqual(color, .blue)
+        } else {
+            XCTFail()
         }
+        UIGraphicsEndImageContext()
     }
     
     func testMakeColorImage色取得できない() {
