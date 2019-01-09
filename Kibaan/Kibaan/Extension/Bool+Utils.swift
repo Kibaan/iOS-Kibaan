@@ -2,8 +2,13 @@ import Foundation
 
 public extension Bool {
     /// ランダムなBool値を取得する
-    static func randomValue() -> Bool {
-        return arc4random_uniform(2) == 0
+//    static func random() -> Bool {
+//        return arc4random_uniform(2) == 0
+//    }
+    
+    /// Bool値を逆転して返す
+    func toggled() -> Bool {
+        return !self
     }
     
     /// Bool値を文字列に変換して返す

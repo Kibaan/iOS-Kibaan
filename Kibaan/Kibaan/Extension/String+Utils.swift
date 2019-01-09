@@ -1,4 +1,5 @@
 import UIKit
+import CommonCrypto
 
 public extension String {
     
@@ -62,7 +63,7 @@ public extension String {
         let end = index(startIndex, offsetBy: from + length)
         return String(self[start..<end])
     }
-
+    
     /// スネークケースに変換する
     func toSnakeCase() -> String {
         var canGoNextBlock = false
@@ -77,7 +78,7 @@ public extension String {
     var isNotEmpty: Bool {
         return !isEmpty
     }
-
+    
     /// 対象の文字列を削除する
     func remove(_ item: String) -> String {
         return replacingOccurrences(of: item, with: "")
@@ -166,14 +167,14 @@ public extension String {
     func hasAnyPrefix(_ prefixes: [String]) -> Bool {
         return prefixes.contains { self.hasPrefix($0) }
     }
-
+    
     /// 引数のいずれかの文字列から始まる場合は、該当する文字列を返す
     func anyPrefix(in prefixes: [String]) -> String? {
         return prefixes.first {
             self.hasPrefix($0)
         }
     }
-
+    
     /// 数値を表す文字列か判定する
     var isNumber: Bool {
         return Double(self) != nil
@@ -250,7 +251,7 @@ public extension String {
         }
         return result
     }
-
+    
     /// 文字列リテラルに埋め込める形にエスケープする
     var literalEscaped: String {
         let conversion = [
@@ -259,7 +260,7 @@ public extension String {
             "\"": "\\\"",
             "\'": "\\'",
             "\t": "\\t",
-        ]
+            ]
         
         var result = String(self)
         conversion.forEach {key, value in
@@ -284,6 +285,22 @@ public extension String {
     /// URLデコードされた文字列を取得する
     var urlDecoded: String {
         return removingPercentEncoding ?? ""
+    }
+    
+    /// SHA-256形式のハッシュ値を返す
+    func sha256() -> String {
+        let cstr = self.cString(using: String.Encoding.utf8)
+        let data = NSData(bytes: cstr!, length: count)
+        
+        var digest = [UInt8](repeating: 0, count: Int(CC_SHA256_DIGEST_LENGTH))
+        
+        CC_SHA256(data.bytes, CC_LONG(data.length), &digest)
+        
+        let output = NSMutableString(capacity: 64)
+        (0..<32).forEach { i in
+            output.appendFormat("%02x", digest[i])
+        }
+        return output as String
     }
 }
 
