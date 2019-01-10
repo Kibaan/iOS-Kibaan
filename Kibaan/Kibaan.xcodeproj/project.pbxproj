@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1051240C21E73E3200D71CC2 /* EllipseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1051240B21E73E3200D71CC2 /* EllipseButton.swift */; };
 		107E694021D5CC8F00190AD6 /* HTTPTextTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E693F21D5CC8F00190AD6 /* HTTPTextTask.swift */; };
 		107E694221D5E87300190AD6 /* HTTPTextTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E694121D5E87300190AD6 /* HTTPTextTaskTests.swift */; };
 		40241B3D21941EC9007EEB71 /* Kibaan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40241B3321941EC9007EEB71 /* Kibaan.framework */; };
@@ -117,6 +118,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1051240B21E73E3200D71CC2 /* EllipseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EllipseButton.swift; sourceTree = "<group>"; };
 		107E693F21D5CC8F00190AD6 /* HTTPTextTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTextTask.swift; sourceTree = "<group>"; };
 		107E694121D5E87300190AD6 /* HTTPTextTaskTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTextTaskTests.swift; sourceTree = "<group>"; };
 		40241B3321941EC9007EEB71 /* Kibaan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Kibaan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -344,6 +346,7 @@
 			children = (
 				40241B652194254F007EEB71 /* CustomView.swift */,
 				40241B662194254F007EEB71 /* SmartButton.swift */,
+				1051240B21E73E3200D71CC2 /* EllipseButton.swift */,
 				40241B672194254F007EEB71 /* SmartTextView.swift */,
 				40241B682194254F007EEB71 /* ToolTip.swift */,
 				40241B692194254F007EEB71 /* CustomNibView.swift */,
@@ -642,6 +645,7 @@
 				40241BBA2194254F007EEB71 /* SmartTableView.swift in Sources */,
 				40241BD12194254F007EEB71 /* Array+Utils.swift in Sources */,
 				40241BBC2194254F007EEB71 /* TickerLabel.swift in Sources */,
+				1051240C21E73E3200D71CC2 /* EllipseButton.swift in Sources */,
 				40241BBB2194254F007EEB71 /* SmartTextField.swift in Sources */,
 				40241BC02194254F007EEB71 /* ViewControllerCache.swift in Sources */,
 				40241BD22194254F007EEB71 /* Dictionary+Utils.swift in Sources */,
