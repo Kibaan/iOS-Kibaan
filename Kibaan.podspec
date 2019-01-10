@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'Kibaan'
-  s.version          = '0.6.18'
+  s.version          = '0.6.19'
   s.summary          = 'Core classes for transplanting iOS app to Android app easily.'
   s.homepage         = 'https://github.com/Kibaan/iOS-Kibaan'
   s.license          = { :type => 'Apache License 2.0', :file => 'LICENSE' }
