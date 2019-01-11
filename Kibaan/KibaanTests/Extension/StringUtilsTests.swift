@@ -650,4 +650,8 @@ class StringUtilsTests: XCTestCase {
         XCTAssertEqual(str.emptyConverted("ABC"), "ABCDE")
     }
     
+    func testSHA256() {
+        let src = "ABC"
+        XCTAssertEqual(src.sha256(), "b5d4045c3f466fa91fe2cc6abe79232a1a57cdf104f7a26e716e0a1e2789df78")
+    }
 }

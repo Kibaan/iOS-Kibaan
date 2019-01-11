@@ -37,9 +37,22 @@ class DataUtilsTest: XCTestCase {
 
     // MARK: - Init
     
-    func testInit_FileNotFound() {
+    func testInitFileNotFound() {
         let data = Data(fileName: "NotFound.txt")
         XCTAssertNil(data)
     }
     
+    // MARK: - WriteTo
+    
+    func testWriteTo() {
+        let testValue = "test desu"
+        let testData = testValue.data(using: .utf8)
+        testData?.writeTo(fileName: "Test.txt")
+        if let loadData = Data(fileName: "Test.txt") {
+            let loadValue = String(data: loadData, encoding: .utf8)
+            XCTAssertEqual(testValue, loadValue)
+        } else {
+            XCTFail()
+        }
+    }
 }

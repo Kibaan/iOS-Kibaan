@@ -62,7 +62,7 @@ class CharacterUtilsTests: XCTestCase {
     }
     
     func testToUpperCase() {
-        var upperCaseStr:Character = "a"
+        var upperCaseStr: Character = "a"
         XCTAssertEqual(upperCaseStr.toUpperCase(), "A")
         
         upperCaseStr = "j"

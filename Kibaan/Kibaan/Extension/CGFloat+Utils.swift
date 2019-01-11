@@ -9,10 +9,13 @@
 import UIKit
 
 public extension CGFloat {
+    
+    /// 数値を文字列に変換して返す
     var stringValue: String {
         return description
     }
     
+    /// 数値を指定した小数桁で四捨五入した文字列を返す
     func stringValue(decimalLength: Int) -> String {
         if isNaN {
             return description

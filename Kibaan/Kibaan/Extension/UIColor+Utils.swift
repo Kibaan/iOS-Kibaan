@@ -1,3 +1,4 @@
+
 import UIKit
 
 public extension UIColor {
@@ -16,13 +17,14 @@ public extension UIColor {
     func whiteAdded(_ value: CGFloat) -> UIColor {
         let color = CIColor(cgColor: self.cgColor)
         
-        let red = min(color.red + value, 1.0)
-        let green = min(color.green + value, 1.0)
-        let blue = min(color.blue + value, 1.0)
+        let red = max(min(color.red + value, 1.0), 0.0)
+        let green = max(min(color.green + value, 1.0), 0.0)
+        let blue = max(min(color.blue + value, 1.0), 0.0)
         
         return UIColor(red: red, green: green, blue: blue, alpha: color.alpha)
     }
 
+    /// 文字列のカラーコード（アルファは含まない）
     var colorCode: String? {
         var red: CGFloat = 0.0
         var green: CGFloat = 0.0
@@ -35,6 +37,7 @@ public extension UIColor {
         return hexString(red) + hexString(green) + hexString(blue)
     }
     
+    /// 指定された数値を16進数の文字列に変換して返す
     private func hexString(_ value: CGFloat) -> String {
         return String(format: "%02hhX", Int(value))
     }

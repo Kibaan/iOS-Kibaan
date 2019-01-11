@@ -9,6 +9,8 @@
 import Foundation
 
 public extension Character {
+    
+    /// 大文字かどうかを返す
     func isUpperCase() -> Bool {
         let set = CharacterSet.uppercaseLetters
         if let scala = UnicodeScalar(String(self)) {
@@ -18,6 +20,7 @@ public extension Character {
         }
     }
     
+    /// 小文字かどうかを返す
     func isLowerCase() -> Bool {
         let set = CharacterSet.lowercaseLetters
         if let scala = UnicodeScalar(String(self)) {
@@ -27,10 +30,12 @@ public extension Character {
         }
     }
     
+    /// 小文字に変換する
     func toLowerCase() -> String {
         return String(self).lowercased()
     }
     
+    /// 大文字に変換する
     func toUpperCase() -> String {
         return String(self).uppercased()
     }

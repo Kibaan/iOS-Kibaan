@@ -41,42 +41,24 @@ class NSDecimalNumberUtilsTest: XCTestCase {
     func testOrderAcendingLess() {
         let LeftDecimal = NSDecimalNumber(string: "1.2")
         let RightDecimal = NSDecimalNumber(string: "1.3")
-        var decimal = NSDecimalNumber(string: "2.225")
-        if LeftDecimal < RightDecimal {
-            decimal = LeftDecimal
-            XCTAssert(true)
-        }
-        XCTAssertEqual(decimal, NSDecimalNumber(string: "1.2"))
+        XCTAssertTrue(LeftDecimal < RightDecimal)
     }
     
-    func testSameValueOrderAcendingless() {
+    func testSameValueOrderAcendingLess() {
         let LeftDecimal = NSDecimalNumber(string: "1.51")
         let RightDecimal = NSDecimalNumber(string: "1.51")
-        var decimal = NSDecimalNumber(string: "2.225")
-        if LeftDecimal < RightDecimal {
-            decimal = LeftDecimal
-            XCTAssert(false)
-        }
-        XCTAssertEqual(decimal, NSDecimalNumber(string: "2.225"))
+        XCTAssertFalse(LeftDecimal < RightDecimal)
     }
     
     func testEqual() {
         let LeftDecimal = NSDecimalNumber(string: "1.51")
         let RightDecimal = NSDecimalNumber(string: "1.51")
-        if LeftDecimal == RightDecimal {
-            XCTAssert(true)
-        } else {
-            XCTAssert(false)
-        }
+        XCTAssertTrue(LeftDecimal == RightDecimal)
     }
     
     func testNotEqual() {
         let LeftDecimal = NSDecimalNumber(string: "2.5")
         let RightDecimal = NSDecimalNumber(string: "2.512")
-        if LeftDecimal == RightDecimal {
-            XCTAssert(false)
-        } else {
-            XCTAssert(true)
-        }
+        XCTAssertFalse(LeftDecimal == RightDecimal)
     }
 }

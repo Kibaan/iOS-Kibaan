@@ -30,7 +30,7 @@ public extension Data {
     
     /// 指定したファイルにデータを書き込む
     func writeTo(fileName: String) {
-        guard let fileURL = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(fileName) else {
+        guard let fileURL = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent(fileName) else {
             return
         }
         

@@ -9,6 +9,8 @@
 import Foundation
 
 public extension CaseIterable {
+    /// 全ての値のコレクションを返す.
+    /// Android版で"allCases"を実装することが出来ない為、本メソッドを追加した
     static func values() -> Self.AllCases {
         return Self.allCases
     }

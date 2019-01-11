@@ -28,10 +28,12 @@ public extension NSDecimalNumber {
 
 extension NSDecimalNumber: Comparable {
     
+    /// 最初の引数の値が2番目の引数の値より小さいかどうかを示すブール値を返す.
     public static func < (lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> Bool {
         return lhs.compare(rhs) == .orderedAscending
     }
     
+    /// 最初の引数の値が2番目の引数と一致しているかどうかを示すブール値を返す.
     public static func == (lhs: NSDecimalNumber, rhs: NSDecimalNumber) -> Bool {
         return lhs.compare(rhs) == .orderedSame
     }
