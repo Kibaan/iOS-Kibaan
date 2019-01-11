@@ -38,6 +38,7 @@
 		40241C8B219439A3007EEB71 /* MockBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C7C219433AB007EEB71 /* MockBaseViewController.swift */; };
 		40241C9021943A61007EEB71 /* SecureStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C8F21943A61007EEB71 /* SecureStorageTests.swift */; };
 		40241C9221943AE0007EEB71 /* DataUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241C9121943AE0007EEB71 /* DataUtilsTests.swift */; };
+		5907ADE621E826E50010AC40 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5907ADE821E826E50010AC40 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,7 @@
 		40241C7C219433AB007EEB71 /* MockBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockBaseViewController.swift; sourceTree = "<group>"; };
 		40241C8F21943A61007EEB71 /* SecureStorageTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureStorageTests.swift; sourceTree = "<group>"; };
 		40241C9121943AE0007EEB71 /* DataUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUtilsTests.swift; sourceTree = "<group>"; };
+		5907ADE721E826E50010AC40 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 				40241BF4219426AC007EEB71 /* Assets.xcassets */,
 				40241BF6219426AC007EEB71 /* LaunchScreen.storyboard */,
 				40241BF9219426AC007EEB71 /* Info.plist */,
+				5907ADE821E826E50010AC40 /* Localizable.strings */,
 			);
 			path = KibaanSample;
 			sourceTree = "<group>";
@@ -407,6 +410,7 @@
 				40241C87219438FC007EEB71 /* MockViewController.xib in Resources */,
 				40241C4121943085007EEB71 /* TradeViewController.xib in Resources */,
 				40241C3D21943013007EEB71 /* ChartViewController.xib in Resources */,
+				5907ADE621E826E50010AC40 /* Localizable.strings in Resources */,
 				40241C4521943097007EEB71 /* NewsViewController.xib in Resources */,
 				40241C49219430A9007EEB71 /* MenuViewController.xib in Resources */,
 				40241C86219438FC007EEB71 /* MockSubViewController.xib in Resources */,
@@ -495,6 +499,14 @@
 				40241BF7219426AC007EEB71 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		5907ADE821E826E50010AC40 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5907ADE721E826E50010AC40 /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

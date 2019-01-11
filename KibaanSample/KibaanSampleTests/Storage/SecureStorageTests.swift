@@ -42,4 +42,13 @@ class SecureStorageTests: XCTestCase {
             XCTAssertNil(secureStorage.load(key: $0))
         }
     }
+    
+    func testLocalizedString() {
+        let text = NSLocalizedString("APP_0001", comment: "")
+        let text2 = "APP_0001".localizedString
+        print(text)
+        print(text2)
+        XCTAssertEqual("はい", "APP_0001".localizedString)
+        XCTAssertEqual("いいえ", "APP_0002".localizedString)
+    }
 }
