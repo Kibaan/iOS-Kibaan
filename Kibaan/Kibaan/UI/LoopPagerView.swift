@@ -12,11 +12,11 @@ open class LoopPagerView: BaseScrollView {
 
     private var pageArray: [UIView] = []
     
-    private var _pageIndex: Int = 0
+    private var currentPageIndex: Int = 0
     
     /// ページインデックス
     open var pageIndex: Int {
-        get { return _pageIndex }
+        get { return currentPageIndex }
         set(index) {
             changePage(index, animated: false)
         }
@@ -86,7 +86,7 @@ open class LoopPagerView: BaseScrollView {
     
     /// 表示するページインデックスを変更する
     open func changePage(_ pageIndex: Int, animated: Bool = false) {
-        _pageIndex = pageIndex
+        currentPageIndex = pageIndex
         
         pageChangeAction?(pageIndex)
         
@@ -101,6 +101,22 @@ open class LoopPagerView: BaseScrollView {
         setContentOffset(CGPoint(x: scrollOffset, y: 0), animated: animated)
     }
     
+    open func next(animated: Bool = true) {
+        var index = currentPageIndex + 1
+        if pageArray.count - 1 < index {
+            index = 0
+        }
+        changePage(index, animated: animated)
+    }
+
+    open func back(animated: Bool = true) {
+        var index = currentPageIndex - 1
+        if index < 0 {
+            index = pageArray.count - 1
+        }
+        changePage(index, animated: animated)
+    }
+
     // スクロール時の処理
     private func scrollAction() {
         let fullWidth = frame.size.width * CGFloat(pageArray.count)
@@ -121,8 +137,8 @@ open class LoopPagerView: BaseScrollView {
         }
         
         if enablePageChangeAction {
-            if _pageIndex != nextIndex {
-                _pageIndex = nextIndex
+            if currentPageIndex != nextIndex {
+                currentPageIndex = nextIndex
                 pageChangeAction?(pageIndex)
             }
         }
