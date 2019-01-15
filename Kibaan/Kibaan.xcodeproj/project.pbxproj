@@ -10,6 +10,10 @@
 		1051240C21E73E3200D71CC2 /* EllipseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1051240B21E73E3200D71CC2 /* EllipseButton.swift */; };
 		107E694021D5CC8F00190AD6 /* HTTPTextTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E693F21D5CC8F00190AD6 /* HTTPTextTask.swift */; };
 		107E694221D5E87300190AD6 /* HTTPTextTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E694121D5E87300190AD6 /* HTTPTextTaskTests.swift */; };
+		10CD04B421E88E770095C5F2 /* UIWindow+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CD04B321E88E770095C5F2 /* UIWindow+Utils.swift */; };
+		10CD04B621E891AE0095C5F2 /* TransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CD04B521E891AE0095C5F2 /* TransitionAnimation.swift */; };
+		10CD04B821E895B80095C5F2 /* TransitionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CD04B721E895B70095C5F2 /* TransitionType.swift */; };
+		10F8E7F421ED60EC0070458A /* UIViewController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F8E7F321ED60EC0070458A /* UIViewController+Utils.swift */; };
 		40241B3D21941EC9007EEB71 /* Kibaan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40241B3321941EC9007EEB71 /* Kibaan.framework */; };
 		40241B4421941EC9007EEB71 /* Kibaan.h in Headers */ = {isa = PBXBuildFile; fileRef = 40241B3621941EC9007EEB71 /* Kibaan.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		40241B9C2194254F007EEB71 /* ScreenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241B4E2194254F007EEB71 /* ScreenService.swift */; };
@@ -125,6 +129,10 @@
 		1051240B21E73E3200D71CC2 /* EllipseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EllipseButton.swift; sourceTree = "<group>"; };
 		107E693F21D5CC8F00190AD6 /* HTTPTextTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTextTask.swift; sourceTree = "<group>"; };
 		107E694121D5E87300190AD6 /* HTTPTextTaskTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTextTaskTests.swift; sourceTree = "<group>"; };
+		10CD04B321E88E770095C5F2 /* UIWindow+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+Utils.swift"; sourceTree = "<group>"; };
+		10CD04B521E891AE0095C5F2 /* TransitionAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionAnimation.swift; sourceTree = "<group>"; };
+		10CD04B721E895B70095C5F2 /* TransitionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionType.swift; sourceTree = "<group>"; };
+		10F8E7F321ED60EC0070458A /* UIViewController+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Utils.swift"; sourceTree = "<group>"; };
 		40241B3321941EC9007EEB71 /* Kibaan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Kibaan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		40241B3621941EC9007EEB71 /* Kibaan.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Kibaan.h; sourceTree = "<group>"; };
 		40241B3721941EC9007EEB71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -378,7 +386,9 @@
 			isa = PBXGroup;
 			children = (
 				40241B7C2194254F007EEB71 /* UIDevice+Utils.swift */,
+				10CD04B321E88E770095C5F2 /* UIWindow+Utils.swift */,
 				40241B7D2194254F007EEB71 /* UIView+Utils.swift */,
+				10F8E7F321ED60EC0070458A /* UIViewController+Utils.swift */,
 				40241B7E2194254F007EEB71 /* Int+Utils.swift */,
 				40241B7F2194254F007EEB71 /* UILayoutPriority+Utils.swift */,
 				40241B802194254F007EEB71 /* UIColor+Utils.swift */,
@@ -491,6 +501,8 @@
 				40241B792194254F007EEB71 /* ViewControllerCache.swift */,
 				40241B7A2194254F007EEB71 /* NavigationController.swift */,
 				40241B4E2194254F007EEB71 /* ScreenService.swift */,
+				10CD04B521E891AE0095C5F2 /* TransitionAnimation.swift */,
+				10CD04B721E895B70095C5F2 /* TransitionType.swift */,
 			);
 			path = Framework;
 			sourceTree = "<group>";
@@ -626,11 +638,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				40241B9F2194254F007EEB71 /* TaskHolder.swift in Sources */,
+				10CD04B421E88E770095C5F2 /* UIWindow+Utils.swift in Sources */,
 				40241BCB2194254F007EEB71 /* UIScrollView+Utils.swift in Sources */,
 				40241BCA2194254F007EEB71 /* NSLayoutConstraint+Utils.swift in Sources */,
 				40241BC92194254F007EEB71 /* UIFont+Utils.swift in Sources */,
 				40241BAA2194254F007EEB71 /* KeyValue.swift in Sources */,
 				40241BB52194254F007EEB71 /* BaseScrollView.swift in Sources */,
+				10CD04B821E895B80095C5F2 /* TransitionType.swift in Sources */,
 				40241BAB2194254F007EEB71 /* PickerViewController.swift in Sources */,
 				40241BD82194254F007EEB71 /* NSDecimalNumber+Utils.swift in Sources */,
 				40241BBE2194254F007EEB71 /* SmartAppDelegate.swift in Sources */,
@@ -647,6 +661,7 @@
 				40241BA32194254F007EEB71 /* ClassUtils.swift in Sources */,
 				40241BB72194254F007EEB71 /* LoopPagerView.swift in Sources */,
 				40698B3921D5E31100B5CD85 /* URLQuery.swift in Sources */,
+				10F8E7F421ED60EC0070458A /* UIViewController+Utils.swift in Sources */,
 				40241BAE2194254F007EEB71 /* SmartButton.swift in Sources */,
 				40241BCE2194254F007EEB71 /* Data+Utils.swift in Sources */,
 				40241BC22194254F007EEB71 /* UIDevice+Utils.swift in Sources */,
@@ -697,6 +712,7 @@
 				40241BD02194254F007EEB71 /* CGFloat+Utils.swift in Sources */,
 				40241BC82194254F007EEB71 /* Bool+Utils.swift in Sources */,
 				40241BDF2194254F007EEB71 /* HTTPConnectorMock.swift in Sources */,
+				10CD04B621E891AE0095C5F2 /* TransitionAnimation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,6 +10,7 @@ open class ScreenService {
     static public let shared = ScreenService()
 
     public let window = UIWindow(frame: UIScreen.main.bounds)
+    public var defaultTransitionAnimation: TransitionAnimation? = .coverVertical
     
     /// ルートWindowの色
     open var windowColor: UIColor? {
@@ -76,16 +77,20 @@ open class ScreenService {
     
     /// 画面を追加する
     @discardableResult
-    open func addSubScreen<T: BaseViewController>(_ type: T.Type, nibName: String? = nil, id: String? = nil, cache: Bool = true, prepare: ((T) -> Void)? = nil) -> T? {
+    open func addSubScreen<T: BaseViewController>(_ type: T.Type, nibName: String? = nil, id: String? = nil, cache: Bool = true, transitionType: TransitionType = .normal, prepare: ((T) -> Void)? = nil) -> T? {
         
         foregroundController?.leave()
         
         let controller = ViewControllerCache.get(type, nibName: nibName, id: id, cache: cache)
         screenStack += [controller]
         
-        if let parent = window.rootViewController {
-            parent.view.addSubview(controller.view)
-            AutoLayoutUtils.fit(controller.view, superView: parent.view)
+        if let parent = window.foregroundViewController {
+            let isNormal = transitionType == .normal
+            controller.transitionAnimation = isNormal ? defaultTransitionAnimation : transitionType.animation
+            if let animationStyle = controller.transitionAnimation?.modalTransitionStyle {
+                controller.modalTransitionStyle = animationStyle
+            }
+            parent.present(controller, animated: controller.transitionAnimation != nil, completion: nil)
         }
         prepare?(controller)
         controller.added()
@@ -95,17 +100,34 @@ open class ScreenService {
     }
 
     /// 追加した画面を取り除く
-    open func removeSubScreen(executeStart: Bool = true, targetType: BaseViewController.Type? = nil) {
+    open func removeSubScreen(executeStart: Bool = true) {
+        guard screenStack.count > 1 else { return }
         foregroundController?.leave()
-        while true {
-            var removed: BaseViewController? = nil
-            if 1 < screenStack.count {
-                removed = screenStack.removeLast()
-                removed?.view.removeFromSuperview()
-                removed?.removed()
-            }
-            guard let unwrappedRemoved = removed, targetType != nil else { break }
-            if type(of: unwrappedRemoved) == targetType {
+        let removed = screenStack.removeLast()
+        removed.dismiss(animated: removed.transitionAnimation != nil, completion: nil)
+        removed.removed()
+        
+        if executeStart {
+            screenStack.last?.enter()
+        }
+    }
+    
+    /// 追加した画面を取り除く
+    open func removeSubScreen(executeStart: Bool = true, to: BaseViewController.Type) {
+        guard screenStack.count > 1 else { return }
+        foregroundController?.leave()
+        
+        let targetViewController = screenStack.first(where: { type(of: $0) == to })
+        guard let target = targetViewController else { return }
+        var lastRemoved: BaseViewController?
+        for viewController in screenStack.reversed() {
+            lastRemoved = screenStack.removeLast()
+            viewController.removed()
+            
+            if screenStack.last != target {
+                lastRemoved?.dismiss(animated: false, completion: nil)
+            } else {
+                lastRemoved?.dismiss(animated: lastRemoved?.transitionAnimation != nil, completion: nil)
                 break
             }
         }
@@ -116,10 +138,11 @@ open class ScreenService {
     
     /// 全てのサブ画面を取り除く
     open func removeAllSubScreen() {
+        guard screenStack.count > 1 else { return }
         foregroundController?.leave()
         while 1 < screenStack.count {
             let removed = screenStack.removeLast()
-            removed.view.removeFromSuperview()
+            removed.dismiss(animated: removed.transitionAnimation != nil && screenStack.count == 1, completion: nil)
             removed.removed()
         }
         screenStack.first?.enter()

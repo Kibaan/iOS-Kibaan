@@ -34,6 +34,8 @@ open class BaseViewController: UIViewController {
     open var owner: BaseViewController?
     /// 画面表示中かどうか
     open var isForeground: Bool = false
+    /// 画面遷移アニメーション
+    open var transitionAnimation: TransitionAnimation?
     
     override public init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
