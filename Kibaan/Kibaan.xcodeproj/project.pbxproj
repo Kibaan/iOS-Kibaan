@@ -36,7 +36,6 @@
 		40241BAD2194254F007EEB71 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241B652194254F007EEB71 /* CustomView.swift */; };
 		40241BAE2194254F007EEB71 /* SmartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241B662194254F007EEB71 /* SmartButton.swift */; };
 		40241BAF2194254F007EEB71 /* SmartTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241B672194254F007EEB71 /* SmartTextView.swift */; };
-		40241BB02194254F007EEB71 /* ToolTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241B682194254F007EEB71 /* ToolTip.swift */; };
 		40241BB12194254F007EEB71 /* CustomNibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241B692194254F007EEB71 /* CustomNibView.swift */; };
 		40241BB22194254F007EEB71 /* SmartLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241B6A2194254F007EEB71 /* SmartLabel.swift */; };
 		40241BB32194254F007EEB71 /* LinkLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241B6B2194254F007EEB71 /* LinkLabel.swift */; };
@@ -158,7 +157,6 @@
 		40241B652194254F007EEB71 /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		40241B662194254F007EEB71 /* SmartButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartButton.swift; sourceTree = "<group>"; };
 		40241B672194254F007EEB71 /* SmartTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartTextView.swift; sourceTree = "<group>"; };
-		40241B682194254F007EEB71 /* ToolTip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolTip.swift; sourceTree = "<group>"; };
 		40241B692194254F007EEB71 /* CustomNibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNibView.swift; sourceTree = "<group>"; };
 		40241B6A2194254F007EEB71 /* SmartLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartLabel.swift; sourceTree = "<group>"; };
 		40241B6B2194254F007EEB71 /* LinkLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkLabel.swift; sourceTree = "<group>"; };
@@ -364,7 +362,6 @@
 				40241B662194254F007EEB71 /* SmartButton.swift */,
 				1051240B21E73E3200D71CC2 /* EllipseButton.swift */,
 				40241B672194254F007EEB71 /* SmartTextView.swift */,
-				40241B682194254F007EEB71 /* ToolTip.swift */,
 				40241B692194254F007EEB71 /* CustomNibView.swift */,
 				40241B6A2194254F007EEB71 /* SmartLabel.swift */,
 				40241B6B2194254F007EEB71 /* LinkLabel.swift */,
@@ -708,7 +705,6 @@
 				40241B9D2194254F007EEB71 /* TaskSet.swift in Sources */,
 				40241BDD2194254F007EEB71 /* HTTPTaskError.swift in Sources */,
 				40241BDC2194254F007EEB71 /* HTTPTask.swift in Sources */,
-				40241BB02194254F007EEB71 /* ToolTip.swift in Sources */,
 				40241BD02194254F007EEB71 /* CGFloat+Utils.swift in Sources */,
 				40241BC82194254F007EEB71 /* Bool+Utils.swift in Sources */,
 				40241BDF2194254F007EEB71 /* HTTPConnectorMock.swift in Sources */,

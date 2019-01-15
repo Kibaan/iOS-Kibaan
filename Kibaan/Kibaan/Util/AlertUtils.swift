@@ -11,10 +11,6 @@ public class AlertUtils {
     static public var defaultErrorTitle = "エラー"
     static public var defaultCloseLabel = "閉じる"
     
-    static public var rootViewController: UIViewController? {
-        return UIApplication.shared.keyWindow?.rootViewController
-    }
-    
     /// 閉じるだけのアラートを表示する
     static public func showNotice(title: String, message: String, handler:(() -> Void)? = nil) {
         show(title: title, message: message, handler: handler)
@@ -49,7 +45,7 @@ public class AlertUtils {
             alert.addAction(action)
         }
         
-        if let viewController = rootViewController {
+        if let viewController = UIApplication.shared.keyWindow?.foregroundViewController {
             viewController.present(alert, animated: true)
         } else {
             print("No root viewcontroller to show alert. \(message)")

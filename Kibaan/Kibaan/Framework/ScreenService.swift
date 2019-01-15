@@ -82,6 +82,7 @@ open class ScreenService {
         foregroundController?.leave()
         
         let controller = ViewControllerCache.get(type, nibName: nibName, id: id, cache: cache)
+        controller.modalPresentationStyle = .overFullScreen
         screenStack += [controller]
         
         if let parent = window.foregroundViewController {
