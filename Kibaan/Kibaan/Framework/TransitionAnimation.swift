@@ -10,14 +10,11 @@ import Foundation
 
 public enum TransitionAnimation {
     case coverVertical
-    case flipHorizontal
     
-    var modalTransitionStyle: UIModalTransitionStyle? {
+    var animator: TransitionAnimator {
         switch self {
         case .coverVertical:
-            return .coverVertical
-        case .flipHorizontal:
-            return .flipHorizontal
+            return CoverVertical()
         }
     }
 }

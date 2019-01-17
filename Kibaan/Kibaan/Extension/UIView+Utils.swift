@@ -13,6 +13,14 @@ public extension UIView {
         return UIEdgeInsets.zero
     }
     
+    /// 親ビューからこのビューに設定された制約
+    var parentConstraints: [NSLayoutConstraint] {
+        guard let superview = superview else { return [] }
+        return superview.constraints.filter {
+            $0.firstItem === self || $0.secondItem === self
+        }
+    }
+    
     // MARK: - Function
     
     /// 角丸を設定する

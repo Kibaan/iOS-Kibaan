@@ -10,6 +10,8 @@
 		1051240C21E73E3200D71CC2 /* EllipseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1051240B21E73E3200D71CC2 /* EllipseButton.swift */; };
 		107E694021D5CC8F00190AD6 /* HTTPTextTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E693F21D5CC8F00190AD6 /* HTTPTextTask.swift */; };
 		107E694221D5E87300190AD6 /* HTTPTextTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E694121D5E87300190AD6 /* HTTPTextTaskTests.swift */; };
+		10B45F0D21EEE2D200B18F8C /* CoverVertical.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B45F0C21EEE2D200B18F8C /* CoverVertical.swift */; };
+		10B45F0F21EEE2E000B18F8C /* TransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B45F0E21EEE2E000B18F8C /* TransitionAnimator.swift */; };
 		10CD04B421E88E770095C5F2 /* UIWindow+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CD04B321E88E770095C5F2 /* UIWindow+Utils.swift */; };
 		10CD04B621E891AE0095C5F2 /* TransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CD04B521E891AE0095C5F2 /* TransitionAnimation.swift */; };
 		10CD04B821E895B80095C5F2 /* TransitionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CD04B721E895B70095C5F2 /* TransitionType.swift */; };
@@ -128,6 +130,8 @@
 		1051240B21E73E3200D71CC2 /* EllipseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EllipseButton.swift; sourceTree = "<group>"; };
 		107E693F21D5CC8F00190AD6 /* HTTPTextTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTextTask.swift; sourceTree = "<group>"; };
 		107E694121D5E87300190AD6 /* HTTPTextTaskTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTextTaskTests.swift; sourceTree = "<group>"; };
+		10B45F0C21EEE2D200B18F8C /* CoverVertical.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverVertical.swift; sourceTree = "<group>"; };
+		10B45F0E21EEE2E000B18F8C /* TransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionAnimator.swift; sourceTree = "<group>"; };
 		10CD04B321E88E770095C5F2 /* UIWindow+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+Utils.swift"; sourceTree = "<group>"; };
 		10CD04B521E891AE0095C5F2 /* TransitionAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionAnimation.swift; sourceTree = "<group>"; };
 		10CD04B721E895B70095C5F2 /* TransitionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionType.swift; sourceTree = "<group>"; };
@@ -254,6 +258,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		10B45F0B21EEE2C000B18F8C /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				10B45F0C21EEE2D200B18F8C /* CoverVertical.swift */,
+				10B45F0E21EEE2E000B18F8C /* TransitionAnimator.swift */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
 		40241B2921941EC9007EEB71 = {
 			isa = PBXGroup;
 			children = (
@@ -275,6 +288,7 @@
 		40241B3521941EC9007EEB71 /* Kibaan */ = {
 			isa = PBXGroup;
 			children = (
+				10B45F0B21EEE2C000B18F8C /* Animation */,
 				40D86D7D21BF895D00B63EF7 /* Framework */,
 				40241B612194254F007EEB71 /* Component */,
 				40241B7B2194254F007EEB71 /* Extension */,
@@ -653,6 +667,7 @@
 				40241BB12194254F007EEB71 /* CustomNibView.swift in Sources */,
 				40241B9C2194254F007EEB71 /* ScreenService.swift in Sources */,
 				40241BC72194254F007EEB71 /* CaseIterable+Utils.swift in Sources */,
+				10B45F0D21EEE2D200B18F8C /* CoverVertical.swift in Sources */,
 				40241BA92194254F007EEB71 /* IOUtils.swift in Sources */,
 				40241BB82194254F007EEB71 /* SegmentedButton.swift in Sources */,
 				40241BA32194254F007EEB71 /* ClassUtils.swift in Sources */,
@@ -662,6 +677,7 @@
 				40241BAE2194254F007EEB71 /* SmartButton.swift in Sources */,
 				40241BCE2194254F007EEB71 /* Data+Utils.swift in Sources */,
 				40241BC22194254F007EEB71 /* UIDevice+Utils.swift in Sources */,
+				10B45F0F21EEE2E000B18F8C /* TransitionAnimator.swift in Sources */,
 				40241BB92194254F007EEB71 /* TouchThroughView.swift in Sources */,
 				40241BD92194254F007EEB71 /* Date+Utils.swift in Sources */,
 				40241BC42194254F007EEB71 /* Int+Utils.swift in Sources */,

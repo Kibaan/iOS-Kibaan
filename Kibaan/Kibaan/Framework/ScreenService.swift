@@ -78,20 +78,18 @@ open class ScreenService {
     /// 画面を追加する
     @discardableResult
     open func addSubScreen<T: BaseViewController>(_ type: T.Type, nibName: String? = nil, id: String? = nil, cache: Bool = true, transitionType: TransitionType = .normal, prepare: ((T) -> Void)? = nil) -> T? {
-        
         foregroundController?.leave()
         
         let controller = ViewControllerCache.get(type, nibName: nibName, id: id, cache: cache)
-        controller.modalPresentationStyle = .overFullScreen
         screenStack += [controller]
         
-        if let parent = window.foregroundViewController {
-            let isNormal = transitionType == .normal
+        if let parent = window.rootViewController {
+            parent.view.addSubview(controller.view)
+            AutoLayoutUtils.fit(controller.view, superView: parent.view)
+            
+            let isNormal = transitionType == TransitionType.normal
             controller.transitionAnimation = isNormal ? defaultTransitionAnimation : transitionType.animation
-            if let animationStyle = controller.transitionAnimation?.modalTransitionStyle {
-                controller.modalTransitionStyle = animationStyle
-            }
-            parent.present(controller, animated: controller.transitionAnimation != nil, completion: nil)
+            controller.transitionAnimation?.animator.animateIn(view: controller.view, completion: nil)
         }
         prepare?(controller)
         controller.added()
@@ -104,32 +102,58 @@ open class ScreenService {
     open func removeSubScreen(executeStart: Bool = true, completion: (() -> Void)? = nil) {
         guard screenStack.count > 1 else { return }
         foregroundController?.leave()
-        let removed = screenStack.removeLast()
-        removed.dismiss(animated: removed.transitionAnimation != nil, completion: completion)
-        removed.removed()
         
+        let removed = screenStack.removeLast()
+        let finish: () -> Void = {
+            removed.view.removeFromSuperview()
+            removed.removed()
+            completion?()
+        }
+        if removed.transitionAnimation != nil {
+            removed.transitionAnimation?.animator.animateOut(view: removed.view, completion: finish)
+        } else {
+            finish()
+        }
         if executeStart {
             screenStack.last?.enter()
         }
     }
     
     /// 追加した画面を取り除く
-    open func removeSubScreen(executeStart: Bool = true, to: BaseViewController.Type, completion: (() -> Void)? = nil) {
+    open func removeSubScreen(executeStart: Bool = true, to: BaseViewController, completion: (() -> Void)? = nil) {
         guard screenStack.count > 1 else { return }
         foregroundController?.leave()
         
-        let targetViewController = screenStack.last(where: { type(of: $0) == to })
-        guard let target = targetViewController else { return }
-        
-        let animated = screenStack.last?.transitionAnimation != nil
-        for _ in screenStack.reversed() {
-            screenStack.removeLast().removed()
-            if screenStack.last == target {
+        if !screenStack.contains(to) {
+            return
+        }
+        guard let lastViewController = screenStack.last else { return }
+        if to === lastViewController {
+            return
+        }
+        var removedViewControllers: [BaseViewController] = []
+        for viewController in screenStack.reversed() {
+            if screenStack.last === to {
                 break
             }
+            let removed = screenStack.removeLast()
+            removedViewControllers.append(removed)
+            if viewController != lastViewController {
+                viewController.view.removeFromSuperview()
+            }
         }
-        target.dismiss(animated: animated, completion: completion)
-        
+        let finish: () -> Void = {
+            lastViewController.view.removeFromSuperview()
+            removedViewControllers.forEach {
+                $0.removed()
+            }
+            completion?()
+        }
+        if lastViewController.transitionAnimation != nil {
+            lastViewController.transitionAnimation?.animator.animateOut(view: lastViewController.view, completion: finish)
+        } else {
+            finish()
+        }
         if executeStart {
             screenStack.last?.enter()
         }
@@ -140,11 +164,27 @@ open class ScreenService {
         guard screenStack.count > 1 else { return }
         foregroundController?.leave()
         
-        let animated = screenStack.last?.transitionAnimation != nil
+        guard let lastViewController = screenStack.last else { return }
+        var removedViewControllers: [BaseViewController] = []
         while 1 < screenStack.count {
-            screenStack.removeLast().removed()
+            let removed = screenStack.removeLast()
+            removedViewControllers.append(removed)
+            if removed != lastViewController {
+                removed.view.removeFromSuperview()
+            }
         }
-        screenStack.first?.dismiss(animated: animated, completion: completion)
+        let finish: () -> Void = {
+            lastViewController.view.removeFromSuperview()
+            removedViewControllers.forEach {
+                $0.removed()
+            }
+            completion?()
+        }
+        if lastViewController.transitionAnimation != nil {
+            lastViewController.transitionAnimation?.animator.animateOut(view: lastViewController.view, completion: finish)
+        } else {
+            finish()
+        }
         screenStack.first?.enter()
     }
     

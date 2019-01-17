@@ -11,15 +11,12 @@ import Foundation
 public enum TransitionType {
     case normal
     case coverVertical
-    case flipHorizontal
     case notAnimated
     
     var animation: TransitionAnimation? {
         switch self {
         case .coverVertical:
             return .coverVertical
-        case .flipHorizontal:
-            return .flipHorizontal
         default:
             return nil
         }
