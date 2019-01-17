@@ -74,7 +74,8 @@ open class SecureStorage {
         var query: [CFString: Any] = [
             kSecClass: kSecClassGenericPassword,
             kSecAttrService: OSUtils.applicationId,
-            kSecAttrAccount: key
+            kSecAttrAccount: key,
+            kSecAttrAccessible: kSecAttrAccessibleAfterFirstUnlock
         ]
         addQuery?.forEach {
             query[$0.key] = $0.value
