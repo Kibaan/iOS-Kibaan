@@ -84,12 +84,19 @@ open class ScreenService {
         screenStack += [controller]
         
         if let parent = window.rootViewController {
+            window.isUserInteractionEnabled = false
             parent.view.addSubview(controller.view)
             AutoLayoutUtils.fit(controller.view, superView: parent.view)
-            
+            let finish: () -> Void = {
+                self.window.isUserInteractionEnabled = true
+            }
             let isNormal = transitionType == TransitionType.normal
             controller.transitionAnimation = isNormal ? defaultTransitionAnimation : transitionType.animation
-            controller.transitionAnimation?.animator.animateIn(view: controller.view, completion: nil)
+            if controller.transitionAnimation != nil {
+                controller.transitionAnimation?.animator.animateIn(view: controller.view, completion: finish)
+            } else {
+                finish()
+            }
         }
         prepare?(controller)
         controller.added()
@@ -101,6 +108,7 @@ open class ScreenService {
     /// 追加した画面を取り除く
     open func removeSubScreen(executeStart: Bool = true, completion: (() -> Void)? = nil) {
         guard screenStack.count > 1 else { return }
+        window.isUserInteractionEnabled = false
         foregroundController?.leave()
         
         let removed = screenStack.removeLast()
@@ -108,6 +116,7 @@ open class ScreenService {
             removed.view.removeFromSuperview()
             removed.removed()
             completion?()
+            self.window.isUserInteractionEnabled = true
         }
         if removed.transitionAnimation != nil {
             removed.transitionAnimation?.animator.animateOut(view: removed.view, completion: finish)
@@ -121,16 +130,13 @@ open class ScreenService {
     
     /// 追加した画面を取り除く
     open func removeSubScreen(executeStart: Bool = true, to: BaseViewController, completion: (() -> Void)? = nil) {
-        guard screenStack.count > 1 else { return }
-        foregroundController?.leave()
-        
-        if !screenStack.contains(to) {
-            return
-        }
+        guard screenStack.count > 1, screenStack.contains(to) else { return }
         guard let lastViewController = screenStack.last else { return }
         if to === lastViewController {
             return
         }
+        window.isUserInteractionEnabled = false
+        foregroundController?.leave()
         var removedViewControllers: [BaseViewController] = []
         for viewController in screenStack.reversed() {
             if screenStack.last === to {
@@ -148,6 +154,7 @@ open class ScreenService {
                 $0.removed()
             }
             completion?()
+            self.window.isUserInteractionEnabled = true
         }
         if lastViewController.transitionAnimation != nil {
             lastViewController.transitionAnimation?.animator.animateOut(view: lastViewController.view, completion: finish)
@@ -162,9 +169,10 @@ open class ScreenService {
     /// 全てのサブ画面を取り除く
     open func removeAllSubScreen(completion: (() -> Void)? = nil) {
         guard screenStack.count > 1 else { return }
+        guard let lastViewController = screenStack.last else { return }
+        window.isUserInteractionEnabled = false
         foregroundController?.leave()
         
-        guard let lastViewController = screenStack.last else { return }
         var removedViewControllers: [BaseViewController] = []
         while 1 < screenStack.count {
             let removed = screenStack.removeLast()
@@ -179,6 +187,7 @@ open class ScreenService {
                 $0.removed()
             }
             completion?()
+            self.window.isUserInteractionEnabled = true
         }
         if lastViewController.transitionAnimation != nil {
             lastViewController.transitionAnimation?.animator.animateOut(view: lastViewController.view, completion: finish)
