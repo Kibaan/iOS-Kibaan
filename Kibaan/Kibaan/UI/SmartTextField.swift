@@ -74,9 +74,6 @@ open class SmartTextField: UITextField, SmartFontProtocol {
             leftView?.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         }
     }
-    
-    /// クリアボタン押下時の処理
-    open var onCleared: (() -> Void)?
 
     /// テキストフィールドデリゲート
     private var delegateWrapper = InnerTextFieldDelegate()
