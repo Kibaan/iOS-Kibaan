@@ -12,6 +12,9 @@ open class Task {
     
     /// タスクの所有者
     weak open var owner: TaskHolder?
+    /// タスクの一意キー
+    public var key: String?
+    
     /// タスクの監視者
     open var observers: [TaskObserver] = []
     
@@ -29,11 +32,18 @@ open class Task {
     
     public init(owner: TaskHolder, key: String?) {
         self.owner = owner
+        self.key = key
         owner.add(self, key: key)
     }
     
     /// 開始
     open func start() {}
+    
+    /// 再度スタートする
+    public func restart() {
+        owner?.add(self, key: key)
+        start()
+    }
     
     open func cancel() {
         nextProcessTimer?.invalidate()
