@@ -33,7 +33,7 @@ open class BaseViewController: UIViewController {
     /// スライドアニメーション時間
     open var nextScreenAnimationDuration: TimeInterval = 0.3
     /// オーバーレイ画面のオーナー
-    open var owner: BaseViewController?
+    open weak var owner: BaseViewController?
     /// 画面表示中かどうか
     open var isForeground: Bool = false
     /// 画面遷移アニメーション
