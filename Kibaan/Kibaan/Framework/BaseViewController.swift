@@ -23,6 +23,8 @@ open class BaseViewController: UIViewController {
     private var nextScreens = [BaseViewController]()
     /// スライド表示させた画面の制約
     private var nextScreenConstraints: [NSLayoutConstraint] = []
+    
+    // TODO `addNextScreen`では引数でViewを指定すれば良いのに、removeNextScreenではこのプロパティが設定されていないとクラッシュするため整合性がとれていない
     /// スライド表示させる画面を追加する対象のビュー
     open var nextScreenTargetView: UIView {
         assertionFailure("When using the next screen, be sure to implement it in a subclass")
