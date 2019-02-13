@@ -34,7 +34,7 @@ open class SegmentedButton: CustomView {
         }
     }
     /// ボタン間の横スペース
-    open var horizontalSpacing: CGFloat = 1.0 {
+    @IBInspectable open var horizontalSpacing: CGFloat = 1.0 {
         didSet {
             verticalStackView.arrangedSubviews.forEach { view in
                 (view as? UIStackView)?.spacing = horizontalSpacing
@@ -42,7 +42,7 @@ open class SegmentedButton: CustomView {
         }
     }
     /// ボタン間の縦スペース
-    open var verticalSpacing: CGFloat = 1.0 {
+    @IBInspectable open var verticalSpacing: CGFloat = 1.0 {
         didSet { verticalStackView.spacing = verticalSpacing }
     }
 
