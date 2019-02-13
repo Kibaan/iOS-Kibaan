@@ -290,7 +290,7 @@ public extension String {
     /// SHA-256形式のハッシュ値を返す
     func sha256() -> String {
         let cstr = self.cString(using: String.Encoding.utf8)
-        let data = NSData(bytes: cstr!, length: count)
+        let data = NSData(bytes: cstr, length: count)
         
         var digest = [UInt8](repeating: 0, count: Int(CC_SHA256_DIGEST_LENGTH))
         
