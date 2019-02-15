@@ -222,7 +222,7 @@ open class SegmentedButton: CustomView {
     
     /// 指定した値に紐づくボタンを選択する
     open func select<T: RawRepresentable>(_ value: T, needCallback: Bool = false) where T.RawValue == String {
-        select(string: value.rawValue)
+        select(string: value.rawValue, needCallback: needCallback)
     }
     
     /// 指定した値に紐づくボタンを選択する
