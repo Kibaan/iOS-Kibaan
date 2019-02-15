@@ -37,7 +37,6 @@ public extension UIView {
         get { return layer.cornerRadius }
         set(value) {
             layer.cornerRadius = value
-            clipsToBounds = 0 < value
         }
     }
     
@@ -60,6 +59,45 @@ public extension UIView {
         set(value) {
             layer.borderWidth = value
         }
+    }
+    
+    /// ドロップシャドウの色
+    @IBInspectable
+    var shadowColor: UIColor? {
+        get {
+            if let color = layer.shadowColor {
+                return UIColor(cgColor: color)
+            }
+            return nil
+        }
+        set {
+            if let color = newValue {
+                layer.shadowColor = color.cgColor
+            } else {
+                layer.shadowColor = nil
+            }
+        }
+    }
+
+    /// ドロップシャドウのオフセット
+    @IBInspectable
+    var shadowOffset: CGSize {
+        get { return layer.shadowOffset }
+        set { layer.shadowOffset = newValue }
+    }
+    
+    /// ドロップシャドウの不透明（1が完全に不透明、0が完全に透明）
+    @IBInspectable
+    var shadowOpacity: Float {
+        get { return layer.shadowOpacity }
+        set { layer.shadowOpacity = newValue }
+    }
+
+    /// ドロップシャドウの半径
+    @IBInspectable
+    var shadowRadius: CGFloat {
+        get { return layer.shadowRadius }
+        set { layer.shadowRadius = newValue }
     }
     
     // MARK: - Function
