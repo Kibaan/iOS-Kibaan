@@ -7,8 +7,8 @@ import UIKit
 /// ページングが左右端でループするスクロールビュー
 open class LoopPagerView: BaseScrollView {
 
-    /// ページ変更時の処理
-    open var pageChangeAction: ((Int) -> Void)?
+    /// ページ変更時の処理（変更前Index、変更後Index）
+    open var pageChangeAction: ((Int, Int) -> Void)?
 
     private var pageArray: [UIView] = []
     
@@ -86,9 +86,10 @@ open class LoopPagerView: BaseScrollView {
     
     /// 表示するページインデックスを変更する
     open func changePage(_ pageIndex: Int, animated: Bool = false) {
+        let oldPageIndex = currentPageIndex
         currentPageIndex = pageIndex
         
-        pageChangeAction?(pageIndex)
+        pageChangeAction?(oldPageIndex, pageIndex)
         
         // pageChangeAction 実行済みなので、アニメーションでページ切り替えする場合はスクロールイベントで再度呼ばれないようにする
         // (スクロールイベントからのみ pageChangeAction を呼ぶ作りだと、スクロールで経由したページ全てに対して呼ばれてしまうためまずい)
@@ -138,8 +139,9 @@ open class LoopPagerView: BaseScrollView {
         
         if enablePageChangeAction {
             if currentPageIndex != nextIndex {
+                let oldPageIndex = currentPageIndex
                 currentPageIndex = nextIndex
-                pageChangeAction?(pageIndex)
+                pageChangeAction?(oldPageIndex, pageIndex)
             }
         }
     }
