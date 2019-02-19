@@ -94,7 +94,7 @@ class FooterTabViewController: BaseViewController {
     func setTabScreen<T: BaseViewController>(type: T.Type) -> T {
         updateFooterButtonState(type: type)
         
-        let controller = ViewControllerCache.get(type)
+        let controller = ViewControllerCache.shared.get(type)
         tabViewController = controller
         return controller
     }

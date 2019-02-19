@@ -7,7 +7,7 @@ import UIKit
 /// 画面遷移や共通的な画面表示機能
 open class ScreenService {
 
-    static public let shared = ScreenService()
+    static public var shared = ScreenService()
 
     public let window = UIWindow(frame: UIScreen.main.bounds)
     public var defaultTransitionAnimation: TransitionAnimation? = .coverVertical
@@ -47,7 +47,7 @@ open class ScreenService {
     /// クラスからRootのViewControllerを設定する
     @discardableResult
     open func setRoot<T: BaseViewController>(_ type: T.Type, prepare: ((T) -> Void)? = nil) -> T {
-        let controller = ViewControllerCache.get(type)
+        let controller = ViewControllerCache.shared.get(type)
         setRootViewController(controller, prepare: prepare)
         return controller
     }
@@ -80,7 +80,7 @@ open class ScreenService {
     open func addSubScreen<T: BaseViewController>(_ type: T.Type, nibName: String? = nil, id: String? = nil, cache: Bool = true, transitionType: TransitionType = .normal, prepare: ((T) -> Void)? = nil) -> T? {
         foregroundController?.leave()
         
-        let controller = ViewControllerCache.get(type, nibName: nibName, id: id, cache: cache)
+        let controller = ViewControllerCache.shared.get(type, nibName: nibName, id: id, cache: cache)
         screenStack += [controller]
         
         if let parent = window.rootViewController {

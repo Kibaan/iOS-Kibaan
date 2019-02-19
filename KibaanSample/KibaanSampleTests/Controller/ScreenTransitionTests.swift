@@ -12,14 +12,14 @@ class ScreenTransitionTests: XCTestCase {
     }
     
     func testViewControllerInit() {
-        ViewControllerCache.clear()
+        ViewControllerCache.shared.clear()
         let vc = MockViewController()
         XCTAssertEqual(0, vc.startCount)
         XCTAssertEqual(0, vc.stopCount)
     }
 
     func testSetRoot() {
-        ViewControllerCache.clear()
+        ViewControllerCache.shared.clear()
         let vc1 = ScreenService.shared.setRoot(MockViewController.self)
 
         // 1.rootViewControllerのonStartが呼ばれ、isForegroundがtrueであること
@@ -46,7 +46,7 @@ class ScreenTransitionTests: XCTestCase {
     }
 
     func testAddSubscreen() {
-        ViewControllerCache.clear()
+        ViewControllerCache.shared.clear()
         let vc1 = ScreenService.shared.setRoot(MockViewController.self)
         let addVc = ScreenService.shared.addSubScreen(MockViewController.self, id: "2")!
 
@@ -86,7 +86,7 @@ class ScreenTransitionTests: XCTestCase {
     }
 
     func testAddOverlay() {
-        ViewControllerCache.clear()
+        ViewControllerCache.shared.clear()
         let vc1 = ScreenService.shared.setRoot(MockViewController.self)
         let addVc = vc1.addOverlay(MockSubViewController.self)!
 
@@ -118,7 +118,7 @@ class ScreenTransitionTests: XCTestCase {
     }
 
     func testAddNextScreen() {
-        ViewControllerCache.clear()
+        ViewControllerCache.shared.clear()
         let vc1 = ScreenService.shared.setRoot(MockViewController.self)
         let addVc = vc1.addNextScreen(MockSubViewController.self)!
 
@@ -150,7 +150,7 @@ class ScreenTransitionTests: XCTestCase {
     }
 
     func testFooterTab() {
-        ViewControllerCache.clear()
+        ViewControllerCache.shared.clear()
         let footerTabVc = ScreenService.shared.setRoot(FooterTabViewController.self)
         let vc1 = footerTabVc.setTabScreen(type: MockViewController.self)
 
@@ -178,7 +178,7 @@ class ScreenTransitionTests: XCTestCase {
     }
 
     func testTabChange() {
-        ViewControllerCache.clear()
+        ViewControllerCache.shared.clear()
         let vc = ScreenService.shared.setRoot(MockViewController.self)
 
         // 1.初期表示状態の確認
@@ -200,7 +200,7 @@ class ScreenTransitionTests: XCTestCase {
     }
 
     func testScenario() {
-        ViewControllerCache.clear()
+        ViewControllerCache.shared.clear()
         let footerTabVc = ScreenService.shared.setRoot(FooterTabViewController.self)
         let vc1 = footerTabVc.setTabScreen(type: MockSubViewController.self)
 

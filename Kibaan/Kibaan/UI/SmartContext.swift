@@ -38,7 +38,7 @@ open class SmartContext {
     
     // MARK: - Variables
     
-    static public let shared = SmartContext()
+    static public var shared = SmartContext()
     
     private var descriptorMap: [FontType: UIFontDescriptor] = [:]
     lazy open var screenScale: CGFloat = {

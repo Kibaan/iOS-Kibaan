@@ -6,7 +6,7 @@ import Kibaan
 
 class AppSetting: LocalSetting {
     
-    static let shared = AppSetting()
+    static var shared = AppSetting()
     
     var footerTab: FooterTabViewController.Tab {
         get { return getEnum("footerTab", type: FooterTabViewController.Tab.self, defaultValue: FooterTabViewController.Tab.top) }

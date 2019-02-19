@@ -3,11 +3,13 @@ import UIKit
 /// ViewControllerのキャッシュ
 public class ViewControllerCache {
     
-    private static var controllerMap: [String: UIViewController] = [:]
+    static public var shared = ViewControllerCache()
+
+    private var controllerMap: [String: UIViewController] = [:]
     
     /// 指定したクラスのViewController を取得する
     /// キャッシュがある場合はキャッシュを利用し、ない場合は新たにViewControllerを作成する
-    static public func get<T: UIViewController>(_ type: T.Type, nibName: String? = nil, id: String? = nil, cache: Bool = true) -> T {
+    public func get<T: UIViewController>(_ type: T.Type, nibName: String? = nil, id: String? = nil, cache: Bool = true) -> T {
 
         let fullName = NSStringFromClass(type)
 
@@ -29,7 +31,7 @@ public class ViewControllerCache {
     }
     
     /// 指定したクラスのViewControllerを作成する
-    static public func create<T: UIViewController>(_ type: T.Type, nibName: String? = nil, id: String? = nil) -> T {
+    public func create<T: UIViewController>(_ type: T.Type, nibName: String? = nil, id: String? = nil) -> T {
         let fullName = NSStringFromClass(type)
         let className = fullName.components(separatedBy: ".").last
         let controller = T(nibName: nibName ?? className, bundle: nil)
@@ -40,7 +42,7 @@ public class ViewControllerCache {
     }
     
     /// 指定したクラスのキャッシュされたViewControllerを取得する
-    static public func getCache<T: UIViewController>(_ type: T.Type, id: String? = nil) -> T? {
+    public func getCache<T: UIViewController>(_ type: T.Type, id: String? = nil) -> T? {
         
         let fullName = NSStringFromClass(type)
         var controllerKey = fullName
@@ -52,7 +54,7 @@ public class ViewControllerCache {
     }
     
     /// キャッシュをクリアする
-    static public func clear() {
+    public func clear() {
         controllerMap.removeAll()
     }
 }

@@ -5,5 +5,5 @@
 import Foundation
 
 class SharedData {
-    static let shared = SharedData()
+    static var shared = SharedData()
 }

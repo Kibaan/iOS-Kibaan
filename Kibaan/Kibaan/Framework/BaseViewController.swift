@@ -139,7 +139,7 @@ open class BaseViewController: UIViewController {
     @discardableResult
     open func addNextScreen<T: BaseViewController>(_ type: T.Type, targetView: UIView, id: String? = nil, cache: Bool = true, animated: Bool = true, prepare: ((T) -> Void)? = nil) -> T? {
         checkTargetView(targetView)
-        let controller = ViewControllerCache.get(type, id: id, cache: cache)
+        let controller = ViewControllerCache.shared.get(type, id: id, cache: cache)
         guard let parentView = targetView.superview, nextScreens.last != controller else {
             return nil
         }
@@ -256,7 +256,7 @@ open class BaseViewController: UIViewController {
     /// ViewControllerを上に乗せる
     @discardableResult
     open func addOverlay<T: BaseViewController>(_ type: T.Type, id: String? = nil, cache: Bool = true, prepare: ((T) -> Void)? = nil) -> T? {
-        let controller = ViewControllerCache.get(type, id: id, cache: cache)
+        let controller = ViewControllerCache.shared.get(type, id: id, cache: cache)
         controller.owner = self
         overlays += [controller]
         
