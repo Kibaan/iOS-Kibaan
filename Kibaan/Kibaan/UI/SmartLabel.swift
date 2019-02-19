@@ -15,6 +15,16 @@ import UIKit
 open class SmartLabel: UILabel, SmartFontProtocol {
     
     // MARK: - Variables
+    public override var cornerRadius: CGFloat {
+        didSet {
+            // UILabelはクリップしないと角丸が表示されないため、角丸が設定されている場合はクリップする
+            // 他のViewクラスはクリップなしで角丸表示できるのでSmartLabelのみの独自処理
+            // クリップするとドロップシャドウは表示できなくなる
+            if 0 < cornerRadius {
+                clipsToBounds = true
+            }
+        }
+    }
     
     @IBInspectable open var paddintLeft: CGFloat {
         get { return padding.left }
