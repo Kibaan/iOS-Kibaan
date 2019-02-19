@@ -60,20 +60,6 @@ open class SmartTextField: UITextField, SmartFontProtocol {
             updatePlaceholder()
         }
     }
-    
-    override open var rightView: UIView? {
-        didSet {
-            rightView?.topAnchor.constraint(equalTo: topAnchor).isActive = true
-            rightView?.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        }
-    }
-    
-    override open var leftView: UIView? {
-        didSet {
-            leftView?.topAnchor.constraint(equalTo: topAnchor).isActive = true
-            leftView?.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        }
-    }
 
     /// テキストフィールドデリゲート
     private var delegateWrapper = InnerTextFieldDelegate()
@@ -126,11 +112,11 @@ open class SmartTextField: UITextField, SmartFontProtocol {
     // MARK: - Override function
     
     override open func textRect(forBounds bounds: CGRect) -> CGRect {
-        return calcRect(forBounds: bounds)
+        return addPadding(originalRect: super.textRect(forBounds: bounds))
     }
     
     override open func editingRect(forBounds bounds: CGRect) -> CGRect {
-        return calcRect(forBounds: bounds)
+        return addPadding(originalRect: super.editingRect(forBounds: bounds))
     }
     
     override open var isEnabled: Bool {
@@ -141,11 +127,10 @@ open class SmartTextField: UITextField, SmartFontProtocol {
     
     // MARK: - Private
     
-    /// CGRectから、LeftView、RightViewおよびパディングの余白を削ったCGRectを返す
-    private func calcRect(forBounds bounds: CGRect) -> CGRect {
-        let x = paddingLeft + (leftView?.frame.width ?? 0)
-        let width = bounds.width - x - paddingRight - (rightView?.frame.width ?? 0)
-        return CGRect(x: x, y: 0, width: width, height: bounds.height)
+    /// テキスト表示領域をパディング分縮小する
+    private func addPadding(originalRect: CGRect) -> CGRect {
+        let width = originalRect.width - paddingLeft - paddingRight
+        return CGRect(x: originalRect.minX + paddingLeft, y: originalRect.minY, width: width, height: originalRect.height)
     }
     
     /// キーボードのツールバーに完了ボタンを追加する
