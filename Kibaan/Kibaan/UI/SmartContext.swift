@@ -12,9 +12,10 @@ public protocol SmartFontProtocol {
 extension SmartFontProtocol {
     public func convertFont(_ font: UIFont?) -> UIFont? {
         guard let font = font else { return nil }
-        let fontManager = SmartContext.shared
-        let size = font.pointSize * (adjustsFontSizeForDevice ? fontManager.screenScale : 1)
-        if useGlobalFont, let font = fontManager.getFont(size: size, type: font.isBold ? .bold : .regular) {
+        let context = SmartContext.shared
+        let size = font.pointSize * (adjustsFontSizeForDevice ? context.screenScale : 1)
+        if context.isGlobalFontEnabled && useGlobalFont,
+            let font = context.getFont(size: size, type: font.isBold ? .bold : .regular) {
             return font
         } else {
             return font.withSize(size)
@@ -40,6 +41,8 @@ open class SmartContext {
     
     static public var shared = SmartContext()
     
+    public var isGlobalFontEnabled = false
+    
     private var descriptorMap: [FontType: UIFontDescriptor] = [:]
     lazy open var screenScale: CGFloat = {
         return UIScreen.main.bounds.shortLength / baseWidth
@@ -63,6 +66,7 @@ open class SmartContext {
         }
         
         descriptorMap[type] = fontDescriptor
+        isGlobalFontEnabled = true
     }
     
     /// サイズとフォントタイプを指定して、フォントを取得する

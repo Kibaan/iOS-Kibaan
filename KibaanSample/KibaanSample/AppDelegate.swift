@@ -13,6 +13,11 @@ class AppDelegate: SmartAppDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        let regularFonts: [[UIFontDescriptor.AttributeName: Any]] = [
+            [.name: "Chalkboard SE", .face: "Regular"]
+        ]
+        SmartContext.shared.setFonts(regularFonts, type: .regular)
+
         let boldFonts: [[UIFontDescriptor.AttributeName: Any]] = [
             [.name: "Gill Sans", .face: "UltraBold"]
         ]
