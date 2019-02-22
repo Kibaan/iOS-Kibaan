@@ -23,13 +23,8 @@ open class BaseViewController: UIViewController {
     private var nextScreens = [BaseViewController]()
     /// スライド表示させた画面の制約
     private var nextScreenConstraints: [NSLayoutConstraint] = []
-    
-    // TODO `addNextScreen`では引数でViewを指定すれば良いのに、removeNextScreenではこのプロパティが設定されていないとクラッシュするため整合性がとれていない
     /// スライド表示させる画面を追加する対象のビュー
-    open var nextScreenTargetView: UIView {
-        assertionFailure("When using the next screen, be sure to implement it in a subclass")
-        return UIView()
-    }
+    open var nextScreenTargetView: UIView { return view }
     /// スライドアニメーション時間
     open var nextScreenAnimationDuration: TimeInterval = 0.3
     /// オーバーレイ画面のオーナー
@@ -129,15 +124,10 @@ open class BaseViewController: UIViewController {
         assert(targetView.isDescendant(of: view), "The target view must be included in the view")
     }
     
-    /// ViewControllerをスライド表示させる（targetView指定なし）
+    /// ViewControllerをスライド表示させる
     @discardableResult
     open func addNextScreen<T: BaseViewController>(_ type: T.Type, id: String? = nil, cache: Bool = true, animated: Bool = true, prepare: ((T) -> Void)? = nil) -> T? {
-        return addNextScreen(type, targetView: nextScreenTargetView, id: id, cache: cache, animated: animated, prepare: prepare)
-    }
-    
-    /// ViewControllerをスライド表示させる（targetView指定あり）
-    @discardableResult
-    open func addNextScreen<T: BaseViewController>(_ type: T.Type, targetView: UIView, id: String? = nil, cache: Bool = true, animated: Bool = true, prepare: ((T) -> Void)? = nil) -> T? {
+        let targetView = nextScreenTargetView
         checkTargetView(targetView)
         let controller = ViewControllerCache.shared.get(type, id: id, cache: cache)
         guard let parentView = targetView.superview, nextScreens.last != controller else {
@@ -198,13 +188,9 @@ open class BaseViewController: UIViewController {
         }
     }
     
-    /// スライド表示させたViewControllerを１つ前に戻す（targetView指定なし）
+    /// スライド表示させたViewControllerを１つ前に戻す
     open func removeNextScreen(animated: Bool = true) {
-        removeNextScreen(targetView: nextScreenTargetView, animated: animated)
-    }
-    
-    /// スライド表示させたViewControllerを１つ前に戻す（targetView指定あり）
-    open func removeNextScreen(targetView: UIView, animated: Bool = true) {
+        let targetView = nextScreenTargetView
         targetView.superview?.layoutIfNeeded()
 
         let removedScreen = self.nextScreens.removeLast()
@@ -234,9 +220,9 @@ open class BaseViewController: UIViewController {
     }
 
     /// スライド表示させたViewControllerを全て閉じる
-    open func removeAllNextScreen(targetView: UIView? = nil, executeStart: Bool = false) {
+    open func removeAllNextScreen(executeStart: Bool = false) {
         guard isViewLoaded else { return }
-        let targetView = targetView ?? nextScreenTargetView
+        let targetView = nextScreenTargetView
         leave()
         nextScreens.forEach {
             $0.view.removeFromSuperview()
