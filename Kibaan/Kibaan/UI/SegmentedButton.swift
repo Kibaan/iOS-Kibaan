@@ -76,6 +76,26 @@ open class SegmentedButton: CustomView {
     @IBInspectable open var rowSize: Int = 1 {
         didSet { constructSegments() }
     }
+    /// 非選択状態のボタン背景色
+    @IBInspectable open var normalButtonBackgroundColor: UIColor = .lightGray {
+        didSet { constructSegments() }
+    }
+    /// 選択状態のボタン背景色
+    @IBInspectable open var selectedButtonBackgroundColor: UIColor = UIColor(rgbValue: 0x0679FF) {
+        didSet { constructSegments() }
+    }
+    /// 非選択状態のボタン文字色
+    @IBInspectable open var normalButtonTextColor: UIColor = .white {
+        didSet { constructSegments() }
+    }
+    /// 選択状態のボタン文字色
+    @IBInspectable open var selectedButtonTextColor: UIColor = .white {
+        didSet { constructSegments() }
+    }
+    /// 非活性状態のボタン文字色
+    @IBInspectable open var disabledButtonTextColor: UIColor = .lightGray {
+        didSet { constructSegments() }
+    }
     
     open var buttonCustomizer: ((SmartButton) -> Void)?
 
@@ -350,10 +370,11 @@ open class SegmentedButton: CustomView {
         let button = makeButton()
         buttons.append(button)
         
-        button.backgroundColor = .lightGray
-        button.selectedBackgroundColor = UIColor(rgbValue: 0x0679FF) // システム標準選択色
-        button.setTitleColor(.white, for: .normal)
-        button.setTitleColor(.lightGray, for: .disabled)
+        button.setBackgroundColor(color: normalButtonBackgroundColor, for: .normal)
+        button.setBackgroundColor(color: selectedButtonBackgroundColor, for: .selected)
+        button.setTitleColor(normalButtonTextColor, for: .normal)
+        button.setTitleColor(selectedButtonTextColor, for: .selected)
+        button.setTitleColor(disabledButtonTextColor, for: .disabled)
         button.titleFont = UIFont.systemFont(ofSize: textSize)
         button.adjustsFontSizeToFitWidth = true
         button.miniumScaleFactor = 0.5
