@@ -24,6 +24,8 @@ public extension UIView {
     // MARK: - Function
     
     /// 角丸を設定する
+    ///
+    /// - precondition: viewDidLoadなどViewのサイズ(bounds)が定まっていないタイミングでは呼ばないこと
     func setCornerRadius(corners: UIRectCorner, radius: CGFloat = 4) {
         let maskPath = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
         let maskLayer = CAShapeLayer()
