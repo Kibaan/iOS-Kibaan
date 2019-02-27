@@ -52,4 +52,17 @@ public class AlertUtils {
         }
         return alert
     }
+    
+    /// アラートを全て閉じる
+    static public func dismissAllAlert() {
+        findRootAlertPresentingController(UIApplication.shared.keyWindow?.foregroundViewController)?.dismiss(animated: false, completion: nil)
+    }
+    
+    /// アラートを表示しているルートのビューコントローラを探す
+    static func findRootAlertPresentingController(_ viewController: UIViewController?) -> UIViewController? {
+        if let controller = viewController?.presentingViewController as? UIAlertController {
+            return findRootAlertPresentingController(controller)
+        }
+        return viewController?.presentingViewController
+    }
 }
