@@ -76,19 +76,18 @@ open class ToastPopup: SmartLabel {
     private func slideIn(_ preY: CGFloat) {
         superview?.layoutIfNeeded()
         topConstraint?.constant = topY
-        UIView.animate(withDuration: ToastPopup.animationDuration, delay: 0, options: .curveLinear, animations: { [unowned self] in
-            self.superview?.layoutIfNeeded()
+        UIView.animate(withDuration: ToastPopup.animationDuration, delay: 0, options: .curveLinear, animations: { [weak self] in
+            self?.superview?.layoutIfNeeded()
         }, completion: nil)
     }
     
     @objc private func slideOut() {
         superview?.layoutIfNeeded()
         topConstraint?.constant = -self.frame.height
-        UIView.animate(withDuration: ToastPopup.animationDuration, animations: { [unowned self] in
-            self.superview?.layoutIfNeeded()
-        }, completion: { [unowned self] result in
-            // TODO 通信タイムアウト時？にここでクラッシュする
-            self.removeFromSuperview()
+        UIView.animate(withDuration: ToastPopup.animationDuration, animations: { [weak self] in
+            self?.superview?.layoutIfNeeded()
+        }, completion: { [weak self] result in
+            self?.removeFromSuperview()
             ToastPopup.displayingList.remove(element: self)
         })
         stopTimer()

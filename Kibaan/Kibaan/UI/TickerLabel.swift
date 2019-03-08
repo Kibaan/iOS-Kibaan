@@ -70,10 +70,10 @@ open class TickerLabel: UIView {
         let interval: TimeInterval = TimeInterval(maxScroll * 0.015)
         
         UIView.animate(withDuration: interval, delay: 0, options: .curveLinear,
-                       animations: {[unowned self] in
-                        self.label.frame.origin.x = -labelWidth
-            }, completion: {[unowned self] result in
-                self.onCompleteAnimation()
+                       animations: {[weak self] in
+                        self?.label.frame.origin.x = -labelWidth
+            }, completion: {[weak self] result in
+                self?.onCompleteAnimation()
         })
     }
     
