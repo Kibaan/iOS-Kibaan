@@ -287,6 +287,11 @@ public extension String {
         return removingPercentEncoding ?? ""
     }
     
+    /// NSDecimalNumberを取得する
+    var decimalNumber: NSDecimalNumber {
+        return NSDecimalNumber(string: self)
+    }
+    
     /// SHA-256形式のハッシュ値を返す
     func sha256() -> String {
         let cstr = self.cString(using: String.Encoding.utf8)
