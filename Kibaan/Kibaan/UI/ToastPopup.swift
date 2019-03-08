@@ -87,6 +87,7 @@ open class ToastPopup: SmartLabel {
         UIView.animate(withDuration: ToastPopup.animationDuration, animations: { [unowned self] in
             self.superview?.layoutIfNeeded()
         }, completion: { [unowned self] result in
+            // TODO 通信タイムアウト時？にここでクラッシュする
             self.removeFromSuperview()
             ToastPopup.displayingList.remove(element: self)
         })
