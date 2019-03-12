@@ -72,7 +72,7 @@ open class BaseViewController: UIViewController {
     
     /// 画面がスクリーンに追加されたときの処理
     open func onAddedToScreen() {
-        foregroundSubControllers.forEach { $0.added() }
+        subControllers.forEach { $0.added() }
     }
     
     /// 画面がフォアグラウンド状態になったときの処理
@@ -90,7 +90,7 @@ open class BaseViewController: UIViewController {
     
     /// 画面がスクリーンから取り除かれたときの処理
     open func onRemovedFromScreen() {
-        foregroundSubControllers.forEach { $0.removed() }
+        subControllers.forEach { $0.removed() }
     }
     
     /// 子ViewControllerを追加する
