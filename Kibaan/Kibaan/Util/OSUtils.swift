@@ -7,6 +7,8 @@
 import UIKit
 
 public class OSUtils: NSObject {
+    static let appStoreURL = "itms-apps://itunes.apple.com/app/"
+
     /// URLをSafariで開く
     static public func openUrlInSafari(urlStr: String, onError: (() -> Void)? = nil) {
         guard let url = URL(string: urlStr) else { return }
@@ -34,8 +36,12 @@ public class OSUtils: NSObject {
         // アプリ起動確認ダイアログでキャンセルを押したときもcompletionHandlerが呼ばれてしまい、
         // 起動できなかったときだけストアを開くことができないため、openURLを使用している。
         if !UIApplication.shared.openURL(url) {
-            openUrlInSafari(urlStr: "itms-apps://itunes.apple.com/app/" + applicationId)
+            openAppStore(appID: applicationId)
         }
+    }
+    
+    static public func openAppStore(appID: String) {
+        openUrlInSafari(urlStr: appStoreURL + appID)
     }
     
     /// アプリのバージョンを取得する
