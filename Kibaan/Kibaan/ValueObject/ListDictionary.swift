@@ -11,7 +11,7 @@ import Foundation
 public class ListDictionary<Key, Value>: ExpressibleByDictionaryLiteral where Key: Hashable {
     var keyList = [Key]()
     var dictionary = [Key: Value]()
-    var keys: [Key] { return keyList }
+    public var keys: [Key] { return keyList }
     
     public required init(dictionaryLiteral elements: (String, String)...) {
         for (key, value) in elements {
