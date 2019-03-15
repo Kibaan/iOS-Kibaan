@@ -8,23 +8,36 @@
 
 import Foundation
 
-class ListDictionary: ExpressibleByDictionaryLiteral {
-    var keyList = [String]()
-    var dictionary = [String: String]()
-    var keys: [String] { return keyList }
+public class ListDictionary<Key, Value>: ExpressibleByDictionaryLiteral where Key: Hashable {
+    var keyList = [Key]()
+    var dictionary = [Key: Value]()
+    var keys: [Key] { return keyList }
     
-    required init(dictionaryLiteral elements: (String, String)...) {
+    public required init(dictionaryLiteral elements: (String, String)...) {
         for (key, value) in elements {
-            keyList.append(key)
-            dictionary[key] = value
+            append(key: key, value: value)
         }
     }
     
-    subscript(key: String) -> String? {
+    public init() {}
+    
+    public subscript(key: Key) -> Value? {
         get { return dictionary[key] }
+        set(value) { append(key: key, value: value) }
     }
     
-    subscript(index: Int) -> String? {
+    public subscript(index: Int) -> Value? {
         get { return dictionary[keyList[index]] }
+        set(value) { append(key: keyList[index], value: value) }
+    }
+    
+    public func append(key: Key, value: Value?) {
+        keyList.append(key)
+        dictionary[key] = value
+    }
+    
+    public func removeAll() {
+        keyList.removeAll()
+        dictionary.removeAll()
     }
 }
