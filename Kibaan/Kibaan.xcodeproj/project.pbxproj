@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1051240C21E73E3200D71CC2 /* EllipseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1051240B21E73E3200D71CC2 /* EllipseButton.swift */; };
+		10583262223BAA920018847E /* ListDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10583261223BAA920018847E /* ListDictionary.swift */; };
 		107E694021D5CC8F00190AD6 /* HTTPTextTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E693F21D5CC8F00190AD6 /* HTTPTextTask.swift */; };
 		107E694221D5E87300190AD6 /* HTTPTextTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E694121D5E87300190AD6 /* HTTPTextTaskTests.swift */; };
 		10B45F0D21EEE2D200B18F8C /* CoverVertical.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B45F0C21EEE2D200B18F8C /* CoverVertical.swift */; };
@@ -128,6 +129,7 @@
 
 /* Begin PBXFileReference section */
 		1051240B21E73E3200D71CC2 /* EllipseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EllipseButton.swift; sourceTree = "<group>"; };
+		10583261223BAA920018847E /* ListDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDictionary.swift; sourceTree = "<group>"; };
 		107E693F21D5CC8F00190AD6 /* HTTPTextTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTextTask.swift; sourceTree = "<group>"; };
 		107E694121D5E87300190AD6 /* HTTPTextTaskTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTextTaskTests.swift; sourceTree = "<group>"; };
 		10B45F0C21EEE2D200B18F8C /* CoverVertical.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverVertical.swift; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 			isa = PBXGroup;
 			children = (
 				40241B602194254F007EEB71 /* KeyValue.swift */,
+				10583261223BAA920018847E /* ListDictionary.swift */,
 			);
 			path = ValueObject;
 			sourceTree = "<group>";
@@ -655,6 +658,7 @@
 				40241BC92194254F007EEB71 /* UIFont+Utils.swift in Sources */,
 				40241BAA2194254F007EEB71 /* KeyValue.swift in Sources */,
 				40241BB52194254F007EEB71 /* BaseScrollView.swift in Sources */,
+				10583262223BAA920018847E /* ListDictionary.swift in Sources */,
 				10CD04B821E895B80095C5F2 /* TransitionType.swift in Sources */,
 				40241BAB2194254F007EEB71 /* PickerViewController.swift in Sources */,
 				40241BD82194254F007EEB71 /* NSDecimalNumber+Utils.swift in Sources */,
