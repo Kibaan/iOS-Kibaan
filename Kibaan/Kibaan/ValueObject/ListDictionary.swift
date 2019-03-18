@@ -13,7 +13,7 @@ public class ListDictionary<Key, Value>: ExpressibleByDictionaryLiteral where Ke
     var dictionary = [Key: Value]()
     public var keys: [Key] { return keyList }
     
-    public required init(dictionaryLiteral elements: (String, String)...) {
+    public required init(dictionaryLiteral elements: (Key, Value)...) {
         for (key, value) in elements {
             append(key: key, value: value)
         }
