@@ -15,6 +15,16 @@ public extension CGFloat {
         return description
     }
     
+    /// Double値に変換
+    var doubleValue: Double {
+        return Double(self)
+    }
+
+    /// NSDecimalNumberに変換
+    var decimalNumber: NSDecimalNumber {
+        return NSDecimalNumber(value: Double(self))
+    }
+
     /// 数値を指定した小数桁で四捨五入した文字列を返す
     func stringValue(decimalLength: Int) -> String {
         if isNaN {
@@ -23,4 +33,5 @@ public extension CGFloat {
         
         return NSDecimalNumber(value: Double(self)).stringValue(decimalLength: decimalLength)
     }
+
 }

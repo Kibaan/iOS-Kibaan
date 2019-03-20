@@ -17,6 +17,7 @@
 		10CD04B621E891AE0095C5F2 /* TransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CD04B521E891AE0095C5F2 /* TransitionAnimation.swift */; };
 		10CD04B821E895B80095C5F2 /* TransitionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CD04B721E895B70095C5F2 /* TransitionType.swift */; };
 		10F8E7F421ED60EC0070458A /* UIViewController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F8E7F321ED60EC0070458A /* UIViewController+Utils.swift */; };
+		4006F7DC22420E2D0094D314 /* Double+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4006F7DB22420E2D0094D314 /* Double+Util.swift */; };
 		40241B3D21941EC9007EEB71 /* Kibaan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40241B3321941EC9007EEB71 /* Kibaan.framework */; };
 		40241B4421941EC9007EEB71 /* Kibaan.h in Headers */ = {isa = PBXBuildFile; fileRef = 40241B3621941EC9007EEB71 /* Kibaan.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		40241B9C2194254F007EEB71 /* ScreenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241B4E2194254F007EEB71 /* ScreenService.swift */; };
@@ -138,6 +139,7 @@
 		10CD04B521E891AE0095C5F2 /* TransitionAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionAnimation.swift; sourceTree = "<group>"; };
 		10CD04B721E895B70095C5F2 /* TransitionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionType.swift; sourceTree = "<group>"; };
 		10F8E7F321ED60EC0070458A /* UIViewController+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Utils.swift"; sourceTree = "<group>"; };
+		4006F7DB22420E2D0094D314 /* Double+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Util.swift"; sourceTree = "<group>"; };
 		40241B3321941EC9007EEB71 /* Kibaan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Kibaan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		40241B3621941EC9007EEB71 /* Kibaan.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Kibaan.h; sourceTree = "<group>"; };
 		40241B3721941EC9007EEB71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -416,6 +418,7 @@
 				40241B882194254F007EEB71 /* Data+Utils.swift */,
 				40241B892194254F007EEB71 /* UITableViewCell+Utils.swift */,
 				40241B8A2194254F007EEB71 /* CGFloat+Utils.swift */,
+				4006F7DB22420E2D0094D314 /* Double+Util.swift */,
 				40241B8B2194254F007EEB71 /* Array+Utils.swift */,
 				40241B8C2194254F007EEB71 /* Dictionary+Utils.swift */,
 				40241B8D2194254F007EEB71 /* UIImage+Utils.swift */,
@@ -688,6 +691,7 @@
 				40241BD42194254F007EEB71 /* UIEdgeInsets+Utils.swift in Sources */,
 				40241BBA2194254F007EEB71 /* SmartTableView.swift in Sources */,
 				40241BD12194254F007EEB71 /* Array+Utils.swift in Sources */,
+				4006F7DC22420E2D0094D314 /* Double+Util.swift in Sources */,
 				40241BBC2194254F007EEB71 /* TickerLabel.swift in Sources */,
 				1051240C21E73E3200D71CC2 /* EllipseButton.swift in Sources */,
 				40241BBB2194254F007EEB71 /* SmartTextField.swift in Sources */,
