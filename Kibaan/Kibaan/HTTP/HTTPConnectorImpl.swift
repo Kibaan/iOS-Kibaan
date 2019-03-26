@@ -7,6 +7,8 @@ open class HTTPConnectorImpl: HTTPConnector {
     open var timeoutIntervalForResource: TimeInterval = 60.0
     open var isCancelled: Bool = false
     
+    public init() {}
+    
     open func execute(request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
         isCancelled = false
         let config = URLSessionConfiguration.default
