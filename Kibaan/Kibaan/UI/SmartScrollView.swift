@@ -56,6 +56,14 @@ open class SmartScrollView: UIScrollView, UIScrollViewDelegate {
         }
     }
     
+    // iOS10以降はUIScrollViewにrefreshControlプロパティがあるが、iOS9以下にも対応する為、自前でプロパティを設ける
+    private var refreshControlCompat: UIRefreshControl?
+    
+    /// プルトゥリフレッシュ実行時のアクション
+    open var onPullToRefresh: (() -> Void)?
+    
+    // MARK: - Initializer
+    
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
@@ -69,6 +77,8 @@ open class SmartScrollView: UIScrollView, UIScrollViewDelegate {
     open func commonInit() {
         super.delegate = self
     }
+    
+    // MARK: - Life cycle
     
     // スクロールガイドなどをレイアウトする
     override open func layoutSubviews() {
@@ -107,6 +117,30 @@ open class SmartScrollView: UIScrollView, UIScrollViewDelegate {
     /// - Parameter animated: アニメーションの有無
     open func resetScrollOffset(animated: Bool = false) {
         setContentOffset(CGPoint.zero, animated: animated)
+    }
+    
+    // MARK: - Refresh Control
+    
+    open func addRefreshControl(attributedTitle: NSAttributedString? = nil, onPullToRefresh: (() -> Void)? = nil) {
+        self.onPullToRefresh = onPullToRefresh
+        
+        let refreshControlCompat = UIRefreshControl()
+        self.refreshControlCompat = refreshControlCompat
+        refreshControlCompat.attributedTitle = attributedTitle
+        refreshControlCompat.addTarget(self, action: #selector(self.valueChanged), for: .valueChanged)
+        self.addSubview(refreshControlCompat)
+    }
+    
+    open func addRefreshControl(title: String = "引っ張って更新", onPullToRefresh: (() -> Void)? = nil) {
+        addRefreshControl(attributedTitle: NSAttributedString(string: title), onPullToRefresh: onPullToRefresh)
+    }
+    
+    open func endRefreshing() {
+        refreshControlCompat?.endRefreshing()
+    }
+    
+    @objc private func valueChanged() {
+        onPullToRefresh?()
     }
     
     // MARK: - UIScrollViewDelegate
