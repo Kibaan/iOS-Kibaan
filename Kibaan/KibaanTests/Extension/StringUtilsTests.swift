@@ -390,6 +390,40 @@ class StringUtilsTests: XCTestCase {
         XCTAssertEqual(str.removeAll(items: []), "ABCD")
     }
     
+    // MARK: - withPrefix
+    
+    func testWithPrefix_001() {
+        let str: String = "1234"
+        XCTAssertEqual("+1234", str.withPrefix("+"))
+        XCTAssertEqual("51234", str.withPrefix("5"))
+        XCTAssertEqual("1234", str.withPrefix(""))
+        XCTAssertEqual("1234", str.withPrefix(nil))
+    }
+    
+    func testWithPrefix_002() {
+        let str: String? = "1234"
+        XCTAssertEqual("+1234", str?.withPrefix("+"))
+        XCTAssertEqual("51234", str?.withPrefix("5"))
+        XCTAssertEqual("1234", str?.withPrefix(""))
+        XCTAssertEqual("1234", str?.withPrefix(nil))
+    }
+    
+    func testWithPrefix_003() {
+        let str: String? = ""
+        XCTAssertEqual("+", str?.withPrefix("+"))
+        XCTAssertEqual("5", str?.withPrefix("5"))
+        XCTAssertEqual("", str?.withPrefix(""))
+        XCTAssertEqual("", str?.withPrefix(nil))
+    }
+    
+    func testWithPrefix_004() {
+        let str: String? = nil
+        XCTAssertEqual(nil, str?.withPrefix("+"))
+        XCTAssertEqual(nil, str?.withPrefix("5"))
+        XCTAssertEqual(nil, str?.withPrefix(""))
+        XCTAssertEqual(nil, str?.withPrefix(nil))
+    }
+    
     // MARK: - removePrefix
     
     func testRemovePrefix_001() {
@@ -416,6 +450,40 @@ class StringUtilsTests: XCTestCase {
         let str: String = "123456789"
         XCTAssertEqual(str.removePrefix("1234567890"), "123456789")
         XCTAssertEqual(str.removePrefix("12356789"), "123456789")
+    }
+    
+    // MARK: - withSuffix
+    
+    func testWithSuffix_001() {
+        let str: String = "1234"
+        XCTAssertEqual("1234+", str.withSuffix("+"))
+        XCTAssertEqual("12345", str.withSuffix("5"))
+        XCTAssertEqual("1234", str.withSuffix(""))
+        XCTAssertEqual("1234", str.withSuffix(nil))
+    }
+    
+    func testWithSuffix_002() {
+        let str: String? = "1234"
+        XCTAssertEqual("1234+", str?.withSuffix("+"))
+        XCTAssertEqual("12345", str?.withSuffix("5"))
+        XCTAssertEqual("1234", str?.withSuffix(""))
+        XCTAssertEqual("1234", str?.withSuffix(nil))
+    }
+    
+    func testWithSuffix_003() {
+        let str: String? = ""
+        XCTAssertEqual("+", str?.withSuffix("+"))
+        XCTAssertEqual("5", str?.withSuffix("5"))
+        XCTAssertEqual("", str?.withSuffix(""))
+        XCTAssertEqual("", str?.withSuffix(nil))
+    }
+    
+    func testWithSuffix_004() {
+        let str: String? = nil
+        XCTAssertEqual(nil, str?.withSuffix("+"))
+        XCTAssertEqual(nil, str?.withSuffix("5"))
+        XCTAssertEqual(nil, str?.withSuffix(""))
+        XCTAssertEqual(nil, str?.withSuffix(nil))
     }
     
     // MARK: - removeSuffix

@@ -91,6 +91,12 @@ public extension String {
         return value
     }
     
+    /// 指定した文字列を先頭に付けて返す
+    func withPrefix(_ prefix: String?) -> String {
+        guard let prefix = prefix else { return self }
+        return prefix + self
+    }
+    
     /// 指定した文字列を先頭から削除した文字列を返す。
     /// 指定した文字列が先頭にない場合は元の文字列を返す。
     func removePrefix(_ prefix: String) -> String {
@@ -98,6 +104,12 @@ public extension String {
         return String(dropFirst(prefix.count))
     }
     
+    /// 指定した文字列を末尾に付けて返す
+    func withSuffix(_ suffix: String?) -> String {
+        guard let suffix = suffix else { return self }
+        return self + suffix
+    }
+
     /// 指定した文字列を末尾から削除する。
     /// 指定した文字列が末尾にない場合は元の文字列を返す。
     func removeSuffix(_ suffix: String) -> String {
