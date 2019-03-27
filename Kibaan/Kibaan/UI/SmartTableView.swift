@@ -51,6 +51,8 @@ open class SmartTableView: UITableView {
     /// データなしラベル
     open var noDataLabel = SmartLabel()
     
+    // MARK: - Initializer
+    
     /// イニシャライザ
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -145,6 +147,18 @@ open class SmartTableView: UITableView {
     /// - Parameter noDataMessage: テキスト
     open func setNoDataMessage(noDataMessage: String?) {
         noDataLabel.text = noDataMessage
+    }
+    
+    /// スクロール位置を初期化する
+    ///
+    /// - Parameter animated: アニメーションの有無
+    open func resetScrollOffset(animated: Bool = false) {
+        guard 0 < visibleCells.count else { return }
+        if tableHeaderView != nil {
+            setContentOffset(CGPoint(x: 0, y: 0), animated: animated)
+        } else {
+            scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: animated)
+        }
     }
     
     // MARK: - Refresh Control

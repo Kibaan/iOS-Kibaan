@@ -5,7 +5,7 @@
 
 import UIKit
 
-open class BaseScrollView: UIScrollView, UIScrollViewDelegate {
+open class SmartScrollView: UIScrollView, UIScrollViewDelegate {
     
     // MARK: - IBInspectable
     
@@ -98,6 +98,15 @@ open class BaseScrollView: UIScrollView, UIScrollViewDelegate {
             let height = indicatorSize?.height ?? view.frame.size.height
             view.frame = CGRect(x: indicatorX, y: fullH - view.frame.size.height + scrollY, width: indicatorWidth, height: height)
         }
+    }
+    
+    // MARK: - Support
+    
+    /// スクロール位置を初期化する
+    ///
+    /// - Parameter animated: アニメーションの有無
+    open func resetScrollOffset(animated: Bool = false) {
+        setContentOffset(CGPoint.zero, animated: animated)
     }
     
     // MARK: - UIScrollViewDelegate

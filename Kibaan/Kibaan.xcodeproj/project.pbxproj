@@ -44,7 +44,7 @@
 		40241BB22194254F007EEB71 /* SmartLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241B6A2194254F007EEB71 /* SmartLabel.swift */; };
 		40241BB32194254F007EEB71 /* LinkLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241B6B2194254F007EEB71 /* LinkLabel.swift */; };
 		40241BB42194254F007EEB71 /* SmartContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241B6C2194254F007EEB71 /* SmartContext.swift */; };
-		40241BB52194254F007EEB71 /* BaseScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241B6D2194254F007EEB71 /* BaseScrollView.swift */; };
+		40241BB52194254F007EEB71 /* SmartScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241B6D2194254F007EEB71 /* SmartScrollView.swift */; };
 		40241BB62194254F007EEB71 /* ToastPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241B6E2194254F007EEB71 /* ToastPopup.swift */; };
 		40241BB72194254F007EEB71 /* LoopPagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241B6F2194254F007EEB71 /* LoopPagerView.swift */; };
 		40241BB82194254F007EEB71 /* SegmentedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241B702194254F007EEB71 /* SegmentedButton.swift */; };
@@ -169,7 +169,7 @@
 		40241B6A2194254F007EEB71 /* SmartLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartLabel.swift; sourceTree = "<group>"; };
 		40241B6B2194254F007EEB71 /* LinkLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkLabel.swift; sourceTree = "<group>"; };
 		40241B6C2194254F007EEB71 /* SmartContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartContext.swift; sourceTree = "<group>"; };
-		40241B6D2194254F007EEB71 /* BaseScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseScrollView.swift; sourceTree = "<group>"; };
+		40241B6D2194254F007EEB71 /* SmartScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartScrollView.swift; sourceTree = "<group>"; };
 		40241B6E2194254F007EEB71 /* ToastPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastPopup.swift; sourceTree = "<group>"; };
 		40241B6F2194254F007EEB71 /* LoopPagerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoopPagerView.swift; sourceTree = "<group>"; };
 		40241B702194254F007EEB71 /* SegmentedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedButton.swift; sourceTree = "<group>"; };
@@ -385,7 +385,7 @@
 				40241B6A2194254F007EEB71 /* SmartLabel.swift */,
 				40241B6B2194254F007EEB71 /* LinkLabel.swift */,
 				40241B6C2194254F007EEB71 /* SmartContext.swift */,
-				40241B6D2194254F007EEB71 /* BaseScrollView.swift */,
+				40241B6D2194254F007EEB71 /* SmartScrollView.swift */,
 				40241B6E2194254F007EEB71 /* ToastPopup.swift */,
 				40241B6F2194254F007EEB71 /* LoopPagerView.swift */,
 				40241B702194254F007EEB71 /* SegmentedButton.swift */,
@@ -660,7 +660,7 @@
 				40241BCA2194254F007EEB71 /* NSLayoutConstraint+Utils.swift in Sources */,
 				40241BC92194254F007EEB71 /* UIFont+Utils.swift in Sources */,
 				40241BAA2194254F007EEB71 /* KeyValue.swift in Sources */,
-				40241BB52194254F007EEB71 /* BaseScrollView.swift in Sources */,
+				40241BB52194254F007EEB71 /* SmartScrollView.swift in Sources */,
 				10583262223BAA920018847E /* ListDictionary.swift in Sources */,
 				10CD04B821E895B80095C5F2 /* TransitionType.swift in Sources */,
 				40241BAB2194254F007EEB71 /* PickerViewController.swift in Sources */,

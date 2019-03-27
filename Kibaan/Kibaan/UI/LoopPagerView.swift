@@ -5,7 +5,7 @@
 import UIKit
 
 /// ページングが左右端でループするスクロールビュー
-open class LoopPagerView: BaseScrollView {
+open class LoopPagerView: SmartScrollView {
 
     /// ページ変更時の処理（変更前Index、変更後Index）
     open var pageChangeAction: ((Int, Int) -> Void)?
