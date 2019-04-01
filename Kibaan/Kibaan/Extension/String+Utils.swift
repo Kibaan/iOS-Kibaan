@@ -142,6 +142,11 @@ public extension String {
         return splitFromLeft(length: length)
     }
     
+    /// 指定された文字で分割された文字列からの部分文字列を含む配列を空文字を除去した上で返す
+    func splitWithoutEmpty(separator: Character) -> [String] {
+        return split(separator: separator).map { String($0) }
+    }
+    
     /// 文字列の左側から指定した文字数ごとに区切った配列を返す
     func splitFromLeft(length: Int) -> [String] {
         guard !isEmpty else { return [""] }

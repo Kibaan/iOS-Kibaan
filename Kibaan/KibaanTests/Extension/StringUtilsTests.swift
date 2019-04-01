@@ -619,6 +619,14 @@ class StringUtilsTests: XCTestCase {
         XCTAssertEqual(str.split(length: 2), [""])
     }
     
+    func testSplitWithoutEmpty() {
+        let word = "東京海上  日本   "
+        let words = word.splitWithoutEmpty(separator: " ")
+        XCTAssertEqual(2, words.count)
+        XCTAssertEqual("東京海上", words[0])
+        XCTAssertEqual("日本", words[1])
+    }
+    
     // MARK: - hasAnyPrefix
     
     func testHasAnyPrefix() {
