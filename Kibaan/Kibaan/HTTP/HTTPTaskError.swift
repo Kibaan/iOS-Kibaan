@@ -24,15 +24,15 @@ public enum HTTPTaskError: Error {
     public var description: String {
         switch self {
         case .invalidURL:
-            return "URLが不正です"
+            return "リクエストするURLが不正です。"
         case .network:
-            return "オフライン、タイムアウトなどの通信エラー"
+            return "通信エラーが発生しました。 通信環境が不安定か、接続先が誤っている可能性があります。"
         case .statusCode:
-            return "HTTPステータスコードが既定ではないエラー"
+            return "HTTPステータスコードが不正です。"
         case .parse:
-            return "レスポンスデータのパースに失敗"
+            return "レスポンスデータのパースに失敗しました。"
         case .invalidResponse:
-            return "レスポンスデータの内容がエラー"
+            return "レスポンスデータのバリデーションエラーです。"
         }
     }
 }
