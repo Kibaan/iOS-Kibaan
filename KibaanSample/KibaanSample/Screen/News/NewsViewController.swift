@@ -8,7 +8,7 @@
 
 import Kibaan
 
-class NewsViewController: BaseViewController {
+class NewsViewController: SmartViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

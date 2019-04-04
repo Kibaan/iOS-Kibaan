@@ -8,7 +8,7 @@
 
 import Kibaan
 
-class TradeViewController: BaseViewController {
+class TradeViewController: SmartViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

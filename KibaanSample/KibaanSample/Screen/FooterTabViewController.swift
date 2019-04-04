@@ -4,7 +4,7 @@
 
 import Kibaan
 
-class FooterTabViewController: BaseViewController {
+class FooterTabViewController: SmartViewController {
 
     enum Tab: String {
         case top, chart, news, trade, menu
@@ -20,7 +20,7 @@ class FooterTabViewController: BaseViewController {
     
     let tabButtons = ButtonGroup<Tab>()
     
-    private var tabViewController: BaseViewController? {
+    private var tabViewController: SmartViewController? {
         willSet {
             tabViewController?.leave()
             tabViewController?.view.removeFromSuperview()
@@ -91,7 +91,7 @@ class FooterTabViewController: BaseViewController {
     }
     
     @discardableResult
-    func setTabScreen<T: BaseViewController>(type: T.Type) -> T {
+    func setTabScreen<T: SmartViewController>(type: T.Type) -> T {
         updateFooterButtonState(type: type)
         
         let controller = ViewControllerCache.shared.get(type)
@@ -99,7 +99,7 @@ class FooterTabViewController: BaseViewController {
         return controller
     }
     
-    private func updateFooterButtonState<T: BaseViewController>(type: T.Type) {
+    private func updateFooterButtonState<T: SmartViewController>(type: T.Type) {
         switch type {
         case is TopViewController.Type: tabButtons.select(type: .top)
         case is ChartViewController.Type:       tabButtons.select(type: .chart)

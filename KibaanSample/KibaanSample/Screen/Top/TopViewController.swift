@@ -8,7 +8,7 @@
 
 import Kibaan
 
-class TopViewController: BaseViewController {
+class TopViewController: SmartViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

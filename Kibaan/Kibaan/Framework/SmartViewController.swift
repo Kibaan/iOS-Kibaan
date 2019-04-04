@@ -5,24 +5,24 @@
 import UIKit
 
 /// 基盤ViewController
-open class BaseViewController: UIViewController {
+open class SmartViewController: UIViewController {
     
     /// 同クラスのインスタンスが複数存在する場合に識別するためのID
     open var viewID: String = ""
     /// 子のViewController
-    private var subControllers = [BaseViewController]()
+    private var subControllers = [SmartViewController]()
     /// 表示中の子ViewControllerの配列
-    open var foregroundSubControllers: [BaseViewController] { return [] }
+    open var foregroundSubControllers: [SmartViewController] { return [] }
     /// 表示中のViewController
-    open var foregroundController: BaseViewController { return nextScreens.last ?? self }
+    open var foregroundController: SmartViewController { return nextScreens.last ?? self }
     /// 紐づくタスクのコンテナ
     open var taskHolder = TaskHolder()
     /// 上に乗せたオーバーレイ画面
-    private var overlays = [BaseViewController]()
+    private var overlays = [SmartViewController]()
     /// オーバーレイ画面が乗っているか
     open var hasOverlay: Bool { return !overlays.isEmpty }
     /// スライド表示させた画面リスト
-    private var nextScreens = [BaseViewController]()
+    private var nextScreens = [SmartViewController]()
     /// スライド表示させた画面の制約
     private var nextScreenConstraints: [NSLayoutConstraint] = []
     /// スライド表示させる画面を追加する対象のビュー
@@ -30,9 +30,9 @@ open class BaseViewController: UIViewController {
     /// スライドアニメーション時間
     open var nextScreenAnimationDuration: TimeInterval = 0.3
     /// オーバーレイ画面のオーナー
-    open weak var owner: BaseViewController?
+    open weak var owner: SmartViewController?
     /// スライド表示させた画面の遷移のルート
-    open weak var navigationRootController: BaseViewController?
+    open weak var navigationRootController: SmartViewController?
     /// 画面表示中かどうか
     open var isForeground: Bool = false
     /// 画面遷移アニメーション
@@ -99,13 +99,13 @@ open class BaseViewController: UIViewController {
     }
     
     /// 子ViewControllerを追加する
-    open func addSubController(_ controller: BaseViewController) {
+    open func addSubController(_ controller: SmartViewController) {
         controller.owner = self
         subControllers.append(controller)
     }
     
     /// 子ViewControllerを複数追加する
-    open func addSubControllers(_ controllers: [BaseViewController]) {
+    open func addSubControllers(_ controllers: [SmartViewController]) {
         subControllers.forEach {
             $0.owner = self
         }
@@ -131,7 +131,7 @@ open class BaseViewController: UIViewController {
     
     /// ViewControllerをスライド表示させる
     @discardableResult
-    open func addNextScreen<T: BaseViewController>(_ type: T.Type, id: String? = nil, cache: Bool = true, animated: Bool = true, prepare: ((T) -> Void)? = nil) -> T? {
+    open func addNextScreen<T: SmartViewController>(_ type: T.Type, id: String? = nil, cache: Bool = true, animated: Bool = true, prepare: ((T) -> Void)? = nil) -> T? {
         let targetView = nextScreenTargetView
         checkTargetView(targetView)
         let controller = ViewControllerCache.shared.get(type, id: id, cache: cache)
@@ -247,7 +247,7 @@ open class BaseViewController: UIViewController {
     
     /// ViewControllerを上に乗せる
     @discardableResult
-    open func addOverlay<T: BaseViewController>(_ type: T.Type, id: String? = nil, cache: Bool = true, prepare: ((T) -> Void)? = nil) -> T? {
+    open func addOverlay<T: SmartViewController>(_ type: T.Type, id: String? = nil, cache: Bool = true, prepare: ((T) -> Void)? = nil) -> T? {
         let controller = ViewControllerCache.shared.get(type, id: id, cache: cache)
         controller.owner = self
         overlays += [controller]
@@ -262,9 +262,9 @@ open class BaseViewController: UIViewController {
     }
     
     /// 上に乗ったViewControllerを外す
-    open func removeOverlay<T: BaseViewController>(_ target: T.Type? = nil) {
+    open func removeOverlay<T: SmartViewController>(_ target: T.Type? = nil) {
         if 0 < overlays.count {
-            var removed: BaseViewController?
+            var removed: SmartViewController?
             if let target = target {
                 if let index = overlays.index(where: { type(of: $0) == target }) {
                     removed = overlays.remove(at: index)

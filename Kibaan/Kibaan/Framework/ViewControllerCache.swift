@@ -35,7 +35,7 @@ public class ViewControllerCache {
         let fullName = NSStringFromClass(type)
         let className = fullName.components(separatedBy: ".").last
         let controller = T(nibName: nibName ?? className, bundle: nil)
-        if let baseViewController = controller as? BaseViewController, let id = id {
+        if let baseViewController = controller as? SmartViewController, let id = id {
             baseViewController.viewID = id
         }
         return controller

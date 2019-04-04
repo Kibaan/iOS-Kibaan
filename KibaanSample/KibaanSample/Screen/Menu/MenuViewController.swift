@@ -8,7 +8,7 @@
 
 import Kibaan
 
-class MenuViewController: BaseViewController {
+class MenuViewController: SmartViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

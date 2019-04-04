@@ -5,7 +5,7 @@
 import Kibaan
 @testable import KibaanSample
 
-class MockBaseViewController: BaseViewController {
+class MockBaseViewController: SmartViewController {
 
     // MARK: - Variables
     

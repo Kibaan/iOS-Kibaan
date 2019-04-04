@@ -8,7 +8,7 @@
 
 import Kibaan
 
-class ChartViewController: BaseViewController {
+class ChartViewController: SmartViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

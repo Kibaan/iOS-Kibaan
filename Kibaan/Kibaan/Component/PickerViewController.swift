@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class PickerViewController: BaseViewController {
+open class PickerViewController: SmartViewController {
     
     @IBOutlet weak open var pickerView: UIPickerView!
     

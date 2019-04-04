@@ -1,7 +1,7 @@
 import Kibaan
 
 /// 起動画面
-class LauncherViewController: BaseViewController {
+class LauncherViewController: SmartViewController {
 
     let launcherService = LauncherService()
     

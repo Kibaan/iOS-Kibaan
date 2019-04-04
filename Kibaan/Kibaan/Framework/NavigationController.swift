@@ -8,6 +8,6 @@
 
 import UIKit
 
-open class NavigationController: BaseViewController {
+open class NavigationController: SmartViewController {
     
 }

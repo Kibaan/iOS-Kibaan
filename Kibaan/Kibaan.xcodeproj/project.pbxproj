@@ -54,7 +54,7 @@
 		40241BBC2194254F007EEB71 /* TickerLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241B742194254F007EEB71 /* TickerLabel.swift */; };
 		40241BBD2194254F007EEB71 /* ButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241B752194254F007EEB71 /* ButtonGroup.swift */; };
 		40241BBE2194254F007EEB71 /* SmartAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241B772194254F007EEB71 /* SmartAppDelegate.swift */; };
-		40241BBF2194254F007EEB71 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241B782194254F007EEB71 /* BaseViewController.swift */; };
+		40241BBF2194254F007EEB71 /* SmartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241B782194254F007EEB71 /* SmartViewController.swift */; };
 		40241BC02194254F007EEB71 /* ViewControllerCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241B792194254F007EEB71 /* ViewControllerCache.swift */; };
 		40241BC12194254F007EEB71 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241B7A2194254F007EEB71 /* NavigationController.swift */; };
 		40241BC22194254F007EEB71 /* UIDevice+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241B7C2194254F007EEB71 /* UIDevice+Utils.swift */; };
@@ -179,7 +179,7 @@
 		40241B742194254F007EEB71 /* TickerLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TickerLabel.swift; sourceTree = "<group>"; };
 		40241B752194254F007EEB71 /* ButtonGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonGroup.swift; sourceTree = "<group>"; };
 		40241B772194254F007EEB71 /* SmartAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartAppDelegate.swift; sourceTree = "<group>"; };
-		40241B782194254F007EEB71 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		40241B782194254F007EEB71 /* SmartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartViewController.swift; sourceTree = "<group>"; };
 		40241B792194254F007EEB71 /* ViewControllerCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerCache.swift; sourceTree = "<group>"; };
 		40241B7A2194254F007EEB71 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		40241B7C2194254F007EEB71 /* UIDevice+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+Utils.swift"; sourceTree = "<group>"; };
@@ -514,7 +514,7 @@
 			isa = PBXGroup;
 			children = (
 				40241B772194254F007EEB71 /* SmartAppDelegate.swift */,
-				40241B782194254F007EEB71 /* BaseViewController.swift */,
+				40241B782194254F007EEB71 /* SmartViewController.swift */,
 				40241B792194254F007EEB71 /* ViewControllerCache.swift */,
 				40241B7A2194254F007EEB71 /* NavigationController.swift */,
 				40241B4E2194254F007EEB71 /* ScreenService.swift */,
@@ -668,7 +668,7 @@
 				40241BBE2194254F007EEB71 /* SmartAppDelegate.swift in Sources */,
 				40241BCF2194254F007EEB71 /* UITableViewCell+Utils.swift in Sources */,
 				40241BD52194254F007EEB71 /* NSLayoutDimension+Utils.swift in Sources */,
-				40241BBF2194254F007EEB71 /* BaseViewController.swift in Sources */,
+				40241BBF2194254F007EEB71 /* SmartViewController.swift in Sources */,
 				40241BBD2194254F007EEB71 /* ButtonGroup.swift in Sources */,
 				40241BA52194254F007EEB71 /* URLRequestBuilder.swift in Sources */,
 				40241BB12194254F007EEB71 /* CustomNibView.swift in Sources */,

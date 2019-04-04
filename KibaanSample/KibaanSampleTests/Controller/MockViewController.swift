@@ -22,7 +22,7 @@ class MockViewController: MockBaseViewController {
         return containerView
     }
     
-    override var foregroundSubControllers: [BaseViewController] {
+    override var foregroundSubControllers: [SmartViewController] {
         return tab == .tab1 ? [subVc1] : [subVc2]
     }
     

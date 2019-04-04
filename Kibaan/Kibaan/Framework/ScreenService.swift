@@ -19,7 +19,7 @@ open class ScreenService {
     }
     
     /// サブスクリーンのリスト
-    private var screenStack: [BaseViewController] = []
+    private var screenStack: [SmartViewController] = []
     
     /// 画面全体インジケーターの背景
     private var indicatorBackground = UIView()
@@ -27,7 +27,7 @@ open class ScreenService {
     private var indicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.whiteLarge)
 
     /// 一番前面に表示されたViewController
-    open var foregroundController: BaseViewController? {
+    open var foregroundController: SmartViewController? {
         return screenStack.last
     }
     
@@ -46,14 +46,14 @@ open class ScreenService {
     
     /// クラスからRootのViewControllerを設定する
     @discardableResult
-    open func setRoot<T: BaseViewController>(_ type: T.Type, prepare: ((T) -> Void)? = nil) -> T {
+    open func setRoot<T: SmartViewController>(_ type: T.Type, prepare: ((T) -> Void)? = nil) -> T {
         let controller = ViewControllerCache.shared.get(type)
         setRootViewController(controller, prepare: prepare)
         return controller
     }
     
     /// RootのViewControllerを設定する
-    open func setRootViewController<T: BaseViewController>(_ controller: T, prepare: ((T) -> Void)? = nil) {
+    open func setRootViewController<T: SmartViewController>(_ controller: T, prepare: ((T) -> Void)? = nil) {
         if window.rootViewController == controller {
             return
         }
@@ -64,7 +64,7 @@ open class ScreenService {
         }
         screenStack.removeAll(keepingCapacity: true)
 
-        let oldRootViewController = window.rootViewController as? BaseViewController
+        let oldRootViewController = window.rootViewController as? SmartViewController
         oldRootViewController?.leave()
         window.rootViewController = controller
         oldRootViewController?.removed()
@@ -77,7 +77,7 @@ open class ScreenService {
     
     /// 画面を追加する
     @discardableResult
-    open func addSubScreen<T: BaseViewController>(_ type: T.Type, nibName: String? = nil, id: String? = nil, cache: Bool = true, transitionType: TransitionType = .normal, prepare: ((T) -> Void)? = nil) -> T? {
+    open func addSubScreen<T: SmartViewController>(_ type: T.Type, nibName: String? = nil, id: String? = nil, cache: Bool = true, transitionType: TransitionType = .normal, prepare: ((T) -> Void)? = nil) -> T? {
         foregroundController?.leave()
         
         let controller = ViewControllerCache.shared.get(type, nibName: nibName, id: id, cache: cache)
@@ -129,7 +129,7 @@ open class ScreenService {
     }
     
     /// 追加した画面を取り除く
-    open func removeSubScreen(executeStart: Bool = true, to: BaseViewController, completion: (() -> Void)? = nil) {
+    open func removeSubScreen(executeStart: Bool = true, to: SmartViewController, completion: (() -> Void)? = nil) {
         guard screenStack.count > 1, screenStack.contains(to) else { return }
         guard let lastViewController = screenStack.last else { return }
         if to === lastViewController {
@@ -137,7 +137,7 @@ open class ScreenService {
         }
         window.isUserInteractionEnabled = false
         foregroundController?.leave()
-        var removedViewControllers: [BaseViewController] = []
+        var removedViewControllers: [SmartViewController] = []
         for viewController in screenStack.reversed() {
             if screenStack.last === to {
                 break
@@ -174,7 +174,7 @@ open class ScreenService {
         foregroundController?.leave()
         foregroundController?.removeAllOverlay()
         
-        var removedViewControllers: [BaseViewController] = []
+        var removedViewControllers: [SmartViewController] = []
         while 1 < screenStack.count {
             let removed = screenStack.removeLast()
             removedViewControllers.append(removed)
