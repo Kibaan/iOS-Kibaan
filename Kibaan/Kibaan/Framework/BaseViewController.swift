@@ -29,6 +29,8 @@ open class BaseViewController: UIViewController {
     open var nextScreenAnimationDuration: TimeInterval = 0.3
     /// オーバーレイ画面のオーナー
     open weak var owner: BaseViewController?
+    /// スライド表示させた画面の遷移のルート
+    open weak var navigationRootController: BaseViewController?
     /// 画面表示中かどうか
     open var isForeground: Bool = false
     /// 画面遷移アニメーション
@@ -68,6 +70,7 @@ open class BaseViewController: UIViewController {
     /// 画面を取り除く
     public func removed() {
         onRemovedFromScreen()
+        navigationRootController = nil
     }
     
     /// 画面がスクリーンに追加されたときの処理
@@ -133,7 +136,7 @@ open class BaseViewController: UIViewController {
         guard let parentView = targetView.superview, nextScreens.last != controller else {
             return nil
         }
-        controller.owner = self
+        controller.navigationRootController = self
         let isFirstScreen = nextScreens.isEmpty
         
         // View追加およびビューのサイズ調整用の制約を適用
