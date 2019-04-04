@@ -30,6 +30,9 @@ open class ScreenService {
     open var foregroundController: SmartViewController? {
         return screenStack.last
     }
+    open var rootViewController: SmartViewController? {
+        return screenStack.first
+    }
     
     /// 初期化
     private init() {
