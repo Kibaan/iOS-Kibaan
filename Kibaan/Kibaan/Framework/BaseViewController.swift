@@ -19,6 +19,8 @@ open class BaseViewController: UIViewController {
     open var taskHolder = TaskHolder()
     /// 上に乗せたオーバーレイ画面
     private var overlays = [BaseViewController]()
+    /// オーバーレイ画面が乗っているか
+    open var hasOverlay: Bool { return !overlays.isEmpty }
     /// スライド表示させた画面リスト
     private var nextScreens = [BaseViewController]()
     /// スライド表示させた画面の制約
@@ -275,6 +277,18 @@ open class BaseViewController: UIViewController {
             removed?.view.removeFromSuperview()
             removed?.leave()
             removed?.removed()
+        }
+    }
+    
+    /// 上に乗ったViewControllerを全て外す
+    open func removeAllOverlay() {
+        let allOverlays = Array(overlays)
+        allOverlays.reversed().forEach {
+            $0.owner = nil
+            $0.view.removeFromSuperview()
+            $0.leave()
+            $0.removed()
+            self.overlays.remove(element: $0)
         }
     }
     

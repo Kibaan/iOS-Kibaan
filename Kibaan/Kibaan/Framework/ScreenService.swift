@@ -172,6 +172,7 @@ open class ScreenService {
         guard let lastViewController = screenStack.last else { return }
         window.isUserInteractionEnabled = false
         foregroundController?.leave()
+        foregroundController?.removeAllOverlay()
         
         var removedViewControllers: [BaseViewController] = []
         while 1 < screenStack.count {

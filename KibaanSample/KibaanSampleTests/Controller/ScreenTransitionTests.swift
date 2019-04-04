@@ -116,6 +116,46 @@ class ScreenTransitionTests: XCTestCase {
         XCTAssertEqual(0, vc1.subVc2.stopCount)
         XCTAssertFalse(vc1.subVc2.isForeground)
     }
+    
+    func testRemoveAllOverlay() {
+        ViewControllerCache.shared.clear()
+        let vc1 = ScreenService.shared.setRoot(MockViewController.self)
+        let addVc1 = vc1.addOverlay(MockSubViewController.self, cache: false)!
+        let addVc2 = vc1.addOverlay(MockSubViewController.self, cache: false)!
+        
+        // 1.Addしたスクリーンの確認
+        XCTAssertEqual(1, addVc1.startCount)
+        XCTAssertTrue(addVc1.isForeground)
+        XCTAssertEqual(1, addVc2.startCount)
+        XCTAssertTrue(addVc2.isForeground)
+        
+        // 2.Rootスクリーンの確認
+        XCTAssertEqual(0, vc1.stopCount)
+        XCTAssertTrue(vc1.isForeground)
+        XCTAssertEqual(0, vc1.subVc1.stopCount)
+        XCTAssertTrue(vc1.subVc1.isForeground)
+        XCTAssertEqual(0, vc1.subVc2.stopCount)
+        XCTAssertFalse(vc1.subVc2.isForeground)
+        
+        vc1.removeAllOverlay()
+        
+        // 3.Removeしたスクリーンの確認
+        XCTAssertEqual(1, addVc1.stopCount)
+        XCTAssertFalse(addVc1.isForeground)
+        XCTAssertEqual(1, addVc2.stopCount)
+        XCTAssertFalse(addVc2.isForeground)
+        
+        // 4.Rootスクリーンの確認
+        XCTAssertEqual(1, vc1.startCount)
+        XCTAssertTrue(vc1.isForeground)
+        XCTAssertEqual(1, vc1.subVc1.startCount)
+        XCTAssertTrue(vc1.subVc1.isForeground)
+        XCTAssertEqual(0, vc1.subVc2.stopCount)
+        XCTAssertFalse(vc1.subVc2.isForeground)
+        
+        // 5.オーバーレイが全て消えていること
+        XCTAssertFalse(vc1.hasOverlay)
+    }
 
     func testAddNextScreen() {
         ViewControllerCache.shared.clear()
@@ -239,7 +279,7 @@ class ScreenTransitionTests: XCTestCase {
         XCTAssertFalse(vc2.subVc2.isForeground)
 
         // 前の画面に戻る
-        nextVc.owner?.removeNextScreen()
+        nextVc.navigationRootController?.removeNextScreen()
 
         // 6.閉じたスクリーンの確認
         XCTAssertEqual(1, nextVc.stopCount)
