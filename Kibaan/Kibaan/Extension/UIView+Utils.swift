@@ -21,6 +21,13 @@ public extension UIView {
         }
     }
     
+    /// - Attention: 親がUIStackViewの場合にのみ使用すること
+    /// - Remark: "isHidden"と全く同じ挙動だがAndroid版移植時の効率化のために本プロパティを追加している
+    var isGone: Bool {
+        get { return isHidden }
+        set(value) { isHidden = value }
+    }
+    
     // MARK: - Function
     
     /// 角丸を設定する
