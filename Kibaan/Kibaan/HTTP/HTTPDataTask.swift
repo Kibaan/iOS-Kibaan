@@ -65,9 +65,10 @@ open class HTTPDataTask<DataType>: HTTPTask {
     
     override open func handleConnectionError(_ type: HTTPTaskError, error: Error? = nil, response: HTTPURLResponse?, data: Data?) {
         super.handleConnectionError(type, error: error, response: response, data: data)
-        handleError(type, result: nil, response: response, data: data)
-        
-        next()
+        DispatchQueue.main.async(execute: {
+            self.handleError(type, result: nil, response: response, data: data)
+            self.next()
+        })
     }
 
     open func handleError(_ type: HTTPTaskError, result: DataType?, error: Error? = nil, response: HTTPURLResponse?, data: Data?) {
