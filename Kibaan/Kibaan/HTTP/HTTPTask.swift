@@ -78,9 +78,7 @@ open class HTTPTask: Task {
         httpConnector.timeoutIntervalForRequest = timeoutIntervalForRequest
         httpConnector.timeoutIntervalForResource = timeoutIntervalForResource
         httpConnector.execute(request: request as URLRequest, completionHandler: {  [weak self] (data, resp, err) in
-            DispatchQueue.main.async(execute: {
-                self?.complete(data: data, response: resp, error: err)
-            })
+            self?.complete(data: data, response: resp, error: err)
         })
         
         ConnectionHolder.add(self)
@@ -91,11 +89,13 @@ open class HTTPTask: Task {
     private func complete(data: Data?, response: URLResponse?, error: Error?) {
         
         defer {
-            ConnectionHolder.remove(self)
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            updateIndicator(referenceCount: -1)
-            finishHandler?()
-            end()
+            DispatchQueue.main.async(execute: {
+                ConnectionHolder.remove(self)
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                self.updateIndicator(referenceCount: -1)
+                self.finishHandler?()
+                self.end()
+            })
         }
         
         // キャンセル済みの場合

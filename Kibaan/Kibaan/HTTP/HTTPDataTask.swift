@@ -38,20 +38,29 @@ open class HTTPDataTask<DataType>: HTTPTask {
         do {
             result = try parseResponse(data, response: response)
         } catch {
-            handleError(.parse, result: nil, response: response, data: data)
+            DispatchQueue.main.async(execute: {
+                self.handleError(.parse, result: nil, response: response, data: data)
+            })
             return
         }
 
         if isValidResponse(result) {
-            preProcessOnComplete(result)
-            successHandler?(result)
-            postProcessOnComplete(result)
-            
-            complete()
-            next()
+            DispatchQueue.main.async(execute: {
+                self.handleValidResponse(result: result)
+            })
         } else {
-            handleError(.invalidResponse, result: result, response: response, data: data)
+            DispatchQueue.main.async(execute: {
+                self.handleError(.invalidResponse, result: result, response: response, data: data)
+            })
         }
+    }
+    
+    func handleValidResponse(result: DataType) {
+        preProcessOnComplete(result)
+        successHandler?(result)
+        postProcessOnComplete(result)
+        complete()
+        next()
     }
     
     override open func handleConnectionError(_ type: HTTPTaskError, error: Error? = nil, response: HTTPURLResponse?, data: Data?) {
