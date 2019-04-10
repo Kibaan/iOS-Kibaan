@@ -4,7 +4,7 @@
 
 import Kibaan
 
-class AppSetting: LocalSetting {
+class AppSetting: LocalStorage {
     
     static var shared = AppSetting()
     

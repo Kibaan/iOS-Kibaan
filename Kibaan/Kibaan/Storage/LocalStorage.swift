@@ -5,7 +5,7 @@
 import UIKit
 
 /// 端末に保存可能な設定項目
-open class LocalSetting {
+open class LocalStorage {
     
     open var items: [String: String] = [:]
     
@@ -23,7 +23,7 @@ open class LocalSetting {
     }
     
     /// 他のインスタンスの設定をコピーする
-    public init(other: LocalSetting) {
+    public init(other: LocalStorage) {
         fileName = other.fileName
         items = other.items
     }
@@ -43,7 +43,7 @@ open class LocalSetting {
     }
     
     /// 設定項目を上書きする
-    open func overwriteItems(other: LocalSetting) {
+    open func overwriteItems(other: LocalStorage) {
         items = other.items // dictionaryはstructなので参照代入ではなくコピーされる
     }
     

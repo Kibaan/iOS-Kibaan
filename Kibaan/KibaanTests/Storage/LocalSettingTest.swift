@@ -5,12 +5,12 @@
 import XCTest
 @testable import Kibaan
 
-class LocalSettingTests: XCTestCase {
+class LocalStorageTests: XCTestCase {
 
     let key = "key"
 
     func testString() {
-        let setting = LocalSetting()
+        let setting = LocalStorage()
 
         let value = "testify"
         setting.setString(key, value: value, willSave: false)
@@ -21,7 +21,7 @@ class LocalSettingTests: XCTestCase {
     }
     
     func testStringArray() {
-        let setting = LocalSetting()
+        let setting = LocalStorage()
         
         let value = ["abc", "def", ",,", "\t"]
         setting.setStringArray(key: key, value: value, willSave: false)
@@ -36,7 +36,7 @@ class LocalSettingTests: XCTestCase {
     }
     
     func testInt() {
-        let setting = LocalSetting()
+        let setting = LocalStorage()
         
         let value = 12345
         setting.setInt(key, value: value, willSave: false)
@@ -47,7 +47,7 @@ class LocalSettingTests: XCTestCase {
     }
     
     func testBool() {
-        let setting = LocalSetting()
+        let setting = LocalStorage()
         
         setting.setBool("true", value: true, willSave: false)
         setting.setBool("false", value: false, willSave: false)
@@ -57,7 +57,7 @@ class LocalSettingTests: XCTestCase {
     }
     
     func testFloat() {
-        let setting = LocalSetting()
+        let setting = LocalStorage()
         
         let value: CGFloat = 12.345678
 
@@ -69,7 +69,7 @@ class LocalSettingTests: XCTestCase {
     }
     
     func testEnum() {
-        let setting = LocalSetting()
+        let setting = LocalStorage()
         
         let value: SampleEnum = .valueA
         
@@ -81,7 +81,7 @@ class LocalSettingTests: XCTestCase {
     }
     
     func testEnumArray() {
-        let setting = LocalSetting()
+        let setting = LocalStorage()
         
         let value: [SampleEnum] = [.valueA, .valueB, .valueC]
         
@@ -96,7 +96,7 @@ class LocalSettingTests: XCTestCase {
     }
     
     func testEnumOrNilArray() {
-        let setting = LocalSetting()
+        let setting = LocalStorage()
         
         let value: [SampleEnum?] = [.valueA, .valueB, nil, .valueC]
         
@@ -111,7 +111,7 @@ class LocalSettingTests: XCTestCase {
     }
     
     func testCodable() {
-        let setting = LocalSetting()
+        let setting = LocalStorage()
         
         let value = SampleCodable(number: 1234)
         let emptyValue = SampleCodable(number: 0)
