@@ -539,6 +539,21 @@ class StringUtilsTests: XCTestCase {
     func testDoubleValue() {
         let str: String = "20"
         XCTAssertEqual(str.doubleValue, Double(20.0))
+        
+        XCTAssertEqual(29.94, "29.94.24".doubleValue)
+        XCTAssertEqual(31.93, "31.93%".doubleValue)
+        XCTAssertEqual(39.79, "39.79%39".doubleValue)
+        XCTAssertEqual(0.0, "ー29.01".doubleValue)
+        XCTAssertEqual(0.0, "＋39.79".doubleValue)
+        XCTAssertEqual(777.2, "   777.2".doubleValue)
+        XCTAssertEqual(0.0, "\n\n888.1".doubleValue)
+        XCTAssertEqual(999.3, " 999.3 000".doubleValue)
+        XCTAssertEqual(111.4, "   +111.4   ".doubleValue)
+        XCTAssertEqual(-222.5, "   -222.5   ".doubleValue)
+        XCTAssertEqual(300.0, "3E+2".doubleValue)
+        XCTAssertEqual(0.0, " ".doubleValue)
+        XCTAssertEqual(0.293, ".293".doubleValue)
+        XCTAssertEqual(0.293, ".293.5".doubleValue)
     }
     
     func testNotDoubleValue() {
