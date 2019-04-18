@@ -1,29 +1,59 @@
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/hsylife/SwiftyPickerPopover)
+[![CocoaPods Compatible](https://img.shields.io/badge/pod-compatible-green.svg)](https://cocoapods.org/pods/Kibaan)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
+# Kibaanの概要
 KibaanはiOS、Androidアプリの開発を効率化するためのライブラリです。  
-主な機能としてiOS、Androidに同じ名前のクラスや関数を用意することで、iOSからAndroidへの機械的なコード変換による移植ができるようにしています。
+主に以下の機能を提供します。
 
-AndroidはKotlinでの開発を想定しており、SwiftからKotlinへのコード変換は、以下のツールを用いてある程度機械的に行うことができます。
+## SwiftとKotlinの差異の吸収
 
-[SwiftKotlin](https://github.com/angelolloqui/SwiftKotlin)
+Kibaanを利用する場合、プログラミング言語はiOS側がSwift、Android側がKotlinの前提になります。  
+KibaanはSwiftとKotlin間の差異を可能な限り吸収しています。
 
-# CocoaPodsアップデート方法
+例えば、SwiftのStringクラスは`count`プロパティで文字数を取得できますが、Kotlinでは`length`プロパティで文字数を取得するため、Android側のKibaanにはiOSと同名の`String.count`プロパティを用意し、iOSとAndroidが同名のプロパティで文字数を取得できるようにしています。
 
-1. `Kibaan.podspec`に記載された`s.version`を更新する
-2. GitHubにPUSHする
-3. GitHubで1に記載したバージョンと同じバージョンのリリースを作成する
-4. CocoaPodsサーバーに`Kibaan.podspec`をアップロードする
+## SwiftからKotlinへの機械的な変換
 
-```
-pod trunk push Kibaan.podspec
-```
+[SwiftKotlin](https://github.com/angelolloqui/SwiftKotlin) を使って、Swiftのコードはある程度機械的にKotlinに変換することができます。  
+そのため、Kibaanを使った開発ではiOS側の実装を先に行い、その後にAndroid側の開発を行うことを推奨します。
 
-4を行うには事前にPodへのユーザー登録が必要になる。  
-同じユーザーで登録可能なのか不明。
 
-```
-pod trunk register info@altonotes.co.jp 'altonotes Inc.'
-```
+## 画面制御
+Kibaanは画面遷移の機能を提供します。  
+これは、iOSにおける`Segue`や`UINavigationController`、`presetnViewController`などによる画面遷移を肩代わりするもので、Kibaanを使うことで、iOSもAndroidも画面遷移処理のコードを同様にすることができます。
+
+また、KibaanはAndroid側に`UIViewController`と類似の機能を提供します。これにより画面や画面遷移のコードをiOSとAndroidで同様にすることができます。
+
+## UIクラス
+
+Kibaanはテキスト、ボタン、テーブルビュー、スクロールビューなどの基本的なUIクラスを提供します。  
+これはiOS標準のUILabel、UIButton、UITableViewなどのクラスをラップするもので、OS標準の機能に角丸やパディングなど、よく使う一般的な機能を少し足したものになります。
+
+これらのUIクラスはAndroid側にも同名のクラスが用意されており、これを使うことでUI周りのコードをiOSとAndroidで同様にすることができます。
+
+## 共通のフォント管理
+
+Kibaanの提供するUIクラスは一律でフォントファミリーを変更することができます。  
+アプリケーション共通で通常フォントと太字フォントを指定すると、全てのUIクラスに対してフォントを設定することができます。
+
+## ユーティリティー
+
+その他、Kibaanはアプリ開発において基本的な以下のような機能を提供します。
+
+- HTTP通信
+- 端末内データベース（UserDefaults、SharedPreferences、Realmなどの代替機能）
+- データのセキュアな保存
+- アラートダイアログの表示
+- クエリパラメータのパース
+
+
+# 動作環境
+
+<dl>
+	<dt>最小サポートOS</dt>
+	<dd>iOS10.0</dd>
+</dl>
+
 
 # ガイドライン
 
@@ -215,4 +245,21 @@ enum BuySell: String {
 基本的なクラスの汎用的な機能はExtensionとして実装されています。  
 実装を開始する前にひと通り確認してください。
 
+# CocoaPodsアップデート方法
+
+1. `Kibaan.podspec`に記載された`s.version`を更新する
+2. GitHubにPUSHする
+3. GitHubで1に記載したバージョンと同じバージョンのリリースを作成する
+4. CocoaPodsサーバーに`Kibaan.podspec`をアップロードする
+
+```
+pod trunk push Kibaan.podspec
+```
+
+4を行うには事前にPodへのユーザー登録が必要になる。  
+同じユーザーで登録可能なのか不明。
+
+```
+pod trunk register info@altonotes.co.jp 'altonotes Inc.'
+```
 
