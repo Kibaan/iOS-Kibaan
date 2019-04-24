@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		101C1B082270494300092850 /* ScrollSegmentedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101C1B072270494300092850 /* ScrollSegmentedButton.swift */; };
 		1051240C21E73E3200D71CC2 /* EllipseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1051240B21E73E3200D71CC2 /* EllipseButton.swift */; };
 		10583262223BAA920018847E /* ListDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10583261223BAA920018847E /* ListDictionary.swift */; };
 		107E694021D5CC8F00190AD6 /* HTTPTextTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E693F21D5CC8F00190AD6 /* HTTPTextTask.swift */; };
@@ -129,6 +130,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		101C1B072270494300092850 /* ScrollSegmentedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollSegmentedButton.swift; sourceTree = "<group>"; };
 		1051240B21E73E3200D71CC2 /* EllipseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EllipseButton.swift; sourceTree = "<group>"; };
 		10583261223BAA920018847E /* ListDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDictionary.swift; sourceTree = "<group>"; };
 		107E693F21D5CC8F00190AD6 /* HTTPTextTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTextTask.swift; sourceTree = "<group>"; };
@@ -389,6 +391,7 @@
 				40241B6E2194254F007EEB71 /* ToastPopup.swift */,
 				40241B6F2194254F007EEB71 /* LoopPagerView.swift */,
 				40241B702194254F007EEB71 /* SegmentedButton.swift */,
+				101C1B072270494300092850 /* ScrollSegmentedButton.swift */,
 				40241B712194254F007EEB71 /* TouchThroughView.swift */,
 				40241B722194254F007EEB71 /* SmartTableView.swift */,
 				40241B732194254F007EEB71 /* SmartTextField.swift */,
@@ -715,6 +718,7 @@
 				40241BA42194254F007EEB71 /* URLImagePicker.swift in Sources */,
 				40241B9E2194254F007EEB71 /* Task.swift in Sources */,
 				40241BA82194254F007EEB71 /* OSUtils.swift in Sources */,
+				101C1B082270494300092850 /* ScrollSegmentedButton.swift in Sources */,
 				40241BB32194254F007EEB71 /* LinkLabel.swift in Sources */,
 				40241BA62194254F007EEB71 /* AlertUtils.swift in Sources */,
 				40241BDA2194254F007EEB71 /* HTTPDataTask.swift in Sources */,
