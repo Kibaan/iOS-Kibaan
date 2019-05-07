@@ -23,17 +23,49 @@ public class ListDictionary<Key, Value>: ExpressibleByDictionaryLiteral where Ke
     
     public subscript(key: Key) -> Value? {
         get { return dictionary[key] }
-        set(value) { append(key: key, value: value) }
+        set(value) {
+            guard let value = value else {
+                remove(key: key)
+                return
+            }
+            append(key: key, value: value)
+        }
     }
     
     public subscript(index: Int) -> Value? {
-        get { return dictionary[keyList[index]] }
-        set(value) { append(key: keyList[index], value: value) }
+        get {
+            if index < 0 || keyList.count <= index {
+                return nil
+            }
+            return dictionary[keyList[index]]
+        }
+        set(value) {
+            guard let value = value else {
+                remove(index: index)
+                return
+            }
+            append(key: keyList[index], value: value)
+        }
     }
     
-    public func append(key: Key, value: Value?) {
-        keyList.append(key)
+    public func append(key: Key, value: Value) {
+        if dictionary[key] == nil {
+            keyList.append(key)
+        }
         dictionary[key] = value
+    }
+
+    public func remove(key: Key) {
+        keyList.remove(equatable: key)
+        dictionary[key] = nil
+    }
+
+    public func remove(index: Int) {
+        if index < 0 || keyList.count <= index {
+            return
+        }
+        let key = keyList.remove(at: index)
+        dictionary[key] = nil
     }
     
     public func removeAll() {
