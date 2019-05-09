@@ -22,7 +22,7 @@ public extension CGFloat {
 
     /// NSDecimalNumberに変換
     var decimalNumber: NSDecimalNumber {
-        return NSDecimalNumber(value: Double(self))
+        return doubleValue.decimalNumber
     }
 
     /// 数値を指定した小数桁で四捨五入した文字列を返す

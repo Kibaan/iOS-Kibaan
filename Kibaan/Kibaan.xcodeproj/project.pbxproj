@@ -19,6 +19,7 @@
 		10CD04B821E895B80095C5F2 /* TransitionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CD04B721E895B70095C5F2 /* TransitionType.swift */; };
 		10F8E7F421ED60EC0070458A /* UIViewController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F8E7F321ED60EC0070458A /* UIViewController+Utils.swift */; };
 		4006F7DC22420E2D0094D314 /* Double+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4006F7DB22420E2D0094D314 /* Double+Util.swift */; };
+		4013D61422842E79009A6C31 /* DoubleUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4013D61322842E79009A6C31 /* DoubleUtilsTests.swift */; };
 		40241B3D21941EC9007EEB71 /* Kibaan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40241B3321941EC9007EEB71 /* Kibaan.framework */; };
 		40241B4421941EC9007EEB71 /* Kibaan.h in Headers */ = {isa = PBXBuildFile; fileRef = 40241B3621941EC9007EEB71 /* Kibaan.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		40241B9C2194254F007EEB71 /* ScreenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40241B4E2194254F007EEB71 /* ScreenService.swift */; };
@@ -143,6 +144,7 @@
 		10CD04B721E895B70095C5F2 /* TransitionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionType.swift; sourceTree = "<group>"; };
 		10F8E7F321ED60EC0070458A /* UIViewController+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Utils.swift"; sourceTree = "<group>"; };
 		4006F7DB22420E2D0094D314 /* Double+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Util.swift"; sourceTree = "<group>"; };
+		4013D61322842E79009A6C31 /* DoubleUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleUtilsTests.swift; sourceTree = "<group>"; };
 		40241B3321941EC9007EEB71 /* Kibaan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Kibaan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		40241B3621941EC9007EEB71 /* Kibaan.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Kibaan.h; sourceTree = "<group>"; };
 		40241B3721941EC9007EEB71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -487,6 +489,7 @@
 				5945C77421E31BD5004FFB69 /* UITableCellUtilsTests.swift */,
 				5945C77621E320DA004FFB69 /* DictionaryUtilsTests.swift */,
 				5945C77821E32445004FFB69 /* NSLayoutDimensionUtilsTests.swift */,
+				4013D61322842E79009A6C31 /* DoubleUtilsTests.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -758,6 +761,7 @@
 				40241C63219432CB007EEB71 /* SmartButtonTests.swift in Sources */,
 				40241C68219432CB007EEB71 /* DataUtilsTests.swift in Sources */,
 				59B9EC9C21D5BD6500145BCB /* UILayoutPriorityUtilsTests.swift in Sources */,
+				4013D61422842E79009A6C31 /* DoubleUtilsTests.swift in Sources */,
 				40698B3D21D6007600B5CD85 /* URLQueryTests.swift in Sources */,
 				59715CB421D230470084A1A9 /* UIFontUtilsTests.swift in Sources */,
 				5904E2F721D4B3FF004591AE /* CaseIterableUtilsTests.swift in Sources */,
