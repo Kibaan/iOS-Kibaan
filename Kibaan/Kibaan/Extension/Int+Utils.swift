@@ -22,4 +22,9 @@ public extension Int {
         
         return min + Int(random)
     }
+    
+    /// CGFloatに変換して返す
+    var cgFloatValue: CGFloat {
+        return CGFloat(self)
+    }
 }

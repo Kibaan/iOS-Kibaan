@@ -15,4 +15,9 @@ public extension Double {
         let number = self as NSNumber
         return NSDecimalNumber(string: number.stringValue)
     }
+    
+    /// CGFloatに変換して返す
+    var cgFloatValue: CGFloat {
+        return CGFloat(self)
+    }
 }
