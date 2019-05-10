@@ -176,7 +176,7 @@ open class SmartViewController: UIViewController {
     
     /// 指定されたビューのX軸の表示位置を"constant"を利用して調整する
     private func adjustFirstViewConstraintConstant(parentView: UIView?, targetView: UIView?, constant: CGFloat) {
-        // TODO parentViewのconstraintsを操作しているので、SafeAreaと紐付けた場合に移動できない
+        // FIXME parentViewのconstraintsを操作しているので、SafeAreaと紐付けた場合に移動できない
         let targetAttribute: [NSLayoutConstraint.Attribute] = [.leading, .left, .trailing, .right, .centerX]
         parentView?.constraints.filter {
             return ($0.firstItem as? UIView) == targetView
