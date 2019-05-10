@@ -39,4 +39,16 @@ public extension Character {
     func toUpperCase() -> String {
         return String(self).uppercased()
     }
+    
+    func toHiragana() -> Character {
+        guard let code = unicodeScalars.first?.value, (0x30A1...0x30F6).contains(code) else { return self }
+        guard let unicodeScalar = UnicodeScalar(code - 0x60) else { return self }
+        return Character(unicodeScalar)
+    }
+    
+    func toKatakana() -> Character {
+        guard let code = unicodeScalars.first?.value, (0x3041...0x3096).contains(code) else { return self }
+        guard let unicodeScalar = UnicodeScalar(code + 0x60) else { return self }
+        return Character(unicodeScalar)
+    }
 }

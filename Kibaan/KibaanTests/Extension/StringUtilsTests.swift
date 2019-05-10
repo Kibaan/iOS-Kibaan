@@ -745,4 +745,55 @@ class StringUtilsTests: XCTestCase {
         let src = "ABC"
         XCTAssertEqual(src.sha256(), "b5d4045c3f466fa91fe2cc6abe79232a1a57cdf104f7a26e716e0a1e2789df78")
     }
+    
+    // MARK: - Hiragana, Katakana
+    
+    private let kanaMap: [String: String] = ["あ": "ア", "い": "イ", "う": "ウ", "え": "エ", "お": "オ",
+                                             "か": "カ", "が": "ガ",
+                                             "は": "ハ", "ば": "バ", "ぱ": "パ",
+                                             "っ": "ッ",
+                                             "ゃ": "ャ", "ゅ": "ュ", "ょ": "ョ",
+                                             "ぁ": "ァ", "ぃ": "ィ", "ぅ": "ゥ", "ぇ": "ェ", "ぉ": "ォ",
+                                             "ん": "ン",
+                                             "ゔ": "ヴ", "ゐ": "ヰ", "ゑ": "ヱ",
+                                             "ゕ": "ヵ"
+    ]
+    
+    private let noEffectList: [String] = ["ヷ", "ヸ", "ヹ", "ヺ", "龍", " ", "・", "ー", "ヽ", "ヾ", ""]
+    
+    func testHiraganaToKatakana() {
+        for (hiragana, katakana) in kanaMap {
+            XCTAssertEqual(katakana, hiragana.toKatakana())
+        }
+    }
+    
+    func testKatakanaToKatakana() {
+        for (_, katakana) in kanaMap {
+            XCTAssertEqual(katakana, katakana.toKatakana())
+        }
+    }
+    
+    func testKatakanaToHiragana() {
+        for (hiragana, katakana) in kanaMap {
+            XCTAssertEqual(hiragana, katakana.toHiragana())
+        }
+    }
+    
+    func testHiraganaToHiragana() {
+        for (hiragana, _) in kanaMap {
+            XCTAssertEqual(hiragana, hiragana.toHiragana())
+        }
+    }
+    
+    func testToKatakanaNoEffect() {
+        noEffectList.forEach {
+            XCTAssertEqual($0, $0.toKatakana())
+        }
+    }
+    
+    func testToHiraganaNoEffect() {
+        noEffectList.forEach {
+            XCTAssertEqual($0, $0.toHiragana())
+        }
+    }
 }

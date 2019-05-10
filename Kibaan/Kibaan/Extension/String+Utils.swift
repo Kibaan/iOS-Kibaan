@@ -324,6 +324,14 @@ public extension String {
         }
         return output as String
     }
+    
+    func toHiragana() -> String {
+        return map { String($0.toHiragana()) }.joined()
+    }
+    
+    func toKatakana() -> String {
+        return map { String($0.toKatakana()) }.joined()
+    }
 }
 
 public extension Optional where Wrapped == String {
