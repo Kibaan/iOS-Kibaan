@@ -21,22 +21,20 @@ open class ScrollSegmentedButton: UIScrollView, UIScrollViewDelegate {
     }
     @IBInspectable open var buttonCount: Int = 0 {
         didSet {
-            setup(buttonCount: buttonCount)
+            makeButtons(buttonCount: buttonCount, buttonMaker: buttonMaker ?? makeDefaultButton)
         }
     }
     
     /// 実際に表示するボタンの横幅
     open var buttonWidth: CGFloat {
-        return isFitButtons ? (frame.width / CGFloat(titles.count)) : scrollButtonWidth
+        let count = max(buttonCount, 1)
+        return isFitButtons ? (frame.width / CGFloat(count)) : scrollButtonWidth
     }
     
     /// 選択中のインデックス
     open var selectedIndex: Int? {
         get {
-            if titles.count <= buttons.count {
-                return buttons[0..<titles.count].enumerated().first(where: { $0.element.isSelected })?.offset
-            }
-            return 0
+            return buttons.enumerated().first { $0.element.isSelected }?.offset
         }
         set(value) {
             select(value, needsCallback: true)
@@ -67,14 +65,16 @@ open class ScrollSegmentedButton: UIScrollView, UIScrollViewDelegate {
     
     /// ボタンが端末の横幅に収まるか
     private var isFitButtons: Bool {
-        return CGFloat(titles.count) * scrollButtonWidth <= frame.width
+        return CGFloat(buttonCount) * scrollButtonWidth <= frame.width
     }
     
     /// 左端に表示しているボタン
     private var leftEndButton: UIButton? {
         return buttons.sorted(by: { (lhs, rhs) in lhs.frame.minX < rhs.frame.minX }).first
     }
-    
+
+    private var buttonMaker: (() -> UIButton)?
+
     /// ボタンの見た目を更新する為の処理
     private var buttonUpdater: ((UIButton, ButtonState) -> Void)?
     
@@ -112,14 +112,16 @@ open class ScrollSegmentedButton: UIScrollView, UIScrollViewDelegate {
     // MARK: - Initializer
     
     open func setup(buttonCount: Int, buttonMaker: (() -> UIButton)? = nil, buttonUpdater: ((UIButton, ButtonState) -> Void)? = nil) {
+        self.buttonMaker = buttonMaker
         self.buttonUpdater = buttonUpdater
-        makeButtons(buttonCount: buttonCount, buttonMaker: buttonMaker ?? makeDefaultButton)
+        self.buttonCount = buttonCount
     }
     
     open func setup(titles: [String], buttonMaker: (() -> UIButton)? = nil, buttonUpdater: ((UIButton, ButtonState) -> Void)? = nil) {
-        self.titles = titles
+        self.buttonMaker = buttonMaker
         self.buttonUpdater = buttonUpdater
-        makeButtons(buttonCount: titles.count, buttonMaker: buttonMaker ?? makeDefaultButton)
+        self.buttonCount = titles.count
+        self.titles = titles
     }
     
     open func makeDefaultButton() -> UIButton {
@@ -221,9 +223,6 @@ open class ScrollSegmentedButton: UIScrollView, UIScrollViewDelegate {
     
     /// 各ボタンのX座標を調整する
     private func updateButtonPosition() {
-        if titles.isEmpty {
-            return
-        }
         // まずはページ順に横並び
         buttons.enumerated().forEach {
             $0.element.frame.origin.x = buttonWidth * CGFloat($0.offset)
@@ -259,13 +258,12 @@ open class ScrollSegmentedButton: UIScrollView, UIScrollViewDelegate {
             contentSize = CGSize(width: frame.width, height: frame.height)
         } else {
             // ボタン数 + 余白1ページ分のサイズをとる
-            contentSize = CGSize(width: scrollButtonWidth * CGFloat(titles.count) + frame.width, height: frame.height)
+            contentSize = CGSize(width: scrollButtonWidth * CGFloat(buttonCount) + frame.width, height: frame.height)
         }
     }
     
     /// ボタンの横幅を更新設定する
     private func updateButtonSize() {
-        if titles.isEmpty { return }
         buttons.forEach {
             $0.frame.size.width = buttonWidth
             $0.frame.size.height = frame.height
@@ -305,7 +303,7 @@ open class ScrollSegmentedButton: UIScrollView, UIScrollViewDelegate {
         }
         guard let index = selectedIndex else { return }
         let x1 = scrollButtonWidth * CGFloat(index) - (frame.width / 2) + (scrollButtonWidth / 2)
-        let x2 = x1 + (scrollButtonWidth * CGFloat(titles.count))
+        let x2 = x1 + (scrollButtonWidth * CGFloat(buttonCount))
         if abs(contentOffset.x - x1) < abs(contentOffset.x - x2) && animated {
             setContentOffset(CGPoint(x: x1, y: 0), animated: animated)
         } else {
