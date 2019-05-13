@@ -184,7 +184,7 @@ open class ScrollSegmentedButton: UIScrollView, UIScrollViewDelegate {
     
     // MARK: - Action
     
-    @objc private func actionSelect(_ button: SmartButton) {
+    @objc private func actionSelect(_ button: UIButton) {
         let oldIndex = selectedIndex
         buttons.forEach { $0.isSelected = false }
         if isDummyButton(button) {
@@ -293,7 +293,7 @@ open class ScrollSegmentedButton: UIScrollView, UIScrollViewDelegate {
     // MARK: - Other
     
     /// ダミーボタンかどうか
-    private func isDummyButton(_ button: SmartButton) -> Bool {
+    private func isDummyButton(_ button: UIButton) -> Bool {
         return button == dummyButton
     }
     
