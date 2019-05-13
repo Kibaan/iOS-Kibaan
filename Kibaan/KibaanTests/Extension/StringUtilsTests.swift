@@ -229,6 +229,10 @@ class StringUtilsTests: XCTestCase {
         XCTAssertEqual("-1234".signedNumberFormat, "-1,234")
     }
     
+    func testNumberFormat_017() {
+        XCTAssertEqual("".numberFormat, "")
+    }
+    
     func testPadLeft() {
         XCTAssertEqual("123".leftPadded(size: 6), "   123")
         XCTAssertEqual("123".leftPadded(size: 6, spacer: "0"), "000123")
