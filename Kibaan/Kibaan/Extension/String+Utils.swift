@@ -305,8 +305,9 @@ public extension String {
     }
     
     /// NSDecimalNumberを取得する
-    var decimalNumber: NSDecimalNumber {
-        return NSDecimalNumber(string: self)
+    var decimalNumber: NSDecimalNumber? {
+        let decimalNumber = NSDecimalNumber(string: self)
+        return decimalNumber == NSDecimalNumber.notANumber ? nil : decimalNumber
     }
     
     /// SHA-256形式のハッシュ値を返す

@@ -230,6 +230,10 @@ class StringUtilsTests: XCTestCase {
     }
     
     func testNumberFormat_017() {
+        XCTAssertEqual("".signedNumberFormat, "")
+    }
+    
+    func testNumberFormat_018() {
         XCTAssertEqual("".numberFormat, "")
     }
     
@@ -714,6 +718,33 @@ class StringUtilsTests: XCTestCase {
     func testLocalizedString() {
         let str: String = "こんにちは"
         XCTAssertEqual(str.localizedString, "こんにちは")
+    }
+    
+    // MARK: - decimalNumber
+    
+    func testDecimalNumber_01() {
+        let value: String? = ""
+        XCTAssertEqual(value?.decimalNumber, nil)
+    }
+    
+    func testDecimalNumber_02() {
+        let value: String? = nil
+        XCTAssertEqual(value?.decimalNumber, nil)
+    }
+    
+    func testDecimalNumber_03() {
+        let value: String? = "a"
+        XCTAssertEqual(value?.decimalNumber, nil)
+    }
+    
+    func testDecimalNumber_04() {
+        let value: String? = "1500"
+        XCTAssertEqual(value?.decimalNumber, 1500)
+    }
+    
+    func testDecimalNumber_05() {
+        let value: String? = "0.124"
+        XCTAssertEqual(value?.decimalNumber, 0.124)
     }
     
     // MARK: - unwrapped
