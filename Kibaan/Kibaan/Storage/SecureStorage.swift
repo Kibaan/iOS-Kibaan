@@ -55,7 +55,9 @@ open class SecureStorage {
     }
     
     open func saveData(key: String, data: Data?) -> Bool {
-        guard let data = data else { return false }
+        guard let data = data else {
+            return delete(key: key)
+        }
         var query = createQuery(key: key)
         if contains(query: query) {
             return SecItemUpdate(query as CFDictionary, [kSecValueData: data] as CFDictionary) == noErr

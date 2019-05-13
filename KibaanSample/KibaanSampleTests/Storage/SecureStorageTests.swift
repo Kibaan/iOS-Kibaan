@@ -16,6 +16,19 @@ class SecureStorageTests: XCTestCase {
         let loadValue = secureStorage.load(key: key)
         XCTAssertEqual(value, loadValue)
     }
+
+    func testSaveAndLoadNil() {
+        let secureStorage = SecureStorage()
+        let value = "abc"
+        let key = "password"
+
+        secureStorage.save(value, key: key)
+        XCTAssertEqual(value, secureStorage.load(key: key))
+
+        secureStorage.save(nil, key: key)
+
+        XCTAssertNil(secureStorage.load(key: key))
+    }
     
     func testDelete() {
         let secureStorage = SecureStorage()
