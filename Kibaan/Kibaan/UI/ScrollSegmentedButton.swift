@@ -146,14 +146,14 @@ open class ScrollSegmentedButton: UIScrollView, UIScrollViewDelegate {
     
     open func makeButtons(buttonCount: Int, buttonMaker: (() -> UIButton)) {
         clearView()
-        buttons = (0..<buttonCount).map { _ in
-            let button = buttonMaker()
+        dummyButton = buttonMaker()
+        buttons = (0..<buttonCount).map { _ in buttonMaker() }
+        var allButtons = buttons
+        allButtons.append(dummyButton)
+        allButtons.forEach { button in
             addSubview(button)
             button.addTarget(self, action: #selector(self.actionSelect(_:)), for: .touchUpInside)
-            return button
         }
-        dummyButton = buttonMaker()
-        addSubview(dummyButton)
         updateButtonTitles()
         updateButtonPosition()
         isScrollEnabled = !isFitButtons
