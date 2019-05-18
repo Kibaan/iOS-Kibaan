@@ -68,7 +68,11 @@ public class OSUtils: NSObject {
     static public var isPushNotificationEnable: Bool {
         return UIApplication.shared.isRegisteredForRemoteNotifications
     }
-
+    
+    /// iPadか
+    static public var isIPad: Bool {
+        return UIDevice.current.userInterfaceIdiom == .pad
+    }
 }
 
 // Helper function inserted by Swift 4.2 migrator.
