@@ -165,7 +165,7 @@ open class SmartButton: UIButton, SmartFontProtocol {
     /// タイトルの色
     open var titleColor: UIColor? {
         get { return titleColor(for: .normal) }
-        set(value) { setTitleColor(titleColor, for: .normal) }
+        set(value) { setTitleColor(value, for: .normal) }
     }
 
     override open var isSelected: Bool {
