@@ -35,4 +35,12 @@ class UIColorUtilsTests: XCTestCase {
         XCTAssertEqual(UIColor.red.colorCode, "FF0000")
         XCTAssertEqual(UIColor(rgbValue: 0x556677).colorCode, "556677")
     }
+
+    func testInitFromHexString() {
+        let expected = UIColor(rgbValue: 0xADFF2F)
+        XCTAssertEqual(expected, UIColor(rgbHex: "ADFF2F"))
+        XCTAssertEqual(expected, UIColor(rgbHex: "#ADFF2F"))
+        XCTAssertEqual(expected, UIColor(argbHex: "#FFADFF2F"))
+        XCTAssertEqual(expected, UIColor(argbHex: "FFADFF2F"))
+    }
 }

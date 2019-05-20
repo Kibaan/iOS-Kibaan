@@ -3,7 +3,7 @@ import UIKit
 public extension UIColor {
     
     /// 16進数のカラーコードとアルファ（不透明度）を指定して色を作成する
-    /// UIColor(rgbValue: 0x171b35)
+    /// ex. UIColor(rgbValue: 0x171b35)
     convenience init(rgbValue: Int, alpha: CGFloat = 1.0) {
         self.init(
             red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
@@ -11,7 +11,43 @@ public extension UIColor {
             blue: CGFloat( rgbValue & 0x0000FF) / 255.0,
             alpha: CGFloat(alpha))
     }
-    
+
+    /// 16進数のカラーコード文字列とアルファ（不透明度）を指定して色を作成する
+    /// ex. UIColor(rgbValue: "#FF9900")
+    convenience init(rgbHex: String, alpha: CGFloat = 1.0) {
+        let code = rgbHex.removePrefix("#")
+        guard code.count == 6,
+            let rStr = code[0...1],
+            let gStr = code[2...3],
+            let bStr = code[4...5] else {
+            self.init(white: 0, alpha: 1)
+            return
+        }
+
+        let r = CGFloat(Int(rStr, radix: 16) ?? 0) / 255.0
+        let g = CGFloat(Int(gStr, radix: 16) ?? 0) / 255.0
+        let b = CGFloat(Int(bStr, radix: 16) ?? 0) / 255.0
+        self.init(
+            red: r,
+            green: g,
+            blue: b,
+            alpha: alpha)
+    }
+
+    /// 16進数のカラーコード文字列（α含む）を指定して色を作成する
+    /// ex. UIColor(rgbValue: "#FF9900")
+    convenience init(argbHex: String) {
+        var code = argbHex.removePrefix("#")
+        var alpha: CGFloat = 1.0
+
+        if code.count == 8, let aStr = code[0...1] {
+            code = code.substring(from: 2) ?? ""
+            alpha = CGFloat(Int(aStr, radix: 16) ?? 0) / 255.0
+        }
+
+        self.init(rgbHex: code, alpha: alpha)
+    }
+
     /// 明度を上げた色を作成する
     func whiteAdded(_ value: CGFloat) -> UIColor {
         let color = CIColor(cgColor: self.cgColor)
