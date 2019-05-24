@@ -291,6 +291,15 @@ open class LocalStorage {
         return defaultValue
     }
     
+    /// Codableを取得する（見つからない場合は"nil"を返す）
+    open func getCodableOrNil<T: Codable>(_ key: String, type: T.Type) -> T? {
+        if let jsonData = items[key]?.data(using: .utf8),
+            let result = try? JSONDecoder().decode(T.self, from: jsonData) {
+            return result
+        }
+        return nil
+    }
+    
     /// Codableを設定する
     open func setCodable<T: Codable>(_ key: String, value: T, willSave: Bool = true) {
         let encoder = JSONEncoder()

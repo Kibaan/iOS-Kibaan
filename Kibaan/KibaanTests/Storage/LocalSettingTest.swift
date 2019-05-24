@@ -124,6 +124,11 @@ class LocalStorageTests: XCTestCase {
 
     }
     
+    func testCodableOrNil() {
+        let setting = LocalStorage()
+        XCTAssertNil(setting.getCodableOrNil("Nil", type: String.self))
+    }
+    
     enum SampleEnum: String {
         case valueA
         case valueB
