@@ -340,7 +340,7 @@ open class SmartButton: UIButton, SmartFontProtocol {
     
     /// 背景色を更新する
     private func updateBackgroundColor() {
-        super.backgroundColor = backgroundColor(for: state)
+        super.backgroundColor = backgroundColor(for: state) ?? backgroundColor(for: .normal)
     }
     
     /// アイコン表示用の制約を更新する
