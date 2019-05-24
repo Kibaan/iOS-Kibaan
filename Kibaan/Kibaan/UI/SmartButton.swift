@@ -45,6 +45,13 @@ open class SmartButton: UIButton, SmartFontProtocol {
         }
     }
     
+    @IBInspectable open var disabledBackgroundColor: UIColor? {
+        get { return backgroundColor(for: .disabled) }
+        set(value) {
+            setBackgroundColor(color: value, for: [.disabled])
+        }
+    }
+    
     /// 通常状態の背景色
     override open var backgroundColor: UIColor? {
         get { return super.backgroundColor }
