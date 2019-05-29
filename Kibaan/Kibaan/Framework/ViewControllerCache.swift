@@ -54,7 +54,13 @@ public class ViewControllerCache {
     }
     
     /// キャッシュをクリアする
-    public func clear() {
+    public func clear(completion: (() -> Void)? = nil) {
+        controllerMap.values.forEach {
+            if $0.isViewLoaded {
+                $0.view.removeFromSuperview()
+            }
+        }
         controllerMap.removeAll()
+        completion?()
     }
 }
