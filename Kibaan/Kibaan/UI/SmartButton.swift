@@ -263,7 +263,7 @@ open class SmartButton: UIButton, SmartFontProtocol {
         if underline, let label = titleLabel {
             attrributeStr = NSMutableAttributedString(string: currentTitle ?? "")
             
-            attrributeStr?.addAttributes([.font: label.font,
+            attrributeStr?.addAttributes([.font: label.font as Any,
                                          .underlineStyle: NSUnderlineStyle.single.rawValue],
                                          range: NSRange(location: 0, length: currentTitle?.count ?? 0))
         }

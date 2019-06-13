@@ -16,7 +16,7 @@ public class ConnectionHolder {
     }
     
     static public func remove(_ task: HTTPTask) {
-        let index = connections.index(where: {target in
+        let index = connections.firstIndex(where: {target in
             return target === task
         })
         

@@ -36,7 +36,7 @@ open class PickerViewController: SmartViewController {
     }
     
     open func setup(records: [Item], selectedItem: String?, onSelected: ((String, Int) -> Void)? = nil) {
-        let selectedIndex = records.index { $0.title == selectedItem }
+        let selectedIndex = records.firstIndex { $0.title == selectedItem }
         setup(records: records, selectedIndex: selectedIndex, onSelected: onSelected)
     }
     

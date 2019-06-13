@@ -108,7 +108,7 @@ open class SegmentedButton: CustomView {
     
     /// 選択されているインデックス
     open var selectedIndex: Int? {
-        return buttons.index { $0.isSelected } ?? nil
+        return buttons.firstIndex { $0.isSelected } ?? nil
     }
     
     /// 選択されているボタンのタイトル

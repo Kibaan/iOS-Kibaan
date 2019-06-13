@@ -39,7 +39,7 @@ open class LinkLabel: SmartLabel {
         }
         self.linkList = linkList
         
-        let attrStr = NSMutableAttributedString(string: text, attributes: [.font: font])
+        let attrStr = NSMutableAttributedString(string: text, attributes: [.font: font as Any])
         linkList.forEach {link in
             attrStr.addAttributes([.underlineStyle: NSUnderlineStyle.single.rawValue,
                                    .foregroundColor: color], range: link.range)
@@ -99,7 +99,7 @@ open class LinkLabel: SmartLabel {
     
     private var glyphRectMargin: CGFloat {
         guard let text = text else { return 0 }
-        let boundingRect = NSString(string: text).boundingRect(with: bounds.size, options: .usesLineFragmentOrigin, attributes: [.font: font], context: nil)
+        let boundingRect = NSString(string: text).boundingRect(with: bounds.size, options: .usesLineFragmentOrigin, attributes: [.font: font as Any], context: nil)
         return (frame.height - boundingRect.height) / 2
     }
 }

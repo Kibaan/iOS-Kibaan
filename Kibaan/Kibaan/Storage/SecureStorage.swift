@@ -44,7 +44,7 @@ open class SecureStorage {
     // MARK: - Support
     
     open func loadData(key: String) -> Data? {
-        let query = createQuery(key: key, addQuery: [kSecReturnData: kCFBooleanTrue])
+        let query = createQuery(key: key, addQuery: [kSecReturnData: kCFBooleanTrue as Any])
         var dataTypeRef: CFTypeRef?
         let status = SecItemCopyMatching(query as CFDictionary, &dataTypeRef)
         if status == noErr {

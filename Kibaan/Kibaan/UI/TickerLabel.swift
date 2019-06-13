@@ -87,7 +87,7 @@ open class TickerLabel: UIView {
     }
     
     private func initAnimation() {
-        if let textWidth = label.text?.size(withAttributes: [.font: label.font]).width {
+        if let textWidth = label.text?.size(withAttributes: [.font: label.font as Any]).width {
             label.frame.size.width = textWidth
             label.frame.origin.x = (textWidth <= frame.size.width) ? 0 : frame.width
         }

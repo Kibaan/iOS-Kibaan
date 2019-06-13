@@ -266,7 +266,7 @@ open class SmartViewController: UIViewController {
         if 0 < overlays.count {
             var removed: SmartViewController?
             if let target = target {
-                if let index = overlays.index(where: { type(of: $0) == target }) {
+                if let index = overlays.firstIndex(where: { type(of: $0) == target }) {
                     removed = overlays.remove(at: index)
                 }
             } else {

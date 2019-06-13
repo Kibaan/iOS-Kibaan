@@ -11,7 +11,7 @@ public extension Array where Element: Equatable {
     
     /// 指定した要素を削除する
     mutating func remove(equatable: Element?) {
-        guard let element = equatable, let index: Int = index(of: element) else { return }
+        guard let element = equatable, let index: Int = firstIndex(of: element) else { return }
         remove(at: index)
     }
     
@@ -27,7 +27,7 @@ public extension Array where Element: AnyObject {
     
     /// 指定した要素を削除する
     mutating func remove(element: Element?) {
-        guard let element = element, let index = index(where: { $0 === element }) else { return }
+        guard let element = element, let index = firstIndex(where: { $0 === element }) else { return }
         remove(at: index)
     }
     
