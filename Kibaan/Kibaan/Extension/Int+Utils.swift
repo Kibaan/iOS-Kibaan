@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 
 public extension Optional where Wrapped == Int {
     /// 数値を文字列に変換して返す
