@@ -48,7 +48,7 @@ open class SegmentedButton: CustomView {
 
     // MARK: - Inspectable
     /// スタイル
-    private var styleType: Style = .plain {
+    public var styleType: Style = .plain {
         didSet {
             verticalStackView.arrangedSubviews.compactMap { $0 as? UIStackView }.forEach {
                 setCornerRadius(stackView: $0)
