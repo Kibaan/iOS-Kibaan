@@ -296,6 +296,16 @@ class StringUtilsTests: XCTestCase {
         XCTAssertEqual(1, result.count)
         XCTAssertEqual("", result[0])
     }
+    
+    func testSplitLeftError() {
+        var result1 = "123456".splitFromLeft(length: 0)
+        XCTAssertEqual(1, result1.count)
+        XCTAssertEqual("", result1[0])
+        
+        var result2 = "123456".splitFromLeft(length: -1)
+        XCTAssertEqual(1, result2.count)
+        XCTAssertEqual("", result2[0])
+    }
 
     // MARK: - Split(Right)
     
@@ -325,6 +335,16 @@ class StringUtilsTests: XCTestCase {
         var result = "".splitFromRight(length: 4)
         XCTAssertEqual(1, result.count)
         XCTAssertEqual("", result[0])
+    }
+    
+    func testSplitRightError() {
+        var result1 = "123456".splitFromRight(length: 0)
+        XCTAssertEqual(1, result1.count)
+        XCTAssertEqual("", result1[0])
+        
+        var result2 = "123456".splitFromRight(length: -1)
+        XCTAssertEqual(1, result2.count)
+        XCTAssertEqual("", result2[0])
     }
     
     // MARK: - IsNotEmpty
@@ -648,6 +668,16 @@ class StringUtilsTests: XCTestCase {
         XCTAssertEqual(2, words.count)
         XCTAssertEqual("東京海上", words[0])
         XCTAssertEqual("日本", words[1])
+    }
+    
+    func testSplitError() {
+        var result1 = "123456".split(length: 0)
+        XCTAssertEqual(1, result1.count)
+        XCTAssertEqual("", result1[0])
+        
+        var result2 = "123456".split(length: -1)
+        XCTAssertEqual(1, result2.count)
+        XCTAssertEqual("", result2[0])
     }
     
     // MARK: - hasAnyPrefix

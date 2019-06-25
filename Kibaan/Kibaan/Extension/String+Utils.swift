@@ -149,7 +149,7 @@ public extension String {
     
     /// 文字列の左側から指定した文字数ごとに区切った配列を返す
     func splitFromLeft(length: Int) -> [String] {
-        guard !isEmpty else { return [""] }
+        guard !isEmpty, 0 < length else { return [""] }
         var array: [String] = []
         var i = 0
         while i < self.count {
@@ -165,7 +165,7 @@ public extension String {
     
     /// 文字列の右側から指定した文字数ごとに区切った配列を返す
     func splitFromRight(length: Int) -> [String] {
-        guard !isEmpty else { return [""] }
+        guard !isEmpty, 0 < length else { return [""] }
         var array: [String] = []
         var i = 0
         while i < self.count {
