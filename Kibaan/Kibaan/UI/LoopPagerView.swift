@@ -42,6 +42,7 @@ open class LoopPagerView: SmartScrollView {
         showsHorizontalScrollIndicator = false
         isPagingEnabled = true
         bounces = true
+        clipsToBounds = true
     }
     
     // レイアウトする
