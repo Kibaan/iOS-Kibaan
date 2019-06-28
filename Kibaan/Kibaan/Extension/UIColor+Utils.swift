@@ -60,6 +60,7 @@ public extension UIColor {
     }
 
     /// 文字列のカラーコード（アルファは含まない）
+    // FIXME: UIColorのRGB値はFFを超えることがあり、超えた場合１桁目が切れて不正なからコードになってしまう問題がある
     var colorCode: String? {
         var red: CGFloat = 0.0
         var green: CGFloat = 0.0
