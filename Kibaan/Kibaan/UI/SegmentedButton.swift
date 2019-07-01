@@ -28,8 +28,10 @@ open class SegmentedButton: CustomView {
     /// 角丸サイズ
     open var segmentCornerRadius: CGFloat = 6 {
         didSet {
-            verticalStackView.arrangedSubviews.compactMap { $0 as? UIStackView }.forEach {
-                setCornerRadius(stackView: $0)
+            if style != Style.custom.rawValue {
+                verticalStackView.arrangedSubviews.compactMap { $0 as? UIStackView }.forEach {
+                    setCornerRadius(stackView: $0)
+                }
             }
         }
     }
@@ -48,17 +50,19 @@ open class SegmentedButton: CustomView {
 
     // MARK: - Inspectable
     /// スタイル
-    public var styleType: Style = .plain {
+    public var styleType: Style = .custom {
         didSet {
-            verticalStackView.arrangedSubviews.compactMap { $0 as? UIStackView }.forEach {
-                setCornerRadius(stackView: $0)
+            if style != Style.custom.rawValue {
+                verticalStackView.arrangedSubviews.compactMap { $0 as? UIStackView }.forEach {
+                    setCornerRadius(stackView: $0)
+                }
             }
         }
     }
     /// ボタンの表示スタイル（squareまたはroundedSquare）
     @IBInspectable open var style: String {
         get { return styleType.rawValue }
-        set(value) { styleType = Style(rawValue: value) ?? .plain }
+        set(value) { styleType = Style(rawValue: value) ?? .custom }
     }
     /// テキストのフォントサイズ
     @IBInspectable open var textSize: CGFloat = 14.0 {
@@ -347,7 +351,9 @@ open class SegmentedButton: CustomView {
         let stackView = InnerStackView()
         stackView.onLayoutSublayers = { [weak self] in
             // 角丸のマスクのサイズを更新する必要がある為、角丸を設定し直す
-            self?.setCornerRadius(stackView: stackView)
+            if self?.style != Style.custom.rawValue {
+                self?.setCornerRadius(stackView: stackView)
+            }
         }
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
@@ -417,8 +423,10 @@ open class SegmentedButton: CustomView {
     
     /// セグメントボタンのスタイル
     public enum Style: String {
+        /// カスタム
+        case custom
         /// 標準
-        case plain
+        case square
         /// 両端が角丸
         case roundedSquare
     }
