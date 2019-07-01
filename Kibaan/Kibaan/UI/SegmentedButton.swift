@@ -425,7 +425,7 @@ open class SegmentedButton: CustomView {
     public enum Style: String {
         /// カスタム
         case custom
-        /// 標準
+        /// 四角
         case square
         /// 両端が角丸
         case roundedSquare
