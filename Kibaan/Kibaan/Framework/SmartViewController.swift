@@ -24,7 +24,7 @@ open class SmartViewController: UIViewController {
     /// スライド表示させた画面リスト
     private var nextScreens = [SmartViewController]()
     /// スライド表示させる画面を追加する対象のビュー
-    open var nextScreenFrame: UIView? { return nil }
+    open var nextScreenContainer: UIView? { return nil }
     /// スライドアニメーション時間
     open var nextScreenAnimationDuration: TimeInterval = 0.3
     /// スライドアニメーション中に表示するスキン
@@ -34,7 +34,7 @@ open class SmartViewController: UIViewController {
     /// 前画面に戻る為のEdgePanGesture
     var edgePanGesture: UIScreenEdgePanGestureRecognizer?
     /// ビューが隠れるときのスライド幅
-    var slideWidthOnHide: CGFloat { return (nextScreenFrame?.frame.width ?? 0) / 4 }
+    var slideWidthOnHide: CGFloat { return (nextScreenContainer?.frame.width ?? 0) / 4 }
     /// オーバーレイ画面のオーナー
     open weak var owner: SmartViewController?
     /// スライド表示させた画面の遷移のルート
@@ -129,11 +129,11 @@ open class SmartViewController: UIViewController {
     /// ViewControllerをスライド表示させる
     @discardableResult
     open func addNextScreen<T: SmartViewController>(_ type: T.Type, id: String? = nil, cache: Bool = true, animated: Bool = true, prepare: ((T) -> Void)? = nil) -> T? {
-        guard let parent = nextScreenFrame else {
+        guard let parent = nextScreenContainer else {
             assertionFailure("""
-                'nextScreenFrame' must be implemented if you call 'addNextScreen'.
-                'nextScreenFrame' is container of screens. The screens transit inside 'nextScreenFrame'. Transition animation is clipped by 'nextScreenFrame'.
-                If 'nextScreenFrame' has subviews from the beginning, the first call of 'addNextScreen' pushes out the subviews to outside of 'nextScreenFrame'.
+                'nextScreenContainer' must be implemented if you call 'addNextScreen'.
+                'nextScreenContainer' is container of screens. The screens transit inside 'nextScreenContainer'. Transition animation is clipped by 'nextScreenContainer'.
+                If 'nextScreenContainer' has subviews from the beginning, the first call of 'addNextScreen' pushes out the subviews to outside of 'nextScreenContainer'.
             """)
             return nil
         }
@@ -172,7 +172,7 @@ open class SmartViewController: UIViewController {
     
     /// スライド表示させたViewControllerを１つ前に戻す
     open func removeNextScreen(animated: Bool = true) {
-        guard let parent = nextScreenFrame else { return }
+        guard let parent = nextScreenContainer else { return }
         let lastScreen = nextScreens.removeLast()
         lastScreen.leave()
         
@@ -193,7 +193,7 @@ open class SmartViewController: UIViewController {
     }
     
     private func removeNextScreenByGesture(parent: UIView, child: UIView, duration: TimeInterval) {
-        guard let parent = nextScreenFrame else { return }
+        guard let parent = nextScreenContainer else { return }
         let lastScreen = nextScreens.removeLast()
         lastScreen.leave()
         
@@ -221,8 +221,8 @@ open class SmartViewController: UIViewController {
     }
     
     @objc func edgePanAction(gesture: UIScreenEdgePanGestureRecognizer) {
-        guard nextScreenFrame?.isUserInteractionEnabled == true else { return }
-        guard let nextScreenFrame = nextScreenFrame, let frontView = nextScreens.last?.view, 0 < nextScreens.count else { return }
+        guard nextScreenContainer?.isUserInteractionEnabled == true else { return }
+        guard let nextScreenFrame = nextScreenContainer, let frontView = nextScreens.last?.view, 0 < nextScreens.count else { return }
         let rootView = nextScreenFrame
         let translation = gesture.translation(in: frontView)
         let percentage = translation.x / frontView.frame.width
@@ -255,7 +255,7 @@ open class SmartViewController: UIViewController {
         // 影を表示する
         nextView.layer.shadowOpacity = 1.0
         // ビューの初期位置を調整
-        nextScreenFrame?.subviews.filter { $0 != nextView }.transform(transform: CGAffineTransform(translationX: -slideWidthOnHide, y: 0))
+        nextScreenContainer?.subviews.filter { $0 != nextView }.transform(transform: CGAffineTransform(translationX: -slideWidthOnHide, y: 0))
     }
     
     private func prepareForward(nextView: UIView) {
@@ -308,13 +308,13 @@ open class SmartViewController: UIViewController {
     
     private func clearEdgePanGesture() {
         if let gesture = edgePanGesture, nextScreens.isEmpty {
-            nextScreenFrame?.removeGestureRecognizer(gesture)
+            nextScreenContainer?.removeGestureRecognizer(gesture)
             edgePanGesture = nil
         }
     }
     
     private func showSkinView(frontView: UIView, alpha: CGFloat) {
-        guard let parent = nextScreenFrame else { return }
+        guard let parent = nextScreenContainer else { return }
         if nextScreenSkinView == nil {
             let skinView = UIView(frame: .zero)
             skinView.backgroundColor = nextScreenSkinColor
