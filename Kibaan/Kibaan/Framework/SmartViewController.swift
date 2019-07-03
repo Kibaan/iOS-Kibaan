@@ -126,37 +126,38 @@ open class SmartViewController: UIViewController {
         scrollView.panGestureRecognizer.require(toFail: gesture)
     }
     
-    /// ViewControllerをスライド表示させる
-    @discardableResult
-    open func addNextScreen<T: SmartViewController>(_ type: T.Type, id: String? = nil, cache: Bool = true, animated: Bool = true, prepare: ((T) -> Void)? = nil) -> T? {
-        guard let parent = nextScreenContainer else {
+    /// 次の画面を表示する
+    ///
+    /// - Parameters:
+    ///   - animated: trueの場合はスライドアニメーションで画面遷移する
+    open func addNextScreen<T: SmartViewController>(_ controller: T, animated: Bool = true, prepare: ((T) -> Void)? = nil) {
+        guard let container = nextScreenContainer else {
             assertionFailure("""
                 'nextScreenContainer' must be implemented if you call 'addNextScreen'.
                 'nextScreenContainer' is container of screens. The screens transit inside 'nextScreenContainer'. Transition animation is clipped by 'nextScreenContainer'.
                 If 'nextScreenContainer' has subviews from the beginning, the first call of 'addNextScreen' pushes out the subviews to outside of 'nextScreenContainer'.
             """)
-            return nil
+            return
         }
-        let controller = ViewControllerCache.shared.get(type, id: id, cache: cache)
         controller.navigationRootController = self
         
         let nextView: UIView = controller.view
-        parent.addSubview(nextView)
-        parent.clipsToBounds = true
+        container.addSubview(nextView)
+        container.clipsToBounds = true
         
         // 親にくっつける
         nextView.translatesAutoresizingMaskIntoConstraints = false
-        nextView.topAnchor.constraint(equalTo: parent.topAnchor).isActive = true
-        nextView.leadingAnchor.constraint(equalTo: parent.leadingAnchor).isActive = true
-        nextView.bottomAnchor.constraint(equalTo: parent.bottomAnchor).isActive = true
-        nextView.trailingAnchor.constraint(equalTo: parent.trailingAnchor).isActive = true
+        nextView.topAnchor.constraint(equalTo: container.topAnchor).isActive = true
+        nextView.leadingAnchor.constraint(equalTo: container.leadingAnchor).isActive = true
+        nextView.bottomAnchor.constraint(equalTo: container.bottomAnchor).isActive = true
+        nextView.trailingAnchor.constraint(equalTo: container.trailingAnchor).isActive = true
         
         leave()
         nextScreens += [controller]
         
         if animated {
-            prepareForward(nextView: nextView)
-            forwardAnimation(parent: parent, child: nextView, duration: nextScreenAnimationDuration)
+            prepareForForward(frontView: nextView)
+            forwardAnimation(cotainer: container, frontView: nextView, duration: nextScreenAnimationDuration)
         }
         if edgePanGesture == nil {
             let gesture = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(self.edgePanAction(gesture:)))
@@ -167,12 +168,25 @@ open class SmartViewController: UIViewController {
         prepare?(controller)
         controller.added()
         controller.enter()
+    }
+    
+    /// 次の画面を表示する
+    ///
+    /// - Parameters:
+    ///   - animated: trueの場合はスライドアニメーションで画面遷移する
+    @discardableResult
+    open func addNextScreen<T: SmartViewController>(_ type: T.Type, id: String? = nil, cache: Bool = true, animated: Bool = true, prepare: ((T) -> Void)? = nil) -> T? {
+        let controller = ViewControllerCache.shared.get(type, id: id, cache: cache)
+        addNextScreen(controller, animated: animated, prepare: prepare)
         return controller
     }
     
-    /// スライド表示させたViewControllerを１つ前に戻す
+    /// 前の画面を表示する
+    ///
+    /// - Parameters:
+    ///   - animated: trueの場合はスライドアニメーションで画面遷移する
     open func removeNextScreen(animated: Bool = true) {
-        guard let parent = nextScreenContainer else { return }
+        guard let container = nextScreenContainer else { return }
         let lastScreen = nextScreens.removeLast()
         lastScreen.leave()
         
@@ -185,21 +199,21 @@ open class SmartViewController: UIViewController {
         }
         
         if animated {
-            prepareBack(nextView: lastScreen.view)
-            backAnimation(parent: parent, child: lastScreen.view, duration: nextScreenAnimationDuration, completion: completion)
+            prepareForBack(frontView: lastScreen.view)
+            backAnimation(container: container, frontView: lastScreen.view, duration: nextScreenAnimationDuration, completion: completion)
         } else {
             completion()
         }
     }
     
-    private func removeNextScreenByGesture(parent: UIView, child: UIView, duration: TimeInterval) {
-        guard let parent = nextScreenContainer else { return }
+    private func removeNextScreenByGesture(duration: TimeInterval) {
+        guard let container = nextScreenContainer else { return }
         let lastScreen = nextScreens.removeLast()
         lastScreen.leave()
         
         enter()
         
-        backAnimation(parent: parent, child: lastScreen.view, duration: duration, completion: {
+        backAnimation(container: container, frontView: lastScreen.view, duration: duration, completion: {
             lastScreen.view.removeFromSuperview()
             lastScreen.removed()
             self.clearEdgePanGesture()
@@ -221,9 +235,10 @@ open class SmartViewController: UIViewController {
     }
     
     @objc func edgePanAction(gesture: UIScreenEdgePanGestureRecognizer) {
-        guard nextScreenContainer?.isUserInteractionEnabled == true else { return }
-        guard let nextScreenFrame = nextScreenContainer, let frontView = nextScreens.last?.view, 0 < nextScreens.count else { return }
-        let rootView = nextScreenFrame
+        guard let container = nextScreenContainer,
+            container.isUserInteractionEnabled,
+            let frontView = nextScreens.last?.view else { return }
+        
         let translation = gesture.translation(in: frontView)
         let percentage = translation.x / frontView.frame.width
         
@@ -231,8 +246,8 @@ open class SmartViewController: UIViewController {
             showSkinView(frontView: frontView, alpha: 1.0)
         }
         if 0 < translation.x {
-            let rootViewX = slideWidthOnHide * (percentage - 1)
-            rootView.subviews.transform(transform: CGAffineTransform(translationX: rootViewX, y: 0))
+            let backViewX = slideWidthOnHide * (percentage - 1)
+            container.subviews.transform(transform: CGAffineTransform(translationX: backViewX, y: 0))
             frontView.transform = CGAffineTransform(translationX: translation.x, y: 0)
             frontView.layer.shadowOpacity = Float(1.0 - percentage)
             nextScreenSkinView?.alpha = 1.0 - percentage
@@ -240,69 +255,65 @@ open class SmartViewController: UIViewController {
         if frontView.transform != .identity && (gesture.state == .ended || gesture.state == .cancelled) {
             let velocity = gesture.velocity(in: frontView)
             if (frontView.frame.width / 2) < translation.x || 1000.0 < velocity.x {
-                let duration = TimeInterval(CGFloat(nextScreenAnimationDuration) * (1.0 - percentage))
-                removeNextScreenByGesture(parent: rootView, child: frontView, duration: duration)
+                let duration = nextScreenAnimationDuration * Double(1.0 - percentage)
+                removeNextScreenByGesture(duration: duration)
             } else {
-                let duration = TimeInterval(CGFloat(nextScreenAnimationDuration) * percentage)
-                forwardAnimation(parent: rootView, child: frontView, duration: duration)
+                let duration = nextScreenAnimationDuration * Double(percentage)
+                forwardAnimation(cotainer: container, frontView: frontView, duration: duration)
             }
         }
     }
     
-    private func prepareBack(nextView: UIView) {
+    private func prepareForBack(frontView: UIView) {
         // スキンを表示する
-        showSkinView(frontView: nextView, alpha: 1.0)
+        showSkinView(frontView: frontView, alpha: 1.0)
         // 影を表示する
-        nextView.layer.shadowOpacity = 1.0
+        frontView.layer.shadowOpacity = 1.0
         // ビューの初期位置を調整
-        nextScreenContainer?.subviews.filter { $0 != nextView }.transform(transform: CGAffineTransform(translationX: -slideWidthOnHide, y: 0))
+        nextScreenContainer?.subviews.filter { $0 != frontView }.transform(transform: CGAffineTransform(translationX: -slideWidthOnHide, y: 0))
     }
     
-    private func prepareForward(nextView: UIView) {
+    private func prepareForForward(frontView: UIView) {
         // スキンを表示する
-        showSkinView(frontView: nextView, alpha: 0.0)
+        showSkinView(frontView: frontView, alpha: 0.0)
         // 影をつける
-        setShadow(targetView: nextView, percentage: 0.0)
+        setShadow(targetView: frontView, percentage: 0.0)
         // ビューの初期位置を調整
-        nextView.transform = CGAffineTransform(translationX: nextView.frame.width, y: 0)
+        frontView.transform = CGAffineTransform(translationX: frontView.frame.width, y: 0)
     }
     
-    private func forwardAnimation(parent: UIView, child: UIView, duration: TimeInterval) {
-        parent.isUserInteractionEnabled = false
-        child.isUserInteractionEnabled = false
+    private func forwardAnimation(cotainer: UIView, frontView: UIView, duration: TimeInterval) {
+        cotainer.isUserInteractionEnabled = false
         
         UIView.animate(withDuration: duration, delay: 0.0, options: [.curveEaseOut], animations: {
-            parent.subviews.transform(transform: CGAffineTransform(translationX: -self.slideWidthOnHide, y: 0))
-            child.transform = .identity
+            cotainer.subviews.transform(transform: CGAffineTransform(translationX: -self.slideWidthOnHide, y: 0))
+            frontView.transform = .identity
             self.nextScreenSkinView?.alpha = 1.0
         }, completion: { _ in
-            parent.subviews.transform(transform: .identity)
-            parent.isUserInteractionEnabled = true
-            child.isUserInteractionEnabled = true
+            cotainer.subviews.transform(transform: .identity)
+            cotainer.isUserInteractionEnabled = true
             self.hideSkinView()
         })
-        setShadowOpacityAnimation(view: child, toValue: 1.0, duration: duration, completion: {
-            child.layer.shadowOpacity = 0.0
+        setShadowOpacityAnimation(view: frontView, toValue: 1.0, duration: duration, completion: {
+            frontView.layer.shadowOpacity = 0.0
         })
     }
     
-    private func backAnimation(parent: UIView, child: UIView, duration: TimeInterval, completion: (() -> Void)? = nil) {
-        parent.isUserInteractionEnabled = false
-        child.isUserInteractionEnabled = false
+    private func backAnimation(container: UIView, frontView: UIView, duration: TimeInterval, completion: (() -> Void)? = nil) {
+        container.isUserInteractionEnabled = false
         
         UIView.animate(withDuration: duration, delay: 0.0, options: [.curveEaseOut], animations: {
-            parent.subviews.transform(transform: .identity)
-            child.transform = CGAffineTransform(translationX: child.frame.width, y: 0)
+            container.subviews.transform(transform: .identity)
+            frontView.transform = CGAffineTransform(translationX: frontView.frame.width, y: 0)
             self.nextScreenSkinView?.alpha = 0.0
         }, completion: { result in
-            child.transform = .identity
-            child.isUserInteractionEnabled = true
-            parent.isUserInteractionEnabled = true
+            frontView.transform = .identity
+            container.isUserInteractionEnabled = true
             self.hideSkinView()
             completion?()
         })
-        setShadowOpacityAnimation(view: child, toValue: 0.0, duration: duration, completion: {
-            child.layer.shadowOpacity = 0.0
+        setShadowOpacityAnimation(view: frontView, toValue: 0.0, duration: duration, completion: {
+            frontView.layer.shadowOpacity = 0.0
         })
     }
     
