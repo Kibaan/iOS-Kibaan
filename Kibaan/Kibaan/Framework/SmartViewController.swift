@@ -325,18 +325,18 @@ open class SmartViewController: UIViewController {
     }
     
     private func showSkinView(frontView: UIView, alpha: CGFloat) {
-        guard let parent = nextScreenContainer else { return }
+        guard let container = nextScreenContainer else { return }
         if nextScreenSkinView == nil {
             let skinView = UIView(frame: .zero)
             skinView.backgroundColor = nextScreenSkinColor
             skinView.alpha = alpha
-            parent.addSubview(skinView)
+            container.addSubview(skinView)
             skinView.translatesAutoresizingMaskIntoConstraints = false
-            skinView.topAnchor.constraint(equalTo: parent.topAnchor).isActive = true
-            skinView.leadingAnchor.constraint(equalTo: parent.leadingAnchor).isActive = true
-            skinView.bottomAnchor.constraint(equalTo: parent.bottomAnchor).isActive = true
-            skinView.trailingAnchor.constraint(equalTo: parent.trailingAnchor).isActive = true
-            parent.bringSubviewToFront(frontView)
+            skinView.topAnchor.constraint(equalTo: container.topAnchor).isActive = true
+            skinView.leadingAnchor.constraint(equalTo: container.leadingAnchor).isActive = true
+            skinView.bottomAnchor.constraint(equalTo: container.bottomAnchor).isActive = true
+            skinView.trailingAnchor.constraint(equalTo: container.trailingAnchor).isActive = true
+            container.bringSubviewToFront(frontView)
             nextScreenSkinView = skinView
         }
     }
