@@ -23,12 +23,18 @@ open class SmartViewController: UIViewController {
     open var hasOverlay: Bool { return !overlays.isEmpty }
     /// スライド表示させた画面リスト
     private var nextScreens = [SmartViewController]()
-    /// スライド表示させた画面の制約
-    private var nextScreenConstraints: [NSLayoutConstraint] = []
     /// スライド表示させる画面を追加する対象のビュー
-    open var nextScreenTargetView: UIView { return view }
+    open var nextScreenFrame: UIView? { return nil }
     /// スライドアニメーション時間
     open var nextScreenAnimationDuration: TimeInterval = 0.3
+    /// スライドアニメーション中に表示するスキン
+    private var nextScreenSkinView: UIView?
+    /// スライドアニメーション中に表示するスキンの色
+    private var nextScreenSkinColor: UIColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.2)
+    /// 前画面に戻る為のEdgePanGesture
+    var edgePanGesture: UIScreenEdgePanGestureRecognizer?
+    /// ビューが隠れるときのスライド幅
+    var slideWidthOnHide: CGFloat { return view.frame.width / 4 }
     /// オーバーレイ画面のオーナー
     open weak var owner: SmartViewController?
     /// スライド表示させた画面の遷移のルート
@@ -112,61 +118,51 @@ open class SmartViewController: UIViewController {
         subControllers.append(contentsOf: controllers)
     }
     
-    override open func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        // 画面回転時に制約に設定した"constant"を更新する必要がある
-        if !nextScreens.isEmpty {
-            let constant = nextScreenTargetView.frame.width
-            adjustFirstViewConstraintConstant(parentView: nextScreenTargetView.superview, targetView: nextScreenTargetView, constant: constant)
-        }
-    }
-    
     // MARK: - Next screen
     
-    /// "targetView"がrootViewに含まれているかをチェックする
-    private func checkTargetView(_ targetView: UIView) {
-        assert(targetView.isDescendant(of: view), "The target view must be included in the view")
+    /// スクロールビュー上でもEdgePanGestureを有効にする
+    func enableEdgePanGesture(scrollView: UIScrollView) {
+        guard let gesture = navigationRootController?.edgePanGesture else { return }
+        scrollView.panGestureRecognizer.require(toFail: gesture)
     }
     
     /// ViewControllerをスライド表示させる
     @discardableResult
     open func addNextScreen<T: SmartViewController>(_ type: T.Type, id: String? = nil, cache: Bool = true, animated: Bool = true, prepare: ((T) -> Void)? = nil) -> T? {
-        let targetView = nextScreenTargetView
-        checkTargetView(targetView)
-        let controller = ViewControllerCache.shared.get(type, id: id, cache: cache)
-        guard let parentView = targetView.superview, nextScreens.last != controller else {
+        guard let parent = nextScreenFrame else {
+            assertionFailure("""
+                'nextScreenFrame' must be implemented if you call 'addNextScreen'.
+                'nextScreenFrame' is container of screens. The screens transit inside 'nextScreenFrame'. Transition animation is clipped by 'nextScreenFrame'.
+                If 'nextScreenFrame' has subviews from the beginning, the first call of 'addNextScreen' pushes out the subviews to outside of 'nextScreenFrame'.
+            """)
             return nil
         }
+        let controller = ViewControllerCache.shared.get(type, id: id, cache: cache)
         controller.navigationRootController = self
-        let isFirstScreen = nextScreens.isEmpty
         
-        // View追加およびビューのサイズ調整用の制約を適用
-        let prevView = nextScreens.last?.view ?? targetView
-        parentView.addSubview(controller.view)
-        controller.view.translatesAutoresizingMaskIntoConstraints = false
-        controller.view.topAnchor.constraint(equalTo: targetView.topAnchor).isActive = true
-        controller.view.bottomAnchor.constraint(equalTo: targetView.bottomAnchor).isActive = true
-        controller.view.widthAnchor.constraint(equalTo: targetView.widthAnchor).isActive = true
-        controller.view.leadingAnchor.constraint(equalTo: prevView.trailingAnchor).activate(priority: .defaultHigh)
-        parentView.layoutIfNeeded()
+        let nextView: UIView = controller.view
+        parent.addSubview(nextView)
+        parent.clipsToBounds = true
+        
+        // 親にくっつける
+        nextView.translatesAutoresizingMaskIntoConstraints = false
+        nextView.topAnchor.constraint(equalTo: parent.topAnchor).isActive = true
+        nextView.leadingAnchor.constraint(equalTo: parent.leadingAnchor).isActive = true
+        nextView.bottomAnchor.constraint(equalTo: parent.bottomAnchor).isActive = true
+        nextView.trailingAnchor.constraint(equalTo: parent.trailingAnchor).isActive = true
         
         leave()
         nextScreens += [controller]
         
-        // ビューの表示位置を定める制約を適用
-        let viewWidth = parentView.frame.size.width
-        nextScreenConstraints.last?.priority = .lowest
-        if isFirstScreen {
-            adjustFirstViewConstraintConstant(parentView: parentView, targetView: prevView, constant: viewWidth)
-        }
-        let constraint = prevView.trailingAnchor.constraint(equalTo: parentView.leadingAnchor).activate(priority: .highest)
-        nextScreenConstraints.append(constraint)
-
         if animated {
-            UIView.animate(withDuration: nextScreenAnimationDuration, animations: {
-                parentView.layoutIfNeeded()
-            })
+            prepareForward(nextView: nextView)
+            forwardAnimation(parent: parent, child: nextView, duration: nextScreenAnimationDuration)
+        }
+        if edgePanGesture == nil {
+            let gesture = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(self.edgePanAction(gesture:)))
+            gesture.edges = .left
+            view.addGestureRecognizer(gesture)
+            edgePanGesture = gesture
         }
         prepare?(controller)
         controller.added()
@@ -174,73 +170,192 @@ open class SmartViewController: UIViewController {
         return controller
     }
     
-    /// 指定されたビューのX軸の表示位置を"constant"を利用して調整する
-    private func adjustFirstViewConstraintConstant(parentView: UIView?, targetView: UIView?, constant: CGFloat) {
-        // FIXME parentViewのconstraintsを操作しているので、SafeAreaと紐付けた場合に移動できない
-        let targetAttribute: [NSLayoutConstraint.Attribute] = [.leading, .left, .trailing, .right, .centerX]
-        parentView?.constraints.filter {
-            return ($0.firstItem as? UIView) == targetView
-                && ($0.secondItem as? UIView) == parentView
-                && targetAttribute.contains($0.firstAttribute)
-        }.forEach {
-            $0.constant = -constant
-        }
-        parentView?.constraints.filter {
-            return ($0.firstItem as? UIView) == parentView
-                && ($0.secondItem as? UIView) == targetView
-                && targetAttribute.contains($0.secondAttribute)
-        }.forEach {
-            $0.constant = constant
-        }
-    }
-    
     /// スライド表示させたViewControllerを１つ前に戻す
     open func removeNextScreen(animated: Bool = true) {
-        let targetView = nextScreenTargetView
-        targetView.superview?.layoutIfNeeded()
-
-        let removedScreen = self.nextScreens.removeLast()
-        removedScreen.leave()
+        guard let parent = nextScreenFrame else { return }
+        let lastScreen = nextScreens.removeLast()
+        lastScreen.leave()
         
         enter()
         
         let completion = {
-            removedScreen.view.removeFromSuperview()
-            removedScreen.removed()
-        }
-        nextScreenConstraints.removeLast().isActive = false
-        nextScreenConstraints.last?.priority = .highest
-        if nextScreens.isEmpty {
-            adjustFirstViewConstraintConstant(parentView: targetView.superview, targetView: targetView, constant: 0)
+            lastScreen.view.removeFromSuperview()
+            lastScreen.removed()
+            self.clearEdgePanGesture()
         }
         
         if animated {
-            UIView.animate(withDuration: nextScreenAnimationDuration, delay: 0, options: .curveEaseIn, animations: {
-                targetView.superview?.layoutIfNeeded()
-            }, completion: { flag in
-                completion()
-            })
+            prepareBack(nextView: lastScreen.view)
+            backAnimation(parent: parent, child: lastScreen.view, duration: nextScreenAnimationDuration, completion: completion)
         } else {
             completion()
         }
     }
-
+    
+    private func removeNextScreenByGesture(parent: UIView, child: UIView, duration: TimeInterval) {
+        guard let parent = nextScreenFrame else { return }
+        let lastScreen = nextScreens.removeLast()
+        lastScreen.leave()
+        
+        enter()
+        
+        backAnimation(parent: parent, child: lastScreen.view, duration: duration, completion: {
+            lastScreen.view.removeFromSuperview()
+            lastScreen.removed()
+            self.clearEdgePanGesture()
+        })
+    }
+    
     /// スライド表示させたViewControllerを全て閉じる
     open func removeAllNextScreen(executeStart: Bool = false) {
         guard isViewLoaded else { return }
-        let targetView = nextScreenTargetView
         leave()
         nextScreens.forEach {
             $0.view.removeFromSuperview()
             $0.removed()
         }
         nextScreens.removeAll()
-        nextScreenConstraints.forEach { $0.isActive = false }
-        nextScreenConstraints.removeAll()
-        adjustFirstViewConstraintConstant(parentView: targetView.superview, targetView: targetView, constant: 0)
         if executeStart {
             enter()
         }
+    }
+    
+    @objc func edgePanAction(gesture: UIScreenEdgePanGestureRecognizer) {
+        guard nextScreenFrame?.isUserInteractionEnabled == true else { return }
+        guard let nextScreenFrame = nextScreenFrame, let frontView = nextScreens.last?.view, 0 < nextScreens.count else { return }
+        let rootView = nextScreenFrame
+        let translation = gesture.translation(in: frontView)
+        let percentage = translation.x / frontView.frame.width
+        
+        if gesture.state == .began {
+            showSkinView(frontView: frontView, alpha: 1.0)
+        }
+        if 0 < translation.x {
+            let rootViewX = slideWidthOnHide * (percentage - 1)
+            rootView.subviews.transform(transform: CGAffineTransform(translationX: rootViewX, y: 0))
+            frontView.transform = CGAffineTransform(translationX: translation.x, y: 0)
+            frontView.layer.shadowOpacity = Float(1.0 - percentage)
+            nextScreenSkinView?.alpha = 1.0 - percentage
+        }
+        if frontView.transform != .identity && (gesture.state == .ended || gesture.state == .cancelled) {
+            let velocity = gesture.velocity(in: frontView)
+            if (frontView.frame.width / 2) < translation.x || 1000.0 < velocity.x {
+                let duration = TimeInterval(CGFloat(nextScreenAnimationDuration) * (1.0 - percentage))
+                removeNextScreenByGesture(parent: rootView, child: frontView, duration: duration)
+            } else {
+                let duration = TimeInterval(CGFloat(nextScreenAnimationDuration) * percentage)
+                forwardAnimation(parent: rootView, child: frontView, duration: duration)
+            }
+        }
+    }
+    
+    private func prepareBack(nextView: UIView) {
+        // スキンを表示する
+        showSkinView(frontView: nextView, alpha: 1.0)
+        // 影を表示する
+        nextView.layer.shadowOpacity = 1.0
+        // ビューの初期位置を調整
+        nextScreenFrame?.subviews.filter { $0 != nextView }.transform(transform: CGAffineTransform(translationX: -slideWidthOnHide, y: 0))
+    }
+    
+    private func prepareForward(nextView: UIView) {
+        // スキンを表示する
+        showSkinView(frontView: nextView, alpha: 0.0)
+        // 影をつける
+        setShadow(targetView: nextView, percentage: 0.0)
+        // ビューの初期位置を調整
+        nextView.transform = CGAffineTransform(translationX: nextView.frame.width, y: 0)
+    }
+    
+    private func forwardAnimation(parent: UIView, child: UIView, duration: TimeInterval) {
+        parent.isUserInteractionEnabled = false
+        child.isUserInteractionEnabled = false
+        
+        UIView.animate(withDuration: duration, delay: 0.0, options: [.curveEaseOut], animations: {
+            parent.subviews.transform(transform: CGAffineTransform(translationX: -self.slideWidthOnHide, y: 0))
+            child.transform = .identity
+            self.nextScreenSkinView?.alpha = 1.0
+        }, completion: { _ in
+            parent.subviews.transform(transform: .identity)
+            parent.isUserInteractionEnabled = true
+            child.isUserInteractionEnabled = true
+            self.hideSkinView()
+        })
+        setShadowOpacityAnimation(view: child, toValue: 1.0, duration: duration, completion: {
+            child.layer.shadowOpacity = 0.0
+        })
+    }
+    
+    private func backAnimation(parent: UIView, child: UIView, duration: TimeInterval, completion: (() -> Void)? = nil) {
+        parent.isUserInteractionEnabled = false
+        child.isUserInteractionEnabled = false
+        
+        UIView.animate(withDuration: duration, delay: 0.0, options: [.curveEaseOut], animations: {
+            parent.subviews.transform(transform: .identity)
+            child.transform = CGAffineTransform(translationX: child.frame.width, y: 0)
+            self.nextScreenSkinView?.alpha = 0.0
+        }, completion: { result in
+            child.transform = .identity
+            child.isUserInteractionEnabled = true
+            parent.isUserInteractionEnabled = true
+            self.hideSkinView()
+            completion?()
+        })
+        setShadowOpacityAnimation(view: child, toValue: 0.0, duration: duration, completion: {
+            child.layer.shadowOpacity = 0.0
+        })
+    }
+    
+    private func clearEdgePanGesture() {
+        if let gesture = edgePanGesture, nextScreens.isEmpty {
+            nextScreenFrame?.removeGestureRecognizer(gesture)
+            edgePanGesture = nil
+        }
+    }
+    
+    private func showSkinView(frontView: UIView, alpha: CGFloat) {
+        guard let parent = nextScreenFrame else { return }
+        if nextScreenSkinView == nil {
+            let skinView = UIView(frame: .zero)
+            skinView.backgroundColor = nextScreenSkinColor
+            skinView.alpha = alpha
+            parent.addSubview(skinView)
+            skinView.translatesAutoresizingMaskIntoConstraints = false
+            skinView.topAnchor.constraint(equalTo: parent.topAnchor).isActive = true
+            skinView.leadingAnchor.constraint(equalTo: parent.leadingAnchor).isActive = true
+            skinView.bottomAnchor.constraint(equalTo: parent.bottomAnchor).isActive = true
+            skinView.trailingAnchor.constraint(equalTo: parent.trailingAnchor).isActive = true
+            parent.bringSubviewToFront(frontView)
+            nextScreenSkinView = skinView
+        }
+    }
+    
+    private func hideSkinView() {
+        nextScreenSkinView?.removeFromSuperview()
+        nextScreenSkinView = nil
+    }
+    
+    private func setShadow(targetView: UIView, percentage: Float = 1.0) {
+        targetView.layer.shadowOffset = CGSize(width: 6.0, height: 0.0)
+        targetView.layer.shadowColor = UIColor.black.cgColor
+        targetView.layer.shadowOpacity = percentage
+        targetView.layer.shadowRadius = 10
+    }
+    
+    private func setShadowOpacityAnimation(view: UIView, fromValue: Float? = nil, toValue: Float, duration: TimeInterval, completion: (() -> Void)? = nil) {
+        CATransaction.begin()
+        CATransaction.setCompletionBlock {
+            completion?()
+        }
+        let animation = CABasicAnimation(keyPath: "shadowOpacity")
+        animation.fromValue = fromValue ?? view.layer.shadowOpacity
+        animation.duration = duration
+        animation.toValue = toValue
+        animation.timingFunction = CAMediaTimingFunction(name: .easeOut)
+        view.layer.add(animation, forKey: "shadowOpacity")
+        view.layer.shadowOpacity = toValue
+        
+        CATransaction.commit()
     }
     
     // MARK: - Overlay
@@ -307,6 +422,14 @@ open class SmartViewController: UIViewController {
             foregroundSubControllers.forEach {
                 $0.leave()
             }
+        }
+    }
+}
+
+fileprivate extension Array where Element == UIView {
+    func transform(transform: CGAffineTransform) {
+        forEach {
+            $0.transform = transform
         }
     }
 }
