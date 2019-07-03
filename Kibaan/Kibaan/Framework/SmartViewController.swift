@@ -34,7 +34,7 @@ open class SmartViewController: UIViewController {
     /// 前画面に戻る為のEdgePanGesture
     var edgePanGesture: UIScreenEdgePanGestureRecognizer?
     /// ビューが隠れるときのスライド幅
-    var slideWidthOnHide: CGFloat { return view.frame.width / 4 }
+    var slideWidthOnHide: CGFloat { return (nextScreenFrame?.frame.width ?? 0) / 4 }
     /// オーバーレイ画面のオーナー
     open weak var owner: SmartViewController?
     /// スライド表示させた画面の遷移のルート
