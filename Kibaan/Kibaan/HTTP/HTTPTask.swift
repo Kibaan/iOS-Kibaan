@@ -121,7 +121,7 @@ open class HTTPTask: Task {
 
         // ステータスコードをチェック
         if !checkStatusCode(response.statusCode) {
-            handleConnectionError(.statusCode, error: error, response: response, data: data)
+            statusCodeError(response: response, data: data)
             return
         }
 
@@ -137,6 +137,11 @@ open class HTTPTask: Task {
         // Override
         let message = error?.localizedDescription ?? ""
         print("[ConnectionError] Type= \(type.description), NativeMessage=\(message)")
+    }
+    
+    /// ステータスコードエラーを処理する
+    open func statusCodeError(response: HTTPURLResponse?, data: Data?) {
+        print("[StatusCodeError] \(response?.statusCode ?? 0)")
     }
     
     /// 通信をキャンセルする

@@ -70,6 +70,13 @@ open class HTTPDataTask<DataType>: HTTPTask {
             self.next()
         })
     }
+    
+    open override func statusCodeError(response: HTTPURLResponse?, data: Data?) {
+        super.statusCodeError(response: response, data: data)
+        DispatchQueue.main.async(execute: {
+            self.handleError(.statusCode, result: nil, response: response, data: data)
+        })
+    }
 
     open func handleError(_ type: HTTPTaskError, result: DataType?, error: Error? = nil, response: HTTPURLResponse?, data: Data?) {
         let errorInfo = HTTPErrorInfo(error: error, response: response, data: data)
