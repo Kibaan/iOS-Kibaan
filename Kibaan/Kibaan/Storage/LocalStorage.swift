@@ -11,15 +11,19 @@ open class LocalStorage {
     
     open var fileName: String
 
-    public init(fileName: String) {
+    public init(fileName: String, load: Bool = true) {
         self.fileName = fileName
-        loadItems()
+        if load {
+            loadItems()
+        }
     }
     
-    public init() {
+    public init(load: Bool = true) {
         // 引数なしコンストラクタではクラス名をファイル名とする
         fileName = String(describing: type(of: self))
-        loadItems()
+        if load {
+            loadItems()
+        }
     }
     
     /// 他のインスタンスの設定をコピーする
