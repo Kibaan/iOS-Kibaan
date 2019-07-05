@@ -121,7 +121,7 @@ open class SmartViewController: UIViewController {
     // MARK: - Next screen
     
     /// スクロールビュー上でもEdgePanGestureを有効にする
-    func enableEdgePanGesture(scrollView: UIScrollView) {
+    open func enableEdgePanGesture(scrollView: UIScrollView) {
         guard let gesture = navigationRootController?.edgePanGesture else { return }
         scrollView.panGestureRecognizer.require(toFail: gesture)
     }
