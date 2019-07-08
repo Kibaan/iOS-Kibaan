@@ -325,7 +325,24 @@ public extension String {
         }
         return output as String
     }
-    
+
+    func md5() -> String {
+        let length = Int(CC_MD5_DIGEST_LENGTH)
+        guard let messageData = self.data(using: .utf8) else { return "" }
+        var digestData = Data(count: length)
+
+        _ = digestData.withUnsafeMutableBytes { digestBytes -> UInt8 in
+            messageData.withUnsafeBytes { messageBytes -> UInt8 in
+                if let messageBytesBaseAddress = messageBytes.baseAddress, let digestBytesBlindMemory = digestBytes.bindMemory(to: UInt8.self).baseAddress {
+                    let messageLength = CC_LONG(messageData.count)
+                    CC_MD5(messageBytesBaseAddress, messageLength, digestBytesBlindMemory)
+                }
+                return 0
+            }
+        }
+        return digestData.hexArray(charCase: .lower).joined(separator: "")
+    }
+
     func toHiragana() -> String {
         return map { String($0.toHiragana()) }.joined()
     }
