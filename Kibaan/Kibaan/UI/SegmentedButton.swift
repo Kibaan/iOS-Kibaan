@@ -349,7 +349,8 @@ open class SegmentedButton: CustomView {
     /// 行のスタックビューを追加する
     private func addHorizontalStackView() -> UIStackView {
         let stackView = InnerStackView()
-        stackView.onLayoutSublayers = { [weak self] in
+        stackView.onLayoutSublayers = { [weak self, weak stackView] in
+            guard let stackView = stackView else { return }
             // 角丸のマスクのサイズを更新する必要がある為、角丸を設定し直す
             if self?.style != Style.custom.rawValue {
                 self?.setCornerRadius(stackView: stackView)
