@@ -42,5 +42,6 @@ class UIColorUtilsTests: XCTestCase {
         XCTAssertEqual(expected, UIColor(rgbHex: "#ADFF2F"))
         XCTAssertEqual(expected, UIColor(argbHex: "#FFADFF2F"))
         XCTAssertEqual(expected, UIColor(argbHex: "FFADFF2F"))
+        XCTAssertEqual(expected, UIColor(argbHex: "ADFF2F"))
     }
 }
