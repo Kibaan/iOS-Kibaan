@@ -370,13 +370,16 @@
 				TargetAttributes = {
 					40241BE9219426AC007EEB71 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 					40241BFD219426AC007EEB71 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = 40241BE9219426AC007EEB71;
 					};
 					40241C08219426AC007EEB71 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = 40241BE9219426AC007EEB71;
 					};
 				};
@@ -641,7 +644,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.altonotes.KibaanSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -659,7 +662,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.altonotes.KibaanSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -679,7 +682,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.altonotes.KibaanSampleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KibaanSample.app/KibaanSample";
 			};
@@ -700,7 +703,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.altonotes.KibaanSampleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KibaanSample.app/KibaanSample";
 			};
@@ -720,7 +723,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.altonotes.KibaanSampleUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = KibaanSample;
 			};
@@ -740,7 +743,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.altonotes.KibaanSampleUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = KibaanSample;
 			};

@@ -18,7 +18,7 @@ class MockViewController: MockBaseViewController {
     let subVc2 = MockSubViewController()
     var tab: Tab = .tab1
     
-    override var nextScreenTargetView: UIView {
+    override var nextScreenContainer: UIView? {
         return containerView
     }
     
