@@ -131,4 +131,17 @@ public extension UIView {
             $0.removeFromSuperlayer()
         }
     }
+
+    /// 画像を作成する
+    func createImage() -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(frame.size, false, 0.0)
+        guard let context = UIGraphicsGetCurrentContext() else {
+            return nil
+        }
+
+        layer.render(in: context)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
 }

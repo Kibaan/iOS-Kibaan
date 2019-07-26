@@ -18,4 +18,17 @@ public extension UIImage {
         }
         return nil
     }
+
+    /// 引数に指定した範囲の部分画像を作成する
+    func createSubImage(rect: CGRect) -> UIImage {
+        let screenScale = UIScreen.main.scale
+        let scaledRect = CGRect(x: rect.origin.x * screenScale,
+                                y: rect.origin.y * screenScale,
+                                width: rect.width * screenScale,
+                                height: rect.height * screenScale)
+        guard let cgImage = cgImage?.cropping(to: scaledRect) else {
+            return self
+        }
+        return UIImage(cgImage: cgImage, scale: scale, orientation: imageOrientation)
+    }
 }
