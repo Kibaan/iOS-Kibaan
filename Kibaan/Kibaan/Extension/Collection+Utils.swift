@@ -4,8 +4,11 @@ public extension Collection {
     /// 指定したindexの要素を取得する。
     /// 通常の[]による要素取得と異なり、マイナスや存在しないインデックスを指定してもクラッシュせずnilを返す。
     /// ex. list[safe: 10]
-    subscript (safe index: Index) -> Element? {
-        return indices.contains(index) ? self[index] : nil
+    subscript (safe index: Int) -> Element? {
+        if 0 <= index && index < count {
+            return self[self.index(startIndex, offsetBy: index)]
+        }
+        return nil
     }
 }
 
