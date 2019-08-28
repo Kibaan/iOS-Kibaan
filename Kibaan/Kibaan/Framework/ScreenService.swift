@@ -70,12 +70,11 @@ open class ScreenService {
         let oldRootViewController = window.rootViewController as? SmartViewController
         oldRootViewController?.leave()
         window.rootViewController = controller
+        screenStack += [controller]
         oldRootViewController?.removed()
         prepare?(controller)
         controller.added()
         controller.enter()
-        
-        screenStack += [controller]
     }
     
     /// 画面を追加する
