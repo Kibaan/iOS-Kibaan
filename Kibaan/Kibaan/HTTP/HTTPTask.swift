@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// HTTP通信。通信完了までConnectionHolderにインスタンスが保持されるため開放されない。
 open class HTTPTask: Task {
     /// 共通のUser-Agent
     public static var defaultUserAgent: String?
