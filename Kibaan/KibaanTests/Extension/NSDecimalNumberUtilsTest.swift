@@ -13,6 +13,7 @@ class NSDecimalNumberUtilsTest: XCTestCase {
         XCTAssertEqual(decimal.roundDown().stringValue, "1")
         XCTAssertEqual(decimal.roundDown(1).stringValue, "1.9")
         XCTAssertEqual(decimal.roundDown(2).stringValue, "1.98")
+        XCTAssertEqual(NSDecimalNumber(string: "-0.1").roundDown().stringValue, "-1")
     }
     
     func testRoundUp() {
@@ -21,6 +22,21 @@ class NSDecimalNumberUtilsTest: XCTestCase {
         XCTAssertEqual(decimal.roundUp().stringValue, "2")
         XCTAssertEqual(decimal.roundUp(1).stringValue, "1.2")
         XCTAssertEqual(decimal.roundUp(2).stringValue, "1.13")
+        XCTAssertEqual(NSDecimalNumber(string: "-0.1").roundUp().stringValue, "0")
+    }
+
+    func testRoundAbsDown() {
+        XCTAssertEqual(NSDecimalNumber(string: "0.1").roundAbsDown().stringValue, "0")
+        XCTAssertEqual(NSDecimalNumber(string: "1.98").roundAbsDown(1).stringValue, "1.9")
+        XCTAssertEqual(NSDecimalNumber(string: "-0.1").roundAbsDown().stringValue, "0")
+        XCTAssertEqual(NSDecimalNumber(string: "-1.9").roundAbsDown().stringValue, "-1")
+    }
+
+    func testRoundAbsUp() {
+        XCTAssertEqual(NSDecimalNumber(string: "0.1").roundAbsUp().stringValue, "1")
+        XCTAssertEqual(NSDecimalNumber(string: "1.91").roundAbsUp(1).stringValue, "2")
+        XCTAssertEqual(NSDecimalNumber(string: "-0.1").roundAbsUp().stringValue, "-1")
+        XCTAssertEqual(NSDecimalNumber(string: "-1.1").roundAbsUp().stringValue, "-2")
     }
     
     func testRoundPlain() {
