@@ -377,8 +377,8 @@ open class SegmentedButton: CustomView {
         let button = makeButton()
         buttons.append(button)
         
-        button.setBackgroundColor(color: normalButtonBackgroundColor, for: .normal)
-        button.setBackgroundColor(color: selectedButtonBackgroundColor, for: .selected)
+        button.backgroundColor = normalButtonBackgroundColor
+        button.selectedBackgroundColor = selectedButtonBackgroundColor
         button.setTitleColor(normalButtonTextColor, for: .normal)
         button.setTitleColor(selectedButtonTextColor, for: .selected)
         button.setTitleColor(disabledButtonTextColor, for: .disabled)
