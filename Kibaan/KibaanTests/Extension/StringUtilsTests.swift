@@ -7,15 +7,9 @@ import XCTest
 
 class StringUtilsTests: XCTestCase {
     
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
+    // MARK: - Variables
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
+    private let calendar = Calendar.current
     
     // MARK: - Subscript(X...Y)
     
@@ -859,6 +853,24 @@ class StringUtilsTests: XCTestCase {
     func testToHiraganaNoEffect() {
         noEffectList.forEach {
             XCTAssertEqual($0, $0.toHiragana())
+        }
+    }
+    
+    func testDateFormat() {
+        if let date = "2018".date(format: "yyyy") {
+            XCTAssertEqual(calendar.component(.year, from: date), 2018)
+            XCTAssertEqual(date.string(format: "yyyy"), "2018")
+        }
+        if let date = "201809".date(format: "yyyyMM") {
+            XCTAssertEqual(calendar.component(.year, from: date), 2018)
+            XCTAssertEqual(calendar.component(.month, from: date), 9)
+            XCTAssertEqual(date.string(format: "yyyyMM"), "201809")
+        }
+        if let date = "20180912".date(format: "yyyyMM") {
+            XCTAssertEqual(calendar.component(.year, from: date), 2018)
+            XCTAssertEqual(calendar.component(.month, from: date), 9)
+            XCTAssertEqual(calendar.component(.day, from: date), 12)
+            XCTAssertEqual(date.string(format: "yyyyMM"), "20180912")
         }
     }
 }

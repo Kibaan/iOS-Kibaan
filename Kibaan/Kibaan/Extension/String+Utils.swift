@@ -350,6 +350,14 @@ public extension String {
     func toKatakana() -> String {
         return map { String($0.toKatakana()) }.joined()
     }
+    
+    /// フォーマットを指定してDateオブジェクトを作成する
+    func date(format: String) -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "US")
+        dateFormatter.dateFormat = format
+        return dateFormatter.date(from: self)
+    }
 }
 
 public extension Optional where Wrapped == String {
