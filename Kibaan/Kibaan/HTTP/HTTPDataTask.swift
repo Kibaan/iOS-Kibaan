@@ -79,6 +79,8 @@ open class HTTPDataTask<DataType>: HTTPTask {
     }
 
     open func handleError(_ type: HTTPTaskError, result: DataType?, error: Error? = nil, response: HTTPURLResponse?, data: Data?) {
+        print("[Error] URL=\(requestURL)")
+        print(errorDetailedMessage(type, error: error, statusCode: response?.statusCode))
         let errorInfo = HTTPErrorInfo(error: error, response: response, data: data)
         
         if errorHandler == nil || errorHandler?(result, errorInfo) == .handleError {
@@ -87,7 +89,18 @@ open class HTTPDataTask<DataType>: HTTPTask {
         
         self.error()
     }
-    
+
+    open func errorDetailedMessage(_ type: HTTPTaskError, error: Error? = nil, statusCode: Int?) -> String {
+        var message = type.description
+        if type == .statusCode {
+            message += "(statusCode=\(statusCode ?? 0))"
+        }
+        if let nativeMessage = error?.localizedDescription {
+            message += nativeMessage
+        }
+        return message
+    }
+
     open func errorProcess(_ type: HTTPTaskError, result: DataType?, errorInfo: HTTPErrorInfo) {
         // Override
     }

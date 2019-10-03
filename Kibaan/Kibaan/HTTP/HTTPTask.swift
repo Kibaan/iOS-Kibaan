@@ -135,9 +135,6 @@ open class HTTPTask: Task {
     
     /// 通信エラーを処理する
     open func handleConnectionError(_ type: HTTPTaskError, error: Error? = nil, response: HTTPURLResponse? = nil, data: Data? = nil) {
-        // Override
-        let message = error?.localizedDescription ?? ""
-        print("[ConnectionError] Type= \(type.description), NativeMessage=\(message)")
     }
     
     /// ステータスコードエラーを処理する
