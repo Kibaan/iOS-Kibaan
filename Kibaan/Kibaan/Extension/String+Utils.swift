@@ -218,13 +218,47 @@ public extension String {
     /// 連続した数字のみカンマ区切りにし、数字以外の文字は無視する
     /// ex. "AAA(1234)BBB(5678)" → "AAA(1,234)BBB(5,678)"
     var numberFormat: String {
-        var result = ""
-        let numbers = components(separatedBy: ".")
-        let pattern = "(\\d)(?=(\\d{3})+(\\D|$))"
-        let replacedNumber = numbers[0].replacingOccurrences(of: pattern, with: "$1,", options: .regularExpression, range: nil)
-        result.append(replacedNumber)
-        result.append(numbers.count > 1 ? ".\(numbers[1])" : "")
-        return result
+        var text = self
+        
+        // +-はいったん取り除いて後で復元
+        var sign: String? = nil
+        if text.hasPrefix("+") {
+            sign = "+"
+            text = text.removePrefix("+")
+        } else if text.hasPrefix("-") {
+            sign = "-"
+            text = text.removePrefix("-")
+        }
+        
+        let numbers = text.components(separatedBy: ".")
+        let number = numbers[0]
+        let decimal = (1 < numbers.count) ? numbers[1] : nil
+        
+        var builder = ""
+        var numberIndex = -1
+        number.reversed().forEach { c in
+            if c.isNumber {
+                numberIndex += 1
+            } else {
+                numberIndex = -1
+            }
+            if 0 < numberIndex && numberIndex % 3 == 0 {
+                builder.append(",")
+            }
+            builder.append(c)
+        }
+        builder = String(builder.reversed())
+        
+        if let sign = sign {
+            builder = sign + builder
+        }
+        
+        if let decimal = decimal {
+            builder.append(".")
+            builder.append(decimal)
+        }
+        
+        return builder
     }
     
     /// 数字を+-符号付き3桁カンマ区切りにした文字列を返す
