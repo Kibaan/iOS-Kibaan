@@ -7,7 +7,7 @@
 import UIKit
 
 public class OSUtils: NSObject {
-    static let appStoreURL = "itms-apps://itunes.apple.com/app/"
+    static public let appStoreURL = "itms-apps://itunes.apple.com/app/"
 
     /// URLをSafariで開く
     static public func openUrlInSafari(urlStr: String, onError: (() -> Void)? = nil) {
