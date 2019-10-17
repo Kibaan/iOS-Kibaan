@@ -72,7 +72,6 @@ open class ScreenService {
         window.rootViewController = controller
         screenStack += [controller]
         oldRootViewController?.removed()
-        // FIXME 画面追加後の処理はsetRootの戻りなどでできるので、prepare は画面に追加される前にやるべきかも。
         prepare?(controller)
         controller.added()
         controller.enter()
