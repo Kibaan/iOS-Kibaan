@@ -55,7 +55,11 @@ Kibaanの提供するUIクラスは一律でフォントファミリーを変更
 </dl>
 
 
-# ガイドライン
+# プログラミングガイド
+
+## AppDelegate
+
+AppDelegateは SmartAppDelegateを継承させてください。
 
 ## テキスト表示
 
@@ -98,9 +102,9 @@ ScreenService.instance.removeSubScreen()
 画面遷移時に遷移先のViewControllerに何らかのデータを渡す場合は、prepare引数を使用する。
 
 ## 画面表示
-必ず`BaseViewController`を継承すること。
+Kibaanの画面遷移機能を使うには、ViewControllerは`SmartViewController`を継承する必要がある。
 
-### BaseViewControllerの使い方
+### SmartViewControllerの使い方
 
 画面がスクリーンに追加されたときに処理をしたい場合は`onAddedToScreen`をoverrideする。  
 
@@ -220,7 +224,7 @@ SmartTableViewはregisterCellClassで事前にCellのクラスを登録し、tab
 
 ```
 "msg_0001" = "ログインの有効期限が切れました。";
-```  
+```
 ***使用方法***
 
 ```
