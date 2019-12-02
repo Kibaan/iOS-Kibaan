@@ -117,7 +117,7 @@ open class SmartButton: UIButton, SmartFontProtocol {
     }
 
     /// 長押しを有効にするか
-    open var isEnableRepeat: Bool = true
+    open var isEnableRepeat: Bool = false
     /// 長押しを開始するまでの時間（秒）
     open var repeatDelay: Double = 0.5
     /// 長押しイベントの間隔（秒）
