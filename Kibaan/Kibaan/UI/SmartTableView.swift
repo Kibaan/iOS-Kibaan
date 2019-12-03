@@ -42,9 +42,6 @@ open class SmartTableView: UITableView {
     /// インジケーターのサイズ
     open var indicatorSize: CGSize?
     
-    // iOS10以降はUIScrollViewにrefreshControlプロパティがあるが、iOS9以下にも対応する為、自前でプロパティを設ける
-    private var refreshControlCompat: UIRefreshControl?
-    
     /// プルトゥリフレッシュ実行時のアクション
     open var onPullToRefresh: (() -> Void)?
     
@@ -166,11 +163,9 @@ open class SmartTableView: UITableView {
     open func addRefreshControl(attributedTitle: NSAttributedString? = nil, onPullToRefresh: (() -> Void)? = nil) {
         self.onPullToRefresh = onPullToRefresh
         
-        let refreshControlCompat = UIRefreshControl()
-        self.refreshControlCompat = refreshControlCompat
-        refreshControlCompat.attributedTitle = attributedTitle
-        refreshControlCompat.addTarget(self, action: #selector(self.valueChanged), for: .valueChanged)
-        self.addSubview(refreshControlCompat)
+        refreshControl = UIRefreshControl()
+        refreshControl?.attributedTitle = attributedTitle
+        refreshControl?.addTarget(self, action: #selector(self.valueChanged), for: .valueChanged)
     }
     
     open func addRefreshControl(title: String = "引っ張って更新", onPullToRefresh: (() -> Void)? = nil) {
@@ -178,7 +173,7 @@ open class SmartTableView: UITableView {
     }
     
     open func endRefreshing() {
-        refreshControlCompat?.endRefreshing()
+        refreshControl?.endRefreshing()
     }
     
     @objc private func valueChanged() {
