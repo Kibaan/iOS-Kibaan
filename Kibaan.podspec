@@ -7,6 +7,6 @@ Pod::Spec.new do |s|
   s.author           = { 'altonotes' => 'kibaan@altonotes.co.jp' }
   s.source           = { :git => 'https://github.com/Kibaan/iOS-Kibaan.git', :tag => s.version.to_s }
   s.ios.deployment_target = '10.0'
-  s.swift_version = '4.2'
+  s.swift_version = '5.1'
   s.source_files = 'Kibaan/Kibaan/**/*.{swift,xib}'
 end
