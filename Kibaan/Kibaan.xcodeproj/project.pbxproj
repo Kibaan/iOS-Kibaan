@@ -942,7 +942,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.8.10;
+				MARKETING_VERSION = 0.8.11;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.altonotes.Kibaan;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -969,7 +969,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.8.10;
+				MARKETING_VERSION = 0.8.11;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.altonotes.Kibaan;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
