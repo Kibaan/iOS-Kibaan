@@ -6,16 +6,27 @@ import UIKit
 
 /// テキストが横に流れて表示されるラベル
 open class TickerLabel: UIView {
-    
+
     /// 内部テキスト表示用ラベル
     private let label = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 200))
-    
+
+    /// フォント
+    public var font: UIFont {
+        get { return label.font }
+        set(value) { label.font = value }
+    }
+
+    /// テキスト色
+    @IBInspectable
+    public var textColor: UIColor {
+        get { return label.textColor }
+        set(value) { label.textColor = value }
+    }
+
     /// テキスト
     open var text: String? {
         get { return label.text }
-        set(value) {
-            label.text = value
-        }
+        set(value) { label.text = value }
     }
     
     /// アニメーション中か
@@ -32,14 +43,13 @@ open class TickerLabel: UIView {
     }
     
     open func commonInit() {
-        backgroundColor = UIColor.clear
         clipsToBounds = true
         autoresizesSubviews = false
         addSubview(label)
         
         label.backgroundColor = UIColor.clear
         label.font = UIFont.systemFont(ofSize: 16)
-        label.textColor = UIColor.black
+        label.textColor = UIColor.lightGray
     }
     
     override open func layoutSubviews() {
